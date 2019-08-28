@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('includes/head.ejs'); %>
+    <title>SIMPIC 2020</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" integrity="sha256-2bAj1LMT7CXUYUwuEnqqooPb1W0Sw0uKMsqNH0HwMa4=" crossorigin="anonymous" />
+  </head>
+  <body>
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a href="/" class="navbar-brand pt-0 mr-4"><img src="https://storage.googleapis.com/simpic-web.appspot.com/public/logo.png" alt="SIMPIC Logo" ></a>
+          
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="lnr lnr-menu"></i>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="main-navbar">
+          <ul class="navbar-nav w-100 justify-content-end">
+            <li class="col pl-0 pr-0"></li>
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#hero-area">Home</a>
+            </li>
+            <li class="dropdown nav-item">
+              <a class="nav-link dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                About
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item page-scroll" href="#services">Getting to know SIMPIC</a>
+                <a class="dropdown-item" href="hof/" target="_blank">Hall of fame</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#features">Information</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#portfolios">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#team">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#contact">Contact</a>
+            </li>
+            <li class="col pl-0 pr-0"></li>
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="/register" style="display: none;">👉🏻 &nbsp;Register Now&nbsp; 👈🏻</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Start -->
+      <ul class="mobile-menu">
+        <li>
+          <a class="page-scroll" href="#hero-area">Home</a>
+        </li>
+        <li>
+          <a class="page-scroll" href="#services">About</a>
+        </li>
+        <li>
+          <a class="page-scroll" href="#features">Information</a>
+        </li>
+        <li>
+          <a class="page-scroll" href="#portfolios">Gallery</a>
+        </li>
+        <li>
+          <a class="page-scroll" href="#team">Team</a>
+        </li>
+        <li>
+          <a class="page-scroll" href="#contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link page-scroll" href="/register" style="display: none;">👉🏻 &nbsp;Register Now &nbsp; 👈🏻</a>
+        </li>
+
+      </ul>
+      <!-- Mobile Menu End -->
+
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Header Section Start -->
+    <header id="hero-area">
+      <div class="container">      
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="contents text-center">
+              <img src="https://storage.googleapis.com/simpic-web.appspot.com/public/simpic_logo.png" style="width: 100%; max-width: 420px; padding-bottom:0px">
+              <h1 class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">SIMPIC 2020</h1>
+              <!-- <p class="lead  wow fadeIn" data-wow-duration="1000ms" data-wow-delay="400ms">Siriraj International medical Microbiology, Parasitology and Immunology Competition -->
+                <!-- <br/> -->
+                <!-- Get more information from our Invitation Package! -->
+                <p class="lead wow fadeIn" data-wow-duration="1000ms" data-wow-delay="400ms">
+                  Dear prospective participants of SIMPIC 2020,<br>
+                  SIMPIC 2020 is going to be held on March 13-16, 2020<br>
+                  Save the date! & Find out more here 👇🏻</p>
+              <!-- <a href="https://drive.google.com/open?id=1Q5d1-i9ZAqQJxGv1ibMj1VYb99v6zAGp" target="_blank" class="btn btn-common wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">Survival Guide</a>
+              <a href="https://drive.google.com/file/d/1jZGXKQm68F-Bm6KmmYKSQsa_d3Yj8jSc/view?usp=drivesdk" target="_blank" class="btn btn-common wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">Rulebook</a> -->
+              <a href="https://drive.google.com/drive/folders/1gA2A9bZJqfPreboW2YzYMBphF_yhwjSv" target="_blank" class="mx-3 btn btn-common wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">Invitation Package</a>
+            </div>
+          </div>
+        </div> 
+      </div>           
+    </header>
+    <!-- Header Section End --> 
+
+    <!-- Services Section Start -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">About SIMPIC</h2>
+          <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+          <p class="section-subtitle wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">SIMPIC stands for Siriraj International medical Microbiology, Parasitology and Immunology Competition held in Bangkok, Thailand. An international platform for medical students to challenge themselves, get to know others, and find inspiration.</p>
+        </div>
+        <div class="row" hidden>
+          <div class="col-md-4 col-sm-6">
+            <div class="item-boxes wow fadeInDown" data-wow-delay="0.2s">
+              <div class="icon">
+                <i class="lnr lnr-earth"></i>
+              </div>
+              <h4>Around The World!</h4>
+              <p>SIMPIC is for medical students around the world who have an interest in infectious medicine, and have preferably finished their preclinical microbiology, immunology, and parasitology course.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="item-boxes wow fadeInDown" data-wow-delay="0.8s">
+              <div class="icon">
+                <i class="lnr lnr-pencil"></i>
+              </div>
+              <h4>Intense Competition</h4>
+              <p>somehow intensifying competition is coming LUL</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="item-boxes wow fadeInDown" data-wow-delay="1.2s">
+              <div class="icon">
+                <i class="lnr lnr-smile"></i>
+              </div>
+              <h4>Not Only Academic Stuff!</h4>
+              <p>SIMPIC has both academic and leisure activities. The experience of the comprehensive examination is not the only thing you will get, but also the inspiration in medicine, socializing with friends from various countries, and sightseeing to impressive tourist attractions in Bangkok.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-md-center">
+          <div class="col-lg-9 px-0">
+            <div id="gallery" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#gallery" data-slide-to="0" class="active"></li>
+                <li data-target="#gallery" data-slide-to="1"></li>
+                <li data-target="#gallery" data-slide-to="2"></li>
+                <li data-target="#gallery" data-slide-to="3"></li>
+                <li data-target="#gallery" data-slide-to="4"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="d-block w-100" src="https://storage.googleapis.com/simpic-web.appspot.com/public/carousel/1.jpg" alt="carousel">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="https://storage.googleapis.com/simpic-web.appspot.com/public/carousel/2.jpg" alt="carousel">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="https://storage.googleapis.com/simpic-web.appspot.com/public/carousel/3.jpg" alt="carousel">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="https://storage.googleapis.com/simpic-web.appspot.com/public/carousel/4.jpg" alt="carousel">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="https://storage.googleapis.com/simpic-web.appspot.com/public/carousel/5.jpg" alt="carousel">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#gallery" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#gallery" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Services Section End -->
+
+    <!-- Features Section Start -->
+    <section id="features" class="section">
+      <div class="container">
+        <div class="section-header">          
+          <h2 class="section-title">Information</h2>
+          <hr class="lines">
+          <p class="section-subtitle">Details about our SIMPIC are listed below. Click for more information 👇🏻</p>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-12">
+            <div class="container">
+              <div class="row">
+                  <div class="col-lg-6 col-sm-6 col-12 box-item">
+                    <a href="registration" target="_blank">
+                    <span class="icon">
+                      <i class="lnr lnr-pencil"></i>
+                    </span>
+                    <div class="text info-text">
+                      <h4>Registration</h4>
+                      <p>How you can be a part of, our precious and proudly presented, SIMPIC 2020 !</p>
+                    </div>
+                    </a>
+                  </div>
+                  <div class="col-lg-6 col-sm-6 col-12 box-item">
+                    <a href="competition" target="_blank">
+                    <span class="icon">
+                      <i class="lnr lnr-graduation-hat"></i>
+                    </span>
+                    <div class="text info-text">
+                      <h4>Competition</h4>
+                      <p>The rules of our competition. Not only educating but also entertaining !</p>
+                    </div>
+                    </a>
+                  </div>
+                  <div class="col-lg-6 col-sm-6 col-12 box-item">
+                    <a href="accommodation" target="_blank">
+                    <span class="icon">
+                      <i class="lnr lnr-apartment"></i>
+                    </span>
+                    <div class="text info-text">
+                      <h4>Accommodation</h4>
+                      <p>So after party, we can have a comfy rest :D</p>
+                    </div>
+                    </a>
+                  </div>
+                  <div class="col-lg-6 col-sm-6 col-12 box-item">
+                    <a href="activities" target="_blank">
+                    <span class="icon">
+                      <i class="lnr lnr-music-note"></i>
+                    </span>
+                    <div class="text info-text">
+                      <h4>Activities</h4>
+                      <p>Apart from academic things, emphasize the unforgettable memories with plentiful entertaining activities for you all.</p>
+                    </div>
+                    </a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-lg-4 col-12" hidden>
+            <div class="show-box">
+              <img class="" src="img/features/feature.png" alt="">
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </section>
+    <!-- Features Section End -->    
+
+    <!-- Portfolio Section -->
+    <section id="portfolios" class="section">
+      <!-- Container Starts -->
+      <div class="container">
+        <div class="section-header">          
+          <h2 class="section-title">Wonderful Moments</h2>
+          <hr class="lines">
+          <p class="section-subtitle" hidden>Wonderful moments we captured from our last SIMPIC, not only lively people but also something.....</p>
+        </div>
+        <div class="row">          
+          <div class="col-md-12">
+            <!-- Portfolio Controller/Buttons -->
+            <div class="controls text-center">
+              <a class="filter active btn btn-common" data-filter="all">
+                All 
+              </a>
+              <a class="filter btn btn-common" data-filter=".sight">
+                Sightseeing 
+              </a>
+              <a class="filter btn btn-common" data-filter=".comp">
+                Competition
+              </a>
+              <a class="filter btn btn-common" data-filter=".act">
+                Activities 
+              </a>
+              <a class="filter btn btn-common" data-filter=".show">
+                Cultural Shows
+              </a>
+            </div>
+            <!-- Portfolio Controller/Buttons Ends-->
+          </div>
+        </div>
+
+        <!-- Portfolio Recent Projects -->
+        <div id="portfolio" class="row" style="">
+          <%
+            files.forEach((file) => {
+              /* let type = '';
+              if (file.name.includes('comp')) type = 'comp';
+              else if (file.name.includes('sight')) type = 'sight';
+              else if (file.name.includes('act')) type = 'act'; */
+              if (file.name.slice(-1) == '/') return;
+              let type = file.name.split('/')[2];
+          %>
+            <div class="col-6 col-md-3 mix <%= type %>">
+              <div class="portfolio-item">
+                <div class="shot-item">
+                  <img src="https://storage.googleapis.com/simpic-web.appspot.com/<%= file.name %>" alt="<%= file.name %>" />
+                  <a class="overlay lightbox" href="https://storage.googleapis.com/simpic-web.appspot.com/<%= file.name %>">
+                    <i class="lnr lnr-eye item-icon"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          <%
+            });
+          %>
+        </div>
+      <!-- Container Ends -->
+    </section>
+    <!-- Portfolio Section Ends --> 
+
+    <!-- Counter Section Start -->
+    <div class="counters section">
+      <div class="container">
+        <div class="row"> 
+          <div class="col-sm-6 col-md-3 col-lg-3">
+            <div class="facts-item">   
+              <div class="icon">
+                <i class="lnr lnr-clock"></i>
+              </div>             
+              <div class="fact-count">
+                <h3><span class="counter">9</span></h3>
+                <h4>Years of events</h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3">
+            <div class="facts-item">   
+              <div class="icon">
+                <i class="lnr lnr-briefcase"></i>
+              </div>            
+              <div class="fact-count">
+                <h3><span class="counter">400</span>+</h3>
+                <h4>SIMPIC Staffs</h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3">
+            <div class="facts-item"> 
+              <div class="icon">
+                <i class="lnr lnr-user"></i>
+              </div>              
+              <div class="fact-count">
+                <h3><span class="counter">300</span></h3>
+                <h4>Participants</h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3">
+            <div class="facts-item"> 
+              <div class="icon">
+                <i class="lnr lnr-heart"></i>
+              </div>              
+              <div class="fact-count">
+                <h3><span class="counter">100</span>%</h3>
+                <h4>held with ❤️ </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Counter Section End -->
+
+    <!-- Team section Start -->
+    <section id="team" class="section">
+      <div class="container">
+        <div class="section-header">          
+          <h2 class="section-title">Greetings from our team</h2>
+          <hr class="lines">
+          <p class="section-subtitle"></p>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-8 col">
+            <div class="single-team">
+              <img src="https://storage.googleapis.com/simpic-web.appspot.com/public/president.jpg" alt="">
+              <div class="team-details">
+                <div class="team-inner">
+                  <h4 class="team-title">Nithipong & Kayvalvn</h4>
+                  <h6 class="text-muted">President of SIMPIC 2020</h6>
+                  <p>The long wait is almost over. Our beloved annual competition, SIMPIC, is coming once again!</p>
+                  <!-- <ul class="social-list">
+                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                  </ul> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Team section End -->
+
+    <!-- Contact Section Start -->
+    <section id="contact" class="section">      
+      <div class="contact-form">
+        <div class="container">
+          <div class="row justify-content-center">     
+            <div class="col-sm-6 col-12">
+              <div class="contact-us">
+                <h3>Contact Us</h3>
+                <div class="contact-address">
+                  <p>Faculty of Medicine Siriraj Hospital, Mahidol University<br/>2 Wanglang Road Bangkoknoi, Bangkok 10700, Thailand</p>
+                  <!-- <p class="phone">Phone: <span>02-123-4567</span></p> -->
+                  <p class="email">E-mail: <span>contact.simpic@gmail.com</span></p>
+                </div>
+                <!-- <div class="fb-page" data-href="https://www.facebook.com/SIMPICOfficial" data-tabs="" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/SIMPICOfficial" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/SIMPICOfficial">SIMPIC</a></blockquote></div> -->
+                <div class="social-icons">
+                  <ul>
+                    <li class="facebook"><a href="https://www.facebook.com/SIMPICOfficial" target="_blank"><i class="fa fa-facebook"></i></a> SIMPIC official</li>
+                    <!-- <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li> -->
+                  </ul>
+                </div>
+              </div>
+            </div>     
+          </div>
+        </div>
+      </div>           
+    </section>
+    <!-- Contact Section End -->
+    <!-- Sponsor -->
+    <section>
+      <div class="container" style="width:60%;">
+        <br>
+        <div class="section-header">          
+          <h2 class="section-title">SPONSORS</h2>
+          <hr class="lines">
+          <p class="section-subtitle"></p>
+        </div>
+        <div class="row justify-content-center">
+          <h4>Coming Soon</h4>
+          <%
+            /* sponsors */[].forEach(e => {
+          %>
+          <div class="col-6 col-sm-4 col-lg-3 col-xl-2 pb-3"><img src="https://storage.googleapis.com/simpic-web.appspot.com/<%= e.name %>" alt="<%= e.name %>" style="width: 100%;"></div>
+          <%
+            });
+          %>
+        </div>
+      </div>
+    </section>
+    <!-- Sponsor End -->
+
+    <!-- Footer Section Start -->
+    <footer>          
+      <div class="container">
+        <div class="row">
+          <!-- Footer Links -->
+          <div class="col-lg-6 col-sm-6 col-12">
+            <ul class="footer-links" hidden>
+              <li>
+                <a href="#">Homepage</a>
+              </li>
+              <li>
+                <a href="#">Services</a>
+              </li>
+              <li>
+                <a href="#">About Us</a>
+              </li>
+              <li>
+                <a href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-6 col-sm-6 col-12">
+            <div class="copyright">
+              <p>All copyrights reserved &copy; 2019 - Theme: UIdeck</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js" integrity="sha256-2RS1U6UNZdLS0Bc9z2vsvV4yLIbJNKxyA4mrx5uossk=" crossorigin="anonymous"></script>
+    <%- include('includes/body.ejs'); %>
+    <script>
+        document.addEventListener("touchstart", function() {}, false); // https://stackoverflow.com/q/18047353/4468834
+    </script>
+
+    <!-- float facebook like box start -->
+    <script async defer id="float_fb" data-href="https://www.facebook.com/SIMPICOfficial/">
+      (function() {
+        var defaults = {
+            container_width:280,
+            height:224,
+            show_facepile:'true',
+            tabs:'',
+            href:''
+          },
+          cfg = $("#float_fb").data(),
+          iframe = 'https://www.facebook.com/v2.9/plugins/page.php?',
+          params = [],
+          png = 'https://storage.googleapis.com/simpic-web.appspot.com/public/widget.png'
+        var val;
+        for(var k in defaults)
+        {
+            if(typeof cfg[k] === 'undefined')
+                cfg[k] = defaults[k];
+            val = cfg[k];
+            params.push(k + '=' + val);
+        }
+        iframe += params.join('&');
+
+        // var status_ = 'hide'; // showing, hiding, show, hide
+        $("body").append(
+            ['<div onclick="" id="float_fb_plugin" style="visibility:hidden">',
+            '<img src="' + png + '" style="cursor:pointer;position:absolute;margin-left:-47px;" border=0 />',
+            '<iframe scrolling="no" frameborder="0" allowTransparency="true"></iframe>',
+            '</div>'].join(''));
+        var w = $("#float_fb_plugin");
+
+        var top_ = ($(window).height() - cfg.height)/2;
+        if(top_ < 50)
+            top_ = 50;
+        var right_ = cfg.container_width * -1;
+
+        var css = {
+          width:cfg.container_width,
+          height:cfg.height,
+          position:'fixed',
+          top:top_,
+          // right:right_,
+          visibility:'visible',
+          backgroundColor:'white',
+          zIndex:5000
+        };
+
+        w.find('iframe').attr({width:cfg.width, height:cfg.height}).attr('src', iframe);
+
+        w.css(css);
+
+        /* w.find('img').hover(function() {
+            w.animate({right: 0}, function(){ status_ = 'show'; });
+        });
+
+        w.mousemove(function(e){
+            e.stopPropagation();
+        });
+
+        $("body").mousemove(function() {
+          w.animate({right:right_}, function(){ status_ = 'hide';});
+        }); */
+      })();
+    </script>
+    <!-- float facebook like box end -->
+    <script>
+      $(function() {
+        Swal.mixin({
+          confirmButtonText: 'OK',
+        }).queue([
+        <% if (alert.error) alert.error.forEach((e) => { %>
+          {type: 'error', title: '<%= e %>'},
+        <% }); 
+        if (alert.success) alert.success.forEach((e) => { %>
+          {type: 'success', title: '<%= e %>'},
+        <% }); %>
+        ]);
+      });
+    </script>
+    
+  </body>
+</html>
