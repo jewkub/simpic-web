@@ -1,0 +1,142 @@
+/*!
+ * SlickNav Responsive Mobile Menu v1.0.3
+ * (c) 2015 Josh Cope
+ * licensed under MIT
+ */
+.slicknav_btn ***REMOVED***
+  cursor: pointer;
+  display: block;
+  float: right;
+  height: 35px;
+  line-height: 50px;
+  padding: 10px 0 9px;
+  position: relative;
+  vertical-align: middle;
+  width: 44px;
+}
+  .slicknav_btn .slicknav_icon-bar + .slicknav_icon-bar ***REMOVED***
+    margin-top: 0.188em; }
+
+.slicknav_menu ***REMOVED***
+  *zoom: 1; }
+  .slicknav_menu .slicknav_menutxt ***REMOVED***
+    display: block;
+    line-height: 1.188em;
+    float: left; }
+  .slicknav_menu .slicknav_icon ***REMOVED***
+    margin: 0.188em 0 0 0.438em; }
+  .slicknav_menu .slicknav_no-text ***REMOVED***
+    margin: 0; }
+  .slicknav_menu .slicknav_icon-bar ***REMOVED***
+    display: block;
+    width: 1.125em;
+    height: 0.125em;
+    margin: 0 auto;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+***REMOVED***
+  .slicknav_menu:before ***REMOVED***
+    content: " ";
+    display: table; }
+  .slicknav_menu:after ***REMOVED***
+    content: " ";
+    display: table;
+    clear: both; }
+
+.slicknav_nav ***REMOVED***
+  clear: both; }
+  .slicknav_nav ul ***REMOVED***
+    display: block; }
+  .slicknav_nav li ***REMOVED***
+    display: block; 
+    line-height: 30px;
+***REMOVED***
+  .slicknav_nav li:not(:first-child)***REMOVED***
+***REMOVED***
+  .slicknav_nav .slicknav_arrow ***REMOVED***
+    background: #ededed none repeat scroll 0 0;
+    float: right;
+    text-align: center;
+    width: 35px;
+    color: #666;
+***REMOVED***
+  .slicknav_nav .slicknav_item ***REMOVED***
+    cursor: pointer; }
+    .slicknav_nav .slicknav_item a ***REMOVED***
+      display: inline; }
+  .slicknav_nav .slicknav_row ***REMOVED***
+    display: block; }
+  .slicknav_nav a ***REMOVED***
+    display: block; }
+  .slicknav_nav .slicknav_parent-link a ***REMOVED***
+    display: inline; }
+
+.slicknav_brand ***REMOVED***
+  float: left; }
+
+.slicknav_menu ***REMOVED***
+  font-size: 16px;
+  box-sizing: border-box;
+}
+.slicknav_menu ul***REMOVED***
+  background: #fff;
+}
+  .slicknav_menu * ***REMOVED***
+    box-sizing: border-box; }
+  .slicknav_menu .slicknav_menutxt ***REMOVED***
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 1px 3px #000; }
+
+.slicknav_btn ***REMOVED***
+  border: 1px solid;
+  border-radius: 0;
+  margin: 16px 15px;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.slicknav_nav ***REMOVED***
+  color: #fff;
+  font-size: 0.875em;
+  list-style: outside none none;
+  margin: 0;
+  max-height: 350px;
+  padding: 0;
+  width: 100%;
+}
+  .slicknav_nav ul ***REMOVED***
+    list-style: none;
+    overflow: hidden;
+    padding: 0;
+    margin: 0 0 0 20px; }
+  .slicknav_nav .slicknav_row ***REMOVED***
+    padding: 5px 10px;
+    margin: 2px 5px; }
+  .slicknav_nav a ***REMOVED***
+    padding: 5px 15px;
+    margin: 2px 5px;
+    text-decoration: none;
+    color: #666; }
+  .slicknav_nav .slicknav_txtnode ***REMOVED***
+    margin-left: 15px; }
+  .slicknav_nav .slicknav_item a ***REMOVED***
+    padding: 0;
+    margin: 0; }
+  .slicknav_nav .slicknav_parent-link a ***REMOVED***
+    padding: 0;
+    margin: 0; }
+
+.slicknav_brand ***REMOVED***
+  color: #fff;
+  font-size: 18px;
+  line-height: 30px;
+  padding: 7px 12px;
+  height: 44px; }

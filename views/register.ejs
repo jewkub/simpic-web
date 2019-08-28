@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('includes/head.ejs'); %>
+    <title>Register/Login - SIMPIC 2020</title>
+  </head>
+  <body>
+    <!-- Header Section Start -->
+    <!-- Navbar Start -->
+      <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <a href="/" class="navbar-brand pt-0 mr-4"><img class="" src="img/logo_new.png" alt="SIMPIC Logo" ></a>
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="lnr lnr-menu"></i>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="navbar-nav w-100 justify-content-end">
+
+              <li class="nav-item">
+                <a class="nav-link login-a" href="#">Sign in</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link register-a" style="display: none;" href="#">Register</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="/">Back to Home</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Start -->
+        <ul class="mobile-menu">
+          <li class="nav-item">
+            <a class="nav-link login-a" href="#">Sign in</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link register-a" style="display: none;" href="#">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/">Back to Home</a>
+          </li>
+        </ul>
+        <!-- Mobile Menu End -->
+
+      </nav>
+      <!-- Navbar End -->
+
+    <div style="height: 86px; background:black;">
+    </div>
+    <div class="container pt-4">
+      <div id="register" class="row justify-content-center">
+        <div class="col-lg-9">
+          <h2>Register</h2>
+          <br>
+          <form method="post" action="/register">
+            <div class="form-group">
+              <label for="emailInput">Email</label>
+              <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Put your email here" name="email" required>
+              <div class="valid-feedback">
+                Valid email
+              </div>
+              <div class="invalid-feedback" id="emailInvalid">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="passwordInput">Password</label>
+              <input type="password" class="form-control" id="passwordInput" placeholder="password" name="password" required>
+              <div class="invalid-feedback">
+                Password must be at least 4 characters
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="passwordConfirmInput">Confirm password</label>
+              <input type="password" class="form-control" id="passwordConfirmInput" placeholder="Confirm password" name="passwordConfirm" required>
+              <div class="invalid-feedback">
+                Password not match
+              </div>
+            </div>
+            <input name="token" id="token" class="is-valid" style="display:none;">
+            <button type="submit" class="btn btn-primary">Register</button>
+          </form>
+        </div>
+      </div>
+      <div id="login" class="row justify-content-center" style="display: none;">
+        <div class="col-lg-9">
+          <h2>Sign in</h2>
+          <br>
+          <form method="post" action="/login" id="login-form">
+            <div class="form-group">
+              <label for="emailInput">Email</label>
+              <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Login email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="passwordInput">Password</label>
+              <input type="password" class="form-control" id="passwordInput" placeholder="Password" name="password" required>
+            </div>
+            <input name="token" id="token" class="is-valid" style="display:none;">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <%- include('includes/body.ejs'); %>
+    <script>
+      $('.login-a').click(function (e) ***REMOVED***
+        e.preventDefault();
+        $('#register').slideUp(function (e) ***REMOVED***
+          $('#login').slideDown();
+          $('.login-a').hide();
+          $('.register-a').show();
+    ***REMOVED***);
+  ***REMOVED***);
+
+      $('.register-a').click(function (e) ***REMOVED***
+        e.preventDefault();
+        $('#login').slideUp(function (e) ***REMOVED***
+          $('#register').slideDown();
+          $('.login-a').show();
+          $('.register-a').hide();
+    ***REMOVED***);
+  ***REMOVED***);
+
+      const $emailInput = $('#emailInput');
+      // const $formSubmit = $('#formSubmit');
+      const $emailInvalid = $('#emailInvalid');
+      const $passwordInput = $('#passwordInput');
+      const $passwordConfirmInput = $('#passwordConfirmInput');
+      [$emailInput, $passwordConfirmInput, $passwordInput].forEach(e => ***REMOVED***
+        e.focus(event => ***REMOVED***
+          e.removeClass('is-valid');
+          e.removeClass('is-invalid');
+    ***REMOVED***);
+  ***REMOVED***);
+      $emailInput.on('focusout', event => ***REMOVED***
+        if($emailInput[0].checkValidity() === true) ***REMOVED***
+          $.get('/register/validemail', ***REMOVED*** email: $emailInput.val() }, data => ***REMOVED***
+            // console.log(data.alreadyUsed);
+            if ($emailInput.hasClass('is-valid') || $emailInput.hasClass('is-invalid')) return ;
+            if (data.error) ***REMOVED***
+              $emailInput.addClass('is-invalid');
+              $emailInvalid.html('Some error!');
+        ***REMOVED***
+            else if (data.alreadyUsed) ***REMOVED***
+              $emailInput.addClass('is-invalid');
+              $emailInvalid.html('Email already used');
+        ***REMOVED***
+            else ***REMOVED***
+              $emailInput.addClass('is-valid');
+        ***REMOVED***
+      ***REMOVED***);
+    ***REMOVED***
+        else ***REMOVED***
+          $emailInput.addClass('is-invalid');
+          $emailInvalid.html('Invalid email');
+    ***REMOVED***
+  ***REMOVED***);
+      $passwordInput.on('focus', event => ***REMOVED***
+        if($passwordConfirmInput.hasClass('is-valid') || $passwordConfirmInput.hasClass('is-invalid')) ***REMOVED***
+          $passwordConfirmInput.removeClass('is-valid');
+          $passwordConfirmInput.removeClass('is-invalid');
+          $passwordConfirmInput.addClass('is-validating');
+    ***REMOVED***
+  ***REMOVED***);
+      $passwordInput.on('focusout', event => ***REMOVED***
+        if($passwordConfirmInput.hasClass('is-validating')) ***REMOVED***
+          $passwordConfirmInput.trigger('focusout');
+    ***REMOVED***
+        if($passwordInput.val().length < 4) $passwordInput.addClass('is-invalid');
+        else $passwordInput.addClass('is-valid');
+  ***REMOVED***);
+      $passwordConfirmInput.on('focusout', event => ***REMOVED***
+        if($passwordInput.val() != $passwordConfirmInput.val()) $passwordConfirmInput.addClass('is-invalid');
+        else $passwordConfirmInput.addClass('is-valid');
+  ***REMOVED***);
+      $('#login-form').on('submit', function(event) ***REMOVED***
+        if ($('#login-form input:not(.is-valid)').length > 0) ***REMOVED***
+          event.preventDefault();
+          event.stopPropagation();
+          $('#login-form input:not(.is-valid)').each(function(i) ***REMOVED***
+            $(this).trigger('focusout');
+      ***REMOVED***);
+    ***REMOVED***
+        else $('input[type=submit]', this).attr('disabled', 'disabled');
+  ***REMOVED***);
+    </script>
+  </body>
+</html>
