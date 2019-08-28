@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../includes/head.ejs'); %>
+    <title>Admin - SIMPICSED</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
+    <style>
+    </style>
+  </head>
+  <body>
+    <%- include('nav.ejs'); %>
+    <div style="height: 100px; background: black;"></div>
+
+    <div class="container">
+      <br><br>
+      <h2>Users - <%= user.get('code') %></h2>
+      <form method="post" action="/user">
+        <input type="text" name="code" style="display: none;" value="<%= user.get('code') %>">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Status</h5>
+            <%
+              ['School and team information', 'Letter of approval', 'Motivation letter', 'Short essay', 'Consent letter'].forEach((e, i) => {
+            %>
+                <div class="form-row">
+                  <div class="col-auto col-form-label">
+                    <label for="s<%= i+1 %>"><%= e %></label>
+                  </div>
+                  <div class="col-auto">
+                    <select class="custom-select" name="s<%= i+1 %>" id="s<%= i+1 %>">
+                      <option disabled selected value="0">Please select</option>
+                      <option value="Not submitted">Not submitted</option>
+                      <option value="Submitted">Submitted</option>
+                      <option value="Unapproved">Unapproved</option>
+                      <option value="Approved">Approved</option>
+                      <option value="For on-site application">For on-site application</option>
+                    </select>
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" id="c<%= i+1 %>" name="c<%= i+1 %>" placeholder="Comment"/>
+                  </div>
+                </div>
+            <%
+              });
+            %>
+          </div>
+        </div>
+        <br>
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Lock</h5>
+            <%
+              ['School and team information', 'Letter of approval', 'Motivation letter', 'Short essay', 'Consent letter'].forEach((e, i) => {
+            %>
+                <div class="form-row">
+                  <div class="col-auto col-form-label">
+                    <label for="l<%= i+1 %>"><%= e %></label>
+                  </div>
+                  <div class="col">
+                    <select class="custom-select" name="l<%= i+1 %>" id="l<%= i+1 %>">
+                      <option disabled selected value="0">Please select</option>
+                      <option value="true">Lock</option>
+                      <option value="false">Unlock</option>
+                    </select>
+                    <br>
+                  </div>
+                </div>
+            <%
+              });
+            %>
+          </div>
+        </div>
+
+        <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Payment</h5>
+            <div class="form-row">
+              <div class="col-auto col-form-label">
+                <label for="payment">Payment</label>
+              </div>
+              <div class="col-auto">
+                <select class="custom-select" name="payment" id="payment">
+                  <option disabled selected value="0">Please select</option>
+                  <option value="Unpaid">Unpaid</option>
+                  <option value="Paid">Paid</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Extra information</h5>
+            <!-- <div class="form-row">
+              <div class="col-auto col-form-label">
+                <label for="x1">Sightseeing route</label>
+              </div>
+              <div class="col-auto">
+                <select class="custom-select" name="x1" id="x1">
+                  <option disabled selected value="0">Please select</option>
+                  <option value="true">Done</option>
+                  <option value="false">Not done</option>
+                </select>
+              </div>
+            </div> -->
+            <%
+              ['Flight information', 'Your accomodation'].forEach((e, i) => {
+            %>
+                <div class="form-row">
+                  <div class="col-auto col-form-label">
+                    <label for="x<%= i+2 %>"><%= e %></label>
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" id="x<%= i+2 %>" name="x<%= i+2 %>" placeholder="Comment"/>
+                  </div>
+                </div>
+            <%
+              });
+            %>
+          </div>
+        </div>
+        <br>
+
+        <button type="submit" class="btn btn-primary" id="send">Submit</button> <!-- https://stackoverflow.com/a/9513164/4468834 -->
+        
+      </form>
+      <br>
+    </div>
+    <%- include('../includes/body.ejs'); %>
+    <script type="text/javascript">
+      $(() => {
+        <%
+          let lock = user.get('lock') || [];
+          lock.forEach((e, i) => {
+        %>
+            $('*[name="l<%= i+1 %>"] option[value="<%= e %>"]').prop('selected', true);
+        <%
+          });
+
+          let status = user.get('status') || [];
+          status.forEach((e, i) => {
+        %>
+            $('*[name="s<%= i+1 %>"] option[value="<%= e %>"]').prop('selected', true);
+        <%
+          });
+          let comment = user.get('comment') || [];
+          comment.forEach((e, i) => {
+        %>
+            $('#c<%= i+1 %>').val('<%= e %>');
+        <%
+          });
+          let extra = user.get('extra') || [];
+        %>
+          $('*[name="x1"] option[value="<%= extra[0] %>"]').prop('selected', true);
+        <%
+          extra.forEach((e, i) => {
+            if (i == 0) return ;
+        %>
+            $('#x<%= i+1 %>').val('<%= e %>');
+        <%
+          });
+          let payment = user.get('payment');
+        %>
+        $('#payment option[value="<%= payment %>"]').prop('selected', true);
+      });
+    </script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper.min.js" integrity="sha256-3Iu0zFU6cPS92RSC3Pe4DBwjIV/9XKyzYTqKZzly6A8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script> -->
+  </body>
+</html>

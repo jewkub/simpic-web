@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../includes/head.ejs'); %>
+    <title>Application - SIMPICSED</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" integrity="sha256-2bAj1LMT7CXUYUwuEnqqooPb1W0Sw0uKMsqNH0HwMa4=" crossorigin="anonymous" />
+    <style type="text/css">
+      @keyframes lds-rolling {
+        0% {
+          -webkit-transform: translate(-50%, -50%) rotate(0deg);
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        100% {
+          -webkit-transform: translate(-50%, -50%) rotate(360deg);
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+      @-webkit-keyframes lds-rolling {
+        0% {
+          -webkit-transform: translate(-50%, -50%) rotate(0deg);
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        100% {
+          -webkit-transform: translate(-50%, -50%) rotate(360deg);
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+      .lds-rolling {
+        position: relative;
+      }
+      .lds-rolling div,
+      .lds-rolling div:after {
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        border: 20px solid #f8b976;
+        border-top-color: transparent;
+        border-radius: 50%;
+      }
+      .lds-rolling div {
+        -webkit-animation: lds-rolling 1s linear infinite;
+        animation: lds-rolling 1s linear infinite;
+        top: 100px;
+        left: 100px;
+      }
+      .lds-rolling div:after {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+      }
+      .lds-rolling {
+        width: 39px !important;
+        height: 39px !important;
+        -webkit-transform: translate(-19.5px, -19.5px) scale(0.195) translate(19.5px, 19.5px);
+        transform: translate(-19.5px, -19.5px) scale(0.195) translate(19.5px, 19.5px);
+      }
+    </style>
+    <!-- <style type="text/css">div.image {max-width: 256px;max-height: 256px;background-image: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjkuNzU2IDI5Ljc1NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjkuNzU2IDI5Ljc1NjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiBjbGFzcz0iIj48Zz48Zz4KCTxwYXRoIHN0eWxlPSJmaWxsOiMwQkM3MjIiIGQ9Ik0yOS4wNDksNS4wMDlMMjguMTksNC4xNTFjLTAuOTQzLTAuOTQ1LTIuNDg4LTAuOTQ1LTMuNDM0LDBMMTAuMTcyLDE4LjczN2wtNS4xNzUtNS4xNzMgICBjLTAuOTQzLTAuOTQ0LTIuNDg5LTAuOTQ0LTMuNDMyLDAuMDAxbC0wLjg1OCwwLjg1N2MtMC45NDMsMC45NDQtMC45NDMsMi40ODksMCwzLjQzM2w3Ljc0NCw3Ljc1MiAgIGMwLjk0NCwwLjk0MywyLjQ4OSwwLjk0MywzLjQzMywwTDI5LjA0OSw4LjQ0MkMyOS45OTEsNy40OTgsMjkuOTkxLDUuOTUzLDI5LjA0OSw1LjAwOXoiIGRhdGEtb3JpZ2luYWw9IiMwMTAwMDIiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiMwMTAwMDIiPjwvcGF0aD4KPC9nPjwvZz4gPC9zdmc+)}</style> -->
+  </head>
+  <body>
+    <%- include('nav.ejs'); %>
+    <div style="height: 100px; background: black;"> </div>
+
+    <div class="container">
+      <br><br>
+      <h2>Application Form - Team #<%= user.get('code') %></h2>
+      <p class="text-muted">Team #<%= user.get('code') %> - <%= user.get('locale') %> medical school</p>
+      <br>
+
+      <form method="post" action="/application" enctype="multipart/form-data">
+        <div class="card">
+          <div class="card-body">
+            <div class="form-row">
+              <div class="col-auto col-form-label">
+                <label for="in1">School Name</label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" id="in1" name="in1" placeholder="School name" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-auto col-form-label">
+                <label for="in2">School Abbreviation<br><small class="text-muted">2-5 capital letters e.g. AWMC, SCU</small></label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" id="in2" name="in2" placeholder="School abbreviation" minlength="2" maxlength="5" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-auto col-form-label">
+                <label for="country">Country</label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" id="country" value="<%= user.get('locale') == 'Thai' ? 'Thailand' : 'International' %>" disabled />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-auto col-form-label">
+                <label for="in3">How do you know SIMPIC?</label>
+              </div>
+              <div class="col-sm-auto col-3">
+                <select class="custom-select" name="in3" id="in3" others="in3-1">
+                  <option disabled selected value="0">Please select</option>
+                  <option value="facebook">Facebook</option>
+                  <option value="email">Email</option>
+                  <option value="website">Website</option>
+                  <option value="ia">Your university international affairs</option>
+                  <option value="seniors">Seniors / have participated</option>
+                  <option value="others">Others</option>
+                </select>
+                <br>
+              </div>
+              <div class="col"><input type="text" class="form-control" id="in3-1" name="in3-1" placeholder="Others" disabled></div>
+            </div>
+            <div class="form-row">
+              <div class="col-auto col-form-label">
+                <label for="place">Registration</label>
+              </div>
+              <div class="col">
+                <select class="custom-select" name="place" id="place">
+                  <option disabled selected value="0">Please select</option>
+                  <option value="onsite">On-site competition</option>
+                  <option value="online">Online competition</option>
+                </select>
+                <br>
+              </div>
+            </div>
+            <p style="color: blue;"><%= 
+              user.get('locale') == 'Thai' ? 
+                '*If you apply for an online competition, please fill only in \'contestant 1-4\' section. And you do not need to upload Motivation letter and short essay.':
+                '*If you prefer to transfer to transfer the on-site registration, please upload a letter of approval, a motivation letter, a short essay and a consent letter'
+                %>
+            </p>
+          </div>
+        </div>
+        <br>
+
+        <div class="accordion" id="accordion">
+          <% for (let i = 1; i <= 5; i++) { %>
+            <div class="card">
+              <div class="card-header" id="header-<%= i %>">
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapse-<%= i %>" role="button" aria-expanded="false" aria-controls="collapse-<%= i %>">
+                  <%= i == 5 ? 'Advisor' : 'Contestant ' + i %>
+                </a>
+              </div>
+              <div class="collapse" id="collapse-<%= i %>" aria-labelledby="header-<%= i %>" data-parent="#accordion">
+                <div class="card-body" id="card-<%= i %>">
+                  <h5 class="card-title"><%= i == 5 ? 'Advisor' : 'Contestant ' + i %></h5>
+                  <% ['Name', 'Nickname', 'Email', 'Age', 'Gender', 'Allergy', 'Food issue', 'Facebook'].forEach((e, ii) => { %>
+                    <div class="form-row">
+                      <div class="col-auto col-form-label">
+                        <label for="c<%= i %>-<%= ii+1 %>"><%= e %><% if (ii == 5) { %><br><small class="text-muted">e.g. wheat, seafood, sulfa</small><% } else if (ii == 6) { %><br><small class="text-muted">if any</small><% } %></label>
+                      </div>
+                      <div class="col<%= ii == 6 ? ' form-row' : '' %>">
+                        <% if (ii == 6) { %>
+                          <div class="col-auto">
+                            <select class="custom-select" name="c<%= i %>-7" id="c<%= i %>-7" others="c<%= i %>-7-1" requiredd>
+                              <option disabled selected value="0">Please select</option>
+                              <option value="halal">Halal</option>
+                              <option value="vegetarian">Vegetarian</option>
+                              <option value="none">None</option>
+                              <option value="others">Others</option>
+                            </select>
+                          </div>
+                          <div class="col"><input type="text" class="form-control" name="c<%= i %>-7-1" id="c<%= i %>-7-1" placeholder="Others" disabled></div>
+                        <%
+                          }
+                          else if (ii == 4) {
+                        %>
+                          <select class="custom-select" name="c<%= i %>-5" id="c<%= i %>-5" requiredd>
+                            <option disabled selected value="0">Please select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                          </select>
+                        <%
+                          } else {
+                        %>
+                            <input type="text" class="form-control" id="c<%= i %>-<%= ii+1 %>" name="c<%= i %>-<%= ii+1 %>" placeholder="<%= e %>" requiredd>
+                        <%
+                          }
+                        %>
+                      </div>
+                    </div>
+                  <% }); %>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          </div>
+          <br>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="form-group">
+                <label for="f1">Letter of Approval, <a target="_blank" href="https://drive.google.com/file/d/1GnsxorMmmfJNVriA7mkPISpFP9zTrVLz/view">Download form</a></label>
+                <input type="file" class="form-control-file align-middle" id="f1" name="f1"/>
+                <p id="p-f1"></p>
+              </div>
+              <div class="form-group" id="f2-g">
+                <label for="f2">Motivation Letter<span class="text-muted" style="font-style: italic;"> *Only for on-site registration</span></label>
+                <input type="file" class="form-control-file align-middle" id="f2" name="f2"/>
+                <p id="p-f2"></p>
+              </div>
+              <div class="form-group" id="f3-g">
+                <label for="f3">Short Essay<span class="text-muted" style="font-style: italic;"> *Only for on-site registration</span></label>
+                <input type="file" class="form-control-file align-middle" id="f3" name="f3"/>
+                <p id="p-f3"></p>
+              </div>
+              <div class="form-group">
+                <label for="f4">Consent letter</label>
+                <input type="file" class="form-control-file align-middle" id="f4" name="f4"/>
+                <p id="p-f4"></p>
+              </div>
+            </div>
+            <div class="card-footer text-muted">
+              *All files should be uploaded in pdf or jpg format<br/>
+              *Each file size limit: 5MB
+            </div>
+          </div>
+          <br>
+          <button type="button" class="btn btn-primary" id="send">Submit</button> <!-- https://stackoverflow.com/a/9513164/4468834 -->
+          <button type="submit" class="btn btn-primary" id="realsub" style="display: none;">ei</button>
+      </form>
+    </div>
+
+    <div style="height: 200px;"></div>
+    <div style="position: fixed; bottom: 20px; right: 30px;">
+      <img id="success" style="display: none;" width="30" src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjkuNzU2IDI5Ljc1NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjkuNzU2IDI5Ljc1NjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiBjbGFzcz0iIj48ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLCAwLCAwLCAxLCAwLCAwKSI+PGc+Cgk8cGF0aCBzdHlsZT0iZmlsbDojMEJDNzIyIiBkPSJNMjkuMDQ5LDUuMDA5TDI4LjE5LDQuMTUxYy0wLjk0My0wLjk0NS0yLjQ4OC0wLjk0NS0zLjQzNCwwTDEwLjE3MiwxOC43MzdsLTUuMTc1LTUuMTczICAgYy0wLjk0My0wLjk0NC0yLjQ4OS0wLjk0NC0zLjQzMiwwLjAwMWwtMC44NTgsMC44NTdjLTAuOTQzLDAuOTQ0LTAuOTQzLDIuNDg5LDAsMy40MzNsNy43NDQsNy43NTIgICBjMC45NDQsMC45NDMsMi40ODksMC45NDMsMy40MzMsMEwyOS4wNDksOC40NDJDMjkuOTkxLDcuNDk4LDI5Ljk5MSw1Ljk1MywyOS4wNDksNS4wMDl6IiBkYXRhLW9yaWdpbmFsPSIjMDEwMDAyIiBjbGFzcz0iYWN0aXZlLXBhdGgiIGRhdGEtb2xkX2NvbG9yPSIjMDEwMDAyIj48L3BhdGg+CjwvZz48L2c+IDwvc3ZnPg==" />
+      <div id="loading" style="display: none;" class="lds-css"><div style="width:100%;height:100%" class="lds-rolling"><div></div></div></div>
+    </div>
+
+    <%- include('../includes/body.ejs'); %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js" integrity="sha256-7OUNnq6tbF4510dkZHCRccvQfRlV3lPpBTJEljINxao=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(() => {
+        $('.back-to-top').detach();
+        <%
+          form.forEach(e => {
+            e.field = e.get('field');
+            e.value = e.get('value');
+            e.type = e.get('type');
+
+            if (e.type == 'text') { // essay
+        %>
+            $('#<%= e.field %>').val('<%= e.value.replace(/\r\n/g, "\\n") %>');
+        <%
+            }
+            else if (e.type == 'select') { // select
+        %>
+        $('*[name=<%= e.field %>] option[value="<%= e.value %>"]').prop('selected', true);
+        <%
+            }
+            else if (e.type == 'file') { // file
+        %>
+        $('#p-<%= e.field %>').html('Download your submitted file <a href="https://storage.googleapis.com/simpic-web.appspot.com/<%= e.value %>" target="_blank">here</a>');
+        <%
+            }
+          });
+        %>
+        <%
+          let lock = user.get('lock');
+          lock = lock || [];
+          let l = [, 'f1', 'f2', 'f3'];
+          if (lock[0]) {
+        %>
+            $('input:not(#f1, #f2, #f3)').attr('disabled', '');
+            $('select').attr('disabled', '');
+        <%
+          }
+          for (let i = 1; i < 4; i++) {
+            if (lock[i]) {
+        %>
+              $('#f' + <%= i %>).attr('disabled', '');
+        <%
+            }
+          }
+        %>
+
+        $('#send').click(function(e) {
+          e.preventDefault();
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            
+            confirmButtonText: 'Confirm',
+            cancelButtonText: 'Recheck'
+          }).then((result) => {
+            if (result.value) {
+              // $('form')[0].submit();
+              $('#realsub').click();
+            }
+          })
+        });
+        $('.nav-link[href="/application"]').each(function (i) {
+          let self = this;
+          window.setTimeout(() => {
+            $(self).addClass('active');
+          }, 1000);
+        });
+
+        $('input').change(function () {
+          // alert('aa')
+          update(this);
+        });
+
+        let update = (e) => {
+          e = $(e);
+          if ($('#loader').is(':visible')) return false;
+          if (!e.attr('id')) return false;
+          
+          $('#loading').show();
+          $('#success').hide();
+
+          var request = new XMLHttpRequest();
+          request.open('POST', '/update');
+
+          
+          let formData = new FormData();
+          formData.append('field', e.attr('id'));
+          formData.append('type', e.attr('type') || 'select');
+          if (e.attr('type') == 'file') formData.append('value', e[0].files[0]);
+          else formData.append("value", e.val());
+          request.send(formData);
+
+          request.addEventListener('loadend', e => {
+            $('#loading').hide();
+            $('#success').show();
+            if (request.response == 'not ok') alert('cannot save');
+          });
+        }
+
+        $('select').change(function () {
+          let e = $(this);
+          let others = $('#' + e.attr('others'));
+          if (e.val() == 'others') others.removeAttr('disabled');
+          else {
+            others.val('');
+            update(others);
+            others.attr('disabled', '');
+          }
+          update(this);
+        });
+        $('select').trigger('change');
+
+        $('#place').change(function () {
+          let e = $(this);
+          if (e.val() == 'online') {
+            $('#f2-g, #f3-g').hide();
+          }
+          else {
+            $('#f2-g, #f3-g').show();
+          }
+        });
+        $('#place').trigger('change');
+      });
+    </script>
+  </body>
+</html>

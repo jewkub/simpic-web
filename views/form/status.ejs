@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../includes/head.ejs'); %>
+    <title>Dashboard - SIMPICSED</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" integrity="sha256-2bAj1LMT7CXUYUwuEnqqooPb1W0Sw0uKMsqNH0HwMa4=" crossorigin="anonymous" />
+    <style>
+      .tab span {
+        padding-left: 1rem;
+      }
+      .tab span::before {
+        content: "- ";
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('nav.ejs'); %>
+    <div style="height: 100px; background: black;"></div>
+
+    <div class="container">
+      <br><br>
+      <h2>Dashboard - Team #<%= user.get('code') %></h2>
+      <p class="text-muted">Team #<%= user.get('code') %> - <%= user.get('locale') %> medical school</p>
+
+      <%
+        let status = user.get('status') || [];
+        let extra = user.get('extra') || [];
+      %>
+      <br>
+      <table class="table table-borderless table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Details</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td><b>Application period (Nov8 - Dec19, 2020)</b></td>
+            <td></td>
+          </tr>
+          <%
+            let comment = user.get('comment');
+            for (let i = 0; i < 4; i++) {
+              status[i] = status[i] || 'Not submitted';
+            }
+            ['School and team information', 'Letter of Approval', 'Motivation Letter', 'Short Essay'].forEach((e, i) => {
+          %>
+              <tr>
+                <th scope="row"><%= i+1 %></th>
+                <td><%= e %></td>
+                <td>
+                  <%
+                    if (status[i] == 'Unapproved') {
+                  %>
+                      <a href='#' onclick="swal.fire('<%= comment[i] || 'N/A' %>'); return false;" style="color: red;"><%= status[i] %></a>
+                  <%
+                    }
+                    else {
+                  %>
+                      <span style="<%= status[i] == 'Approved' ? 'color: green;' : '' %>"><%= status[i] %></span>
+                  <%
+                    }
+                  %>
+                </td>
+              </tr>
+          <%
+            });
+          %>
+          <tr>
+            <th scope="row"></th>
+            <td><span style="color: blue">*After each status is submitted, please wait within 48 hours. Your submitted status will be either 'Approved', or <span style="color: orange;">'Unapproved'</span><br>*If your all four submitted statuses is 'Approved', your registration is completed.</span>
+              
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td><b>Payment period (Jan4 - Jan22, 2021)</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>
+              <!-- <a href="http://www1.si.mahidol.ac.th/division/conference/conference/sm_login.php?sm_id=838&menu=1" target="_blank">Payment</a> -->
+              Payment
+            </td>
+            <td><%- user.get('payment') == 'Paid' ? '<span style="color: green">Paid</span>' : '<span style="color: orange">Unpaid</span>' %></td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td><b>
+              <!-- <a href="https://docs.google.com/forms/d/1v6Zmg9wk9F7BdylsCcQrvcnpcj3ekTIhQbsQ6SakJDw/edit?usp=sharing">Extra information</a> -->
+              Extra information</b>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td>Flight information</td>
+            <td><%= extra[1] || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td>Your accomodation</td>
+            <td><%= extra[2] || 'N/A' %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <%- include('../includes/body.ejs'); %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js" integrity="sha256-7OUNnq6tbF4510dkZHCRccvQfRlV3lPpBTJEljINxao=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(() => {
+        $('.nav-link[href="/status"]').each(function (i) {
+          let self = this;
+          window.setTimeout(() => {
+            $(self).addClass('active');
+          }, 500);
+        });
+
+        /* 
+        <%
+        if (user.get('payment') != 'Paid') {
+          if (user.get('type') == 'early') {
+        %>
+            Swal.fire(`Congratulations`, 
+`Your team has been selected to participating in SIMPICSED.<br>
+Please complete the following tasks within December 24, 2019 to confirm your participations.<br>
+1) Make the payment of the registration fee through <a href="http://www1.si.mahidol.ac.th/division/conference/conference/sm_login.php?sm_id=838&menu=1">this link</a> and Your team registration fee is <b><u>24,500 Baht</u></b><br> 
+2) Complete the Additional information form via <a href="https://docs.google.com/forms/d/1v6Zmg9wk9F7BdylsCcQrvcnpcj3ekTIhQbsQ6SakJDw/edit?usp=sharing">this link</a> including selection of the sightseeing routes<br>
+3) Follow us both on Facebook: SIMPIC & Instagram: @simpic_official for upcoming essential information.`);
+        <%
+          } else if (user.get('type') == 'regular') {
+        %>
+            Swal.fire(`Congratulations`,
+`Your team has been selected to participating in SIMPICSED.<br>
+Please complete the following tasks within December 24, 2019 to confirm your participations.<br>
+1) Make the payment of the registration fee through <a href="http://www1.si.mahidol.ac.th/division/conference/conference/sm_login.php?sm_id=838&menu=1">this link</a> and Your team registration fee is <b><u>26,500 Baht</u></b><br> 
+2) Complete the Additional information form via <a href="https://docs.google.com/forms/d/1v6Zmg9wk9F7BdylsCcQrvcnpcj3ekTIhQbsQ6SakJDw/edit?usp=sharing">this link</a> including selection of the sightseeing routes<br>
+3) Follow us both on Facebook: SIMPIC & Instagram: @simpic_official for upcoming essential information.`);
+        <%
+          } else if (user.get('type') == 'observer') {
+        %>
+            Swal.fire(`Almost Complete to be participating in SIMPICSED as an Observer.`,
+`Please complete the following tasks within December 24, 2019 to confirm your participations.<br>
+1) Make the payment of the registration fee through <a href="http://www1.si.mahidol.ac.th/division/conference/conference/sm_login.php?sm_id=838&menu=1">this link</a> and Your registration fee is <b><u>11,500 Baht</u></b><br>
+2) Complete the Additional information form via <a href="https://docs.google.com/forms/d/1v6Zmg9wk9F7BdylsCcQrvcnpcj3ekTIhQbsQ6SakJDw/edit?usp=sharing">this link</a> including selection of the sightseeing routes<br>
+3) Follow us both on Facebook: SIMPIC & Instagram: @simpic_official for upcoming essential information.`);
+        <%
+          }
+        }
+        %>
+        */
+      });
+    </script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper.min.js" integrity="sha256-3Iu0zFU6cPS92RSC3Pe4DBwjIV/9XKyzYTqKZzly6A8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script> -->
+  </body>
+</html>

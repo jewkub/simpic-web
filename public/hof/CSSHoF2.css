@@ -1,0 +1,26 @@
+:root
+{
+ --widthpic: 150px;
+ --heightpic: 100px;
+}
+.grandchampion{
+	/*text-indent: 50px;*/
+}
+.flagpicture{
+	width: 200px;
+	height: 133px;
+	margin-left: 5px;
+}
+.winner{
+	width: 450px;
+	height: 300px;
+	display: block;
+	margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.facultylogo{
+	width: 100px;
+	height: 100px;
+	margin-left: 20px;
+}
