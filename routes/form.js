@@ -3,7 +3,6 @@ const router = express.Router();
 const User = require('../models/user.js');
 const Token = require('../models/token.js');
 const ***REMOVED*** google } = require('googleapis');
-const sheets = google.sheets(***REMOVED*** version: 'v4', auth: '***REMOVED***' });
 const ***REMOVED*** name: projectId } = require('../package.json');
 
 const Multer = require('multer');
