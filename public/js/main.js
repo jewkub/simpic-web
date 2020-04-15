@@ -17,7 +17,7 @@ remove owl
 
   // Sticky Nav
     $(window).on('scroll', function() {
-        if ($(window).scrollTop() > 500) {
+        if ($(window).scrollTop() > 80) {
             $('.scrolling-navbar').addClass('top-nav-collapse');
         } else {
             $('.scrolling-navbar').removeClass('top-nav-collapse');
@@ -197,7 +197,7 @@ remove owl
 
 window.onload = async () => {
   await new Promise(res => {
-    setTimeout(() => res(), 500);
+    setTimeout(() => res(), 200);
   });
   $('#loader').fadeOut();
 };

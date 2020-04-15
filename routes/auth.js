@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user.js');
 
-const session = require('express-session');
+const session = require('cookie-session');
 const flash = require('connect-flash');
 
 const passport = require('passport');
@@ -15,8 +15,8 @@ router.use(session({
   cookie: {
     expires: new Date(2147483647000) // Tue, 19 Jan 2038 03:14:07 GMT
   },
-  saveUninitialized: false,
-  resave: true
+  /* saveUninitialized: false,
+  resave: true */
 }));
 
 router.use(flash());
@@ -30,12 +30,13 @@ passport.use(new LocalStrategy({
 }, async function (email, password, done) {
 	try {
 		let user = await User.getUserByEmail(email);
-		if (!user) return done(null, false, {message: 'Unknown email'});
+		if (!user) return done(null, false, { message: 'Unknown email' });
 		let result = await User.comparePassword(password, user.get('password'));
-		// console.log('login!');
-		// console.log(user);
-		if (result) return done(null, user);
-		return done(null, false, {message: 'Wrong password'});
+
+		if (!result) return done(null, false, { message: 'Wrong password' });
+		if (!user.get('verified')) return done(null, false, { message: '<span>Please verify your email first or <a href="/resend">resend the email</a></span>' });
+
+		return done(null, user);
 	} catch (e) {
 		return done(e, false);
 	}
@@ -58,9 +59,9 @@ passport.deserializeUser(async function (id, done) {
 // Endpoint to login
 router.post('/login',
   passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/status',
     failureRedirect: '/',
-    successFlash: 'ล็อกอินสำเร็จ',
+    successFlash: false /* 'Login success' */,
     failureFlash: true
   })
 );
@@ -74,7 +75,7 @@ router.get('/user', function(req, res){
 // Endpoint to logout
 router.get('/logout', function(req, res){
   req.logout();
-  req.flash('success', 'ออกจากระบบสำเร็จ')
+  req.flash('success', 'Logout success')
   res.redirect('/');
   // console.log(req.user);
 });

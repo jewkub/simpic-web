@@ -33,6 +33,10 @@ const db = new Firestore({
   keyFilename: './secret/SIMC-Web-4d0cc28353fd.json',
 }); */
 
+app.locals.addSlashes = function (str) {
+  return (str + '').replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
+}; // https://stackoverflow.com/a/770533/4468834
+
 app.engine('html', require('ejs').renderFile);
 
 const port = process.env.PORT || 8080, ip = process.env.IP || '0.0.0.0';
@@ -48,6 +52,7 @@ app.use(bodyParser.json());
 
 // set no cache
 app.use(function (req, res, next) {
+  // console.log(req.body);
   res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
   next();
 });
@@ -122,21 +127,24 @@ app.get(/^\/(registration|competition|accommodation|activities)$/, (req, res, ne
   // console.log(req.params);
   res.render('information/' + req.params[0] + '.ejs');
 });
+app.get('/reviews', (req, res) => {
+  res.render('reviews.ejs');
+});
 app.get('/hof', (req, res) => {
   res.render('hof.ejs');
 });
 
 app.use('/', require('./routes/debug.js'));
 app.use('/', require('./routes/register.js'));
-/* app.use('/', require('./routes/exam.js'));
-app.use('/', require('./routes/evaluation.js'));
-app.use('/', require('./routes/scoreboard.js')); */
+app.use('/', require('./routes/verification.js'));
+app.use('/', require('./routes/form.js'));
+app.use('/', require('./routes/admin.js'));
 
 // set normal cache
-/* app.use(function(req, res, next) {
+app.use(function(req, res, next) {
   res.set('Cache-Control', 'public');
   next();
-}); */
+});
 
 app.get('/favicon.ico', (req, res) => {
   res.sendFile(__dirname + '/favicon.ico');

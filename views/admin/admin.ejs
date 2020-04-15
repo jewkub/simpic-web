@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../includes/head.ejs'); %>
+    <title>Admin - SIMPIC 2020</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
+    <style>
+    </style>
+  </head>
+  <body>
+    <%- include('nav.ejs'); %>
+    <div style="height: 100px; background: black;"></div>
+
+    <div class="container">
+      <br><br>
+      <h2>Admin</h2>
+      <table class="table table-borderless table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Team ID</th>
+            <th scope="col">Team Code</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%
+            users.forEach((e, i, arr) => {
+          %>
+              <tr>
+                <th scope="row"><%= i+1 %></th>
+                <td><%= e.get('id') %></td>
+                <td><a href="/user/<%= e.get('code') %>"><%= e.get('code') %></a></td>
+              </tr>
+          <%
+            });
+          %>
+        </tbody>
+      </table>
+      <br>
+    </div>
+    <%- include('../includes/body.ejs'); %>
+    <script type="text/javascript">
+      $(() => {
+        ;
+      });
+    </script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper.min.js" integrity="sha256-3Iu0zFU6cPS92RSC3Pe4DBwjIV/9XKyzYTqKZzly6A8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script> -->
+  </body>
+</html>

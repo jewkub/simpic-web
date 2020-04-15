@@ -75,7 +75,7 @@
           <a class="page-scroll" href="#contact">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link page-scroll" href="/register" style="display: none;">👉🏻 &nbsp;Register Now &nbsp; 👈🏻</a>
+          <a class="nav-link page-scroll" href="/register">👉🏻 &nbsp;Register Now &nbsp; 👈🏻</a>
         </li>
 
       </ul>
@@ -96,12 +96,13 @@
                 <!-- <br/> -->
                 <!-- Get more information from our Invitation Package! -->
                 <p class="lead wow fadeIn" data-wow-duration="1000ms" data-wow-delay="400ms">
-                  Dear prospective participants of SIMPIC 2020,<br>
+                  <span style="display: none;">Dear prospective participants of SIMPIC 2020,<br>
                   SIMPIC 2020 is going to be held on March 13-16, 2020<br>
-                  Save the date! & Find out more here 👇🏻</p>
+                  Save the date! & Find out more here 👇🏻</span></p>
               <!-- <a href="https://drive.google.com/open?id=1Q5d1-i9ZAqQJxGv1ibMj1VYb99v6zAGp" target="_blank" class="btn btn-common wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">Survival Guide</a>
               <a href="https://drive.google.com/file/d/1jZGXKQm68F-Bm6KmmYKSQsa_d3Yj8jSc/view?usp=drivesdk" target="_blank" class="btn btn-common wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">Rulebook</a> -->
               <a href="https://drive.google.com/drive/folders/1gA2A9bZJqfPreboW2YzYMBphF_yhwjSv" target="_blank" class="mx-3 btn btn-common wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">Invitation Package</a>
+              <a href="/reviews" target="_blank" class="mx-3 btn btn-common wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">Read reviews</a>
             </div>
           </div>
         </div> 
@@ -443,9 +444,9 @@
           <p class="section-subtitle"></p>
         </div>
         <div class="row justify-content-center">
-          <h4>Coming Soon</h4>
+          <!-- <h4>Coming Soon</h4> -->
           <%
-            /* sponsors */[].forEach(e => {
+            sponsors.forEach(e => {
           %>
           <div class="col-6 col-sm-4 col-lg-3 col-xl-2 pb-3"><img src="https://storage.googleapis.com/simpic-web.appspot.com/<%= e.name %>" alt="<%= e.name %>" style="width: 100%;"></div>
           <%
@@ -491,6 +492,19 @@
     <%- include('includes/body.ejs'); %>
     <script>
         document.addEventListener("touchstart", function() {}, false); // https://stackoverflow.com/q/18047353/4468834
+    </script>
+    <script>
+      Swal
+        .fire({
+          imageUrl: 'https://storage.googleapis.com/simpic-web.appspot.com/public/announce1.jpg',
+          imageAlt: 'Announcement 1'
+        })
+        .then(r => {
+          Swal.fire({
+          imageUrl: 'https://storage.googleapis.com/simpic-web.appspot.com/public/announce2.jpg',
+          imageAlt: 'Announcement 2'
+        });
+        });
     </script>
 
     <!-- float facebook like box start -->
@@ -565,10 +579,10 @@
           confirmButtonText: 'OK',
         }).queue([
         <% if (alert.error) alert.error.forEach((e) => { %>
-          {type: 'error', title: '<%= e %>'},
+          {type: 'error', title: '<%- addSlashes(e) %>'},
         <% }); 
         if (alert.success) alert.success.forEach((e) => { %>
-          {type: 'success', title: '<%= e %>'},
+          {type: 'success', title: '<%- addSlashes(e) %>'},
         <% }); %>
         ]);
       });
