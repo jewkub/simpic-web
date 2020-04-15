@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user.js');
+const Token = require('../models/token.js');
 
 router.get('/register', (req, res, next) => ***REMOVED***
   res.render('register.ejs');
@@ -21,11 +22,13 @@ router.get('/register/validemail', async function (req, res, next) ***REMOVED***
 
 router.post('/register', async function (req, res, next) ***REMOVED***
   try ***REMOVED***
-    await User.createUser(req.body.email, req.body.password);
+    let user = await User.createUser(req.body.email, req.body.password);
+    await User.sendConfirmation(user, req.hostname);
 ***REMOVED*** catch (e) ***REMOVED***
-    return next(e);
+    console.log(e);
+    return next(new Error('Registration error: Please contact admin'));
 ***REMOVED***
-  req.flash('success', 'สมัครเข้าค่ายสำเร็จ');
+  req.flash('success', 'Register success, please verify your email first.');
   res.redirect('/');
 });
 

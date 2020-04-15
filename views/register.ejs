@@ -11,7 +11,7 @@
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a href="/" class="navbar-brand pt-0 mr-4"><img class="" src="img/logo_new.png" alt="SIMPIC Logo" ></a>
+            <a href="/" class="navbar-brand pt-0 mr-4"><img class="" src="https://storage.googleapis.com/simpic-web.appspot.com/public/logo.png" alt="SIMPIC Logo" ></a>
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
               <i class="lnr lnr-menu"></i>
@@ -55,6 +55,7 @@
     <div style="height: 86px; background:black;">
     </div>
     <div class="container pt-4">
+      <br><br><br><br><br>
       <div id="register" class="row justify-content-center">
         <div class="col-lg-9">
           <h2>Register</h2>
@@ -101,7 +102,6 @@
               <label for="passwordInput">Password</label>
               <input type="password" class="form-control" id="passwordInput" placeholder="Password" name="password" required>
             </div>
-            <input name="token" id="token" class="is-valid" style="display:none;">
             <button type="submit" class="btn btn-primary">Login</button>
           </form>
         </div>
@@ -180,7 +180,7 @@
         if($passwordInput.val() != $passwordConfirmInput.val()) $passwordConfirmInput.addClass('is-invalid');
         else $passwordConfirmInput.addClass('is-valid');
   ***REMOVED***);
-      $('#login-form').on('submit', function(event) ***REMOVED***
+      /* $('#login-form').on('submit', function(event) ***REMOVED***
         if ($('#login-form input:not(.is-valid)').length > 0) ***REMOVED***
           event.preventDefault();
           event.stopPropagation();
@@ -189,7 +189,7 @@
       ***REMOVED***);
     ***REMOVED***
         else $('input[type=submit]', this).attr('disabled', 'disabled');
-  ***REMOVED***);
+  ***REMOVED***); */
     </script>
   </body>
 </html>
