@@ -24,7 +24,7 @@
         </thead>
         <tbody>
           <%
-            users.forEach((e, i, arr) => ***REMOVED***
+            users.forEach((e, i, arr) => {
           %>
               <tr>
                 <th scope="row"><%= i+1 %></th>
@@ -32,7 +32,7 @@
                 <td><a href="/user/<%= e.get('code') %>"><%= e.get('code') %></a></td>
               </tr>
           <%
-        ***REMOVED***);
+            });
           %>
         </tbody>
       </table>
@@ -40,9 +40,9 @@
     </div>
     <%- include('../includes/body.ejs'); %>
     <script type="text/javascript">
-      $(() => ***REMOVED***
+      $(() => {
         ;
-  ***REMOVED***);
+      });
     </script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper.min.js" integrity="sha256-3Iu0zFU6cPS92RSC3Pe4DBwjIV/9XKyzYTqKZzly6A8=" crossorigin="anonymous"></script>

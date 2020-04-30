@@ -1,17 +1,17 @@
 :root
-***REMOVED***
+{
  --widthpic: 150px;
  --heightpic: 100px;
 }
-.grandchampion***REMOVED***
+.grandchampion{
 	/*text-indent: 50px;*/
 }
-.flagpicture***REMOVED***
+.flagpicture{
 	width: 200px;
 	height: 133px;
 	margin-left: 5px;
 }
-.winner***REMOVED***
+.winner{
 	width: 450px;
 	height: 300px;
 	display: block;
@@ -19,7 +19,7 @@
     margin-left: auto;
     margin-right: auto;
 }
-.facultylogo***REMOVED***
+.facultylogo{
 	width: 100px;
 	height: 100px;
 	margin-left: 20px;

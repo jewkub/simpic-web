@@ -7,11 +7,11 @@
  */
 *,
 *::before,
-*::after ***REMOVED***
+*::after {
   box-sizing: border-box;
 }
 
-html ***REMOVED***
+html {
   font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -20,15 +20,15 @@ html ***REMOVED***
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-@-ms-viewport ***REMOVED***
+@-ms-viewport {
   width: device-width;
 }
 
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section ***REMOVED***
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
 
-body ***REMOVED***
+body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
@@ -39,28 +39,28 @@ body ***REMOVED***
   background-color: #fff;
 }
 
-[tabindex="-1"]:focus ***REMOVED***
+[tabindex="-1"]:focus {
   outline: 0 !important;
 }
 
-hr ***REMOVED***
+hr {
   box-sizing: content-box;
   height: 0;
   overflow: visible;
 }
 
-h1, h2, h3, h4, h5, h6 ***REMOVED***
+h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
 
-p ***REMOVED***
+p {
   margin-top: 0;
   margin-bottom: 1rem;
 }
 
 abbr[title],
-abbr[data-original-title] ***REMOVED***
+abbr[data-original-title] {
   text-decoration: underline;
   -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;
@@ -68,7 +68,7 @@ abbr[data-original-title] ***REMOVED***
   border-bottom: 0;
 }
 
-address ***REMOVED***
+address {
   margin-bottom: 1rem;
   font-style: normal;
   line-height: inherit;
@@ -76,7 +76,7 @@ address ***REMOVED***
 
 ol,
 ul,
-dl ***REMOVED***
+dl {
   margin-top: 0;
   margin-bottom: 1rem;
 }
@@ -84,112 +84,112 @@ dl ***REMOVED***
 ol ol,
 ul ul,
 ol ul,
-ul ol ***REMOVED***
+ul ol {
   margin-bottom: 0;
 }
 
-dt ***REMOVED***
+dt {
   font-weight: 700;
 }
 
-dd ***REMOVED***
+dd {
   margin-bottom: .5rem;
   margin-left: 0;
 }
 
-blockquote ***REMOVED***
+blockquote {
   margin: 0 0 1rem;
 }
 
-dfn ***REMOVED***
+dfn {
   font-style: italic;
 }
 
 b,
-strong ***REMOVED***
+strong {
   font-weight: bolder;
 }
 
-small ***REMOVED***
+small {
   font-size: 80%;
 }
 
 sub,
-sup ***REMOVED***
+sup {
   position: relative;
   font-size: 75%;
   line-height: 0;
   vertical-align: baseline;
 }
 
-sub ***REMOVED***
+sub {
   bottom: -.25em;
 }
 
-sup ***REMOVED***
+sup {
   top: -.5em;
 }
 
-a ***REMOVED***
+a {
   color: #007bff;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
 
-a:hover ***REMOVED***
+a:hover {
   color: #0056b3;
   text-decoration: underline;
 }
 
-a:not([href]):not([tabindex]) ***REMOVED***
+a:not([href]):not([tabindex]) {
   color: inherit;
   text-decoration: none;
 }
 
-a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus ***REMOVED***
+a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {
   color: inherit;
   text-decoration: none;
 }
 
-a:not([href]):not([tabindex]):focus ***REMOVED***
+a:not([href]):not([tabindex]):focus {
   outline: 0;
 }
 
 pre,
 code,
 kbd,
-samp ***REMOVED***
+samp {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 1em;
 }
 
-pre ***REMOVED***
+pre {
   margin-top: 0;
   margin-bottom: 1rem;
   overflow: auto;
   -ms-overflow-style: scrollbar;
 }
 
-figure ***REMOVED***
+figure {
   margin: 0 0 1rem;
 }
 
-img ***REMOVED***
+img {
   vertical-align: middle;
   border-style: none;
 }
 
-svg ***REMOVED***
+svg {
   overflow: hidden;
   vertical-align: middle;
 }
 
-table ***REMOVED***
+table {
   border-collapse: collapse;
 }
 
-caption ***REMOVED***
+caption {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   color: #6c757d;
@@ -197,20 +197,20 @@ caption ***REMOVED***
   caption-side: bottom;
 }
 
-th ***REMOVED***
+th {
   text-align: inherit;
 }
 
-label ***REMOVED***
+label {
   display: inline-block;
   margin-bottom: 0.5rem;
 }
 
-button ***REMOVED***
+button {
   border-radius: 0;
 }
 
-button:focus ***REMOVED***
+button:focus {
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;
 }
@@ -219,7 +219,7 @@ input,
 button,
 select,
 optgroup,
-textarea ***REMOVED***
+textarea {
   margin: 0;
   font-family: inherit;
   font-size: inherit;
@@ -227,32 +227,32 @@ textarea ***REMOVED***
 }
 
 button,
-input ***REMOVED***
+input {
   overflow: visible;
 }
 
 button,
-select ***REMOVED***
+select {
   text-transform: none;
 }
 
 button,
 html [type="button"],
 [type="reset"],
-[type="submit"] ***REMOVED***
+[type="submit"] {
   -webkit-appearance: button;
 }
 
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner ***REMOVED***
+[type="submit"]::-moz-focus-inner {
   padding: 0;
   border-style: none;
 }
 
 input[type="radio"],
-input[type="checkbox"] ***REMOVED***
+input[type="checkbox"] {
   box-sizing: border-box;
   padding: 0;
 }
@@ -260,23 +260,23 @@ input[type="checkbox"] ***REMOVED***
 input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
-input[type="month"] ***REMOVED***
+input[type="month"] {
   -webkit-appearance: listbox;
 }
 
-textarea ***REMOVED***
+textarea {
   overflow: auto;
   resize: vertical;
 }
 
-fieldset ***REMOVED***
+fieldset {
   min-width: 0;
   padding: 0;
   margin: 0;
   border: 0;
 }
 
-legend ***REMOVED***
+legend {
   display: block;
   width: 100%;
   max-width: 100%;
@@ -288,44 +288,44 @@ legend ***REMOVED***
   white-space: normal;
 }
 
-progress ***REMOVED***
+progress {
   vertical-align: baseline;
 }
 
 [type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button ***REMOVED***
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
-[type="search"] ***REMOVED***
+[type="search"] {
   outline-offset: -2px;
   -webkit-appearance: none;
 }
 
 [type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration ***REMOVED***
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-::-webkit-file-upload-button ***REMOVED***
+::-webkit-file-upload-button {
   font: inherit;
   -webkit-appearance: button;
 }
 
-output ***REMOVED***
+output {
   display: inline-block;
 }
 
-summary ***REMOVED***
+summary {
   display: list-item;
   cursor: pointer;
 }
 
-template ***REMOVED***
+template {
   display: none;
 }
 
-[hidden] ***REMOVED***
+[hidden] {
   display: none !important;
 }
 /*# sourceMappingURL=bootstrap-reboot.css.map */

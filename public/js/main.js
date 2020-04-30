@@ -3,26 +3,26 @@ edit loader fadeout
 remove owl
 */
 
-(function($) ***REMOVED***
+(function($) {
   
   "use strict";
 
     // Shuffle portfolio
     var ul = document.querySelector('#portfolio');
-    if (ul != null) ***REMOVED***
-    for (var i = ul.children.length; i >= 0; i--) ***REMOVED***
+    if (ul != null) {
+    for (var i = ul.children.length; i >= 0; i--) {
         ul.appendChild(ul.children[Math.random() * i | 0]);
-***REMOVED***
+    }
 }
 
   // Sticky Nav
-    $(window).on('scroll', function() ***REMOVED***
-        if ($(window).scrollTop() > 80) ***REMOVED***
+    $(window).on('scroll', function() {
+        if ($(window).scrollTop() > 80) {
             $('.scrolling-navbar').addClass('top-nav-collapse');
-    ***REMOVED*** else ***REMOVED***
+        } else {
             $('.scrolling-navbar').removeClass('top-nav-collapse');
-    ***REMOVED***
-***REMOVED***);
+        }
+    });
 
     /* 
    One Page Navigation & wow js
@@ -31,56 +31,56 @@ remove owl
     new WOW().init();
 
     // one page navigation 
-    $('.main-navigation').onePageNav(***REMOVED***
+    $('.main-navigation').onePageNav({
             currentClass: 'active'
-***REMOVED***); 
+    }); 
 
-    $(window).on('load', function() ***REMOVED***
+    $(window).on('load', function() {
        
-        $('body').scrollspy(***REMOVED***
+        $('body').scrollspy({
             target: '.navbar-collapse',
             offset: 195
-    ***REMOVED***);
+        });
 
-        $(window).on('scroll', function() ***REMOVED***
-            if ($(window).scrollTop() > 200) ***REMOVED***
+        $(window).on('scroll', function() {
+            if ($(window).scrollTop() > 200) {
                 $('.fixed-top').addClass('menu-bg');
-        ***REMOVED*** else ***REMOVED***
+            } else {
                 $('.fixed-top').removeClass('menu-bg');
-        ***REMOVED***
-    ***REMOVED***);
+            }
+        });
 
-***REMOVED***);
+    });
 
     // Slick Nav 
-    $('.mobile-menu').slicknav(***REMOVED***
+    $('.mobile-menu').slicknav({
       prependTo: '.navbar-header',
       parentTag: 'span',
       allowParentLinks: true,
       duplicate: false,
       label: '',
-***REMOVED***);
+    });
 
 
 /* 
    CounterUp
    ========================================================================== */
-    $('.counter').counterUp(***REMOVED***
+    $('.counter').counterUp({
       time: 1000
-***REMOVED***);
+    });
 
 /* 
    MixitUp
    ========================================================================== */
   // $('#portfolio').mixItUp();
-  if ($('#portfolio').length) window.mixer = mixitup('#portfolio', ***REMOVED***
-    animation: ***REMOVED***
+  if ($('#portfolio').length) window.mixer = mixitup('#portfolio', {
+    animation: {
       clampHeight: false, // Srsly ? - -
       clampWidth: false,
       animateResizeContainer: false,
       animateResizeTargets: true,
       duration: 500,
-***REMOVED***
+    }
 });
   
 
@@ -88,7 +88,7 @@ remove owl
    Touch Owl Carousel
    ==========================================================================
     var owl = $(".touch-slider");
-    owl.owlCarousel(***REMOVED***
+    owl.owlCarousel({
       navigation: false,
       pagination: true,
       slideSpeed: 1000,
@@ -99,7 +99,7 @@ remove owl
       itemsDesktopSmall: [1024, 2],
       itemsTablet: [600, 1],
       itemsMobile: [479, 1]
-***REMOVED***);
+    });
 
     $('.touch-slider').find('.owl-prev').html('<i class="fa fa-chevron-left"></i>');
     $('.touch-slider').find('.owl-next').html('<i class="fa fa-chevron-right"></i>'); */
@@ -107,25 +107,25 @@ remove owl
 /* 
    Sticky Nav
    ========================================================================== */
-    $(window).on('scroll', function() ***REMOVED***
-        if ($(window).scrollTop() > 200) ***REMOVED***
+    $(window).on('scroll', function() {
+        if ($(window).scrollTop() > 200) {
             $('.header-top-area').addClass('menu-bg');
-    ***REMOVED*** else ***REMOVED***
+        } else {
             $('.header-top-area').removeClass('menu-bg');
-    ***REMOVED***
-***REMOVED***);
+        }
+    });
 
 /* 
    VIDEO POP-UP
    ========================================================================== */
-    $('.video-popup').magnificPopup(***REMOVED***
+    $('.video-popup').magnificPopup({
         disableOn: 700,
         type: 'iframe',
         mainClass: 'mfp-fade',
         removalDelay: 160,
         preloader: false,
         fixedContentPos: false,
-***REMOVED***);
+    });
 
 
   /* 
@@ -134,70 +134,70 @@ remove owl
     var scrollAnimationTime = 1200,
         scrollAnimation = 'easeOutQuart';
 
-    $('a.scrollto').on('bind', 'click.smoothscroll', function (event) ***REMOVED***
+    $('a.scrollto').on('bind', 'click.smoothscroll', function (event) {
         event.preventDefault();
         var target = this.hash;
         
-        $('html, body').stop().animate(***REMOVED***
+        $('html, body').stop().animate({
             'scrollTop': $(target).offset().top
-    ***REMOVED***, scrollAnimationTime, scrollAnimation, function () ***REMOVED***
+        }, scrollAnimationTime, scrollAnimation, function () {
             window.location.hash = target;
-    ***REMOVED***);
-***REMOVED***);
+        });
+    });
 
 /* 
    Back Top Link
    ========================================================================== */
     var offset = 200;
     var duration = 500;
-    $(window).scroll(function() ***REMOVED***
-      if ($(this).scrollTop() > offset) ***REMOVED***
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > offset) {
         $('.back-to-top').fadeIn(400);
-  ***REMOVED*** else ***REMOVED***
+      } else {
         $('.back-to-top').fadeOut(400);
-  ***REMOVED***
-***REMOVED***);
+      }
+    });
 
-    $('.back-to-top').on('click',function(event) ***REMOVED***
+    $('.back-to-top').on('click',function(event) {
       event.preventDefault();
-      $('html, body').animate(***REMOVED***
+      $('html, body').animate({
         scrollTop: 0
-  ***REMOVED***, 600);
+      }, 600);
       return false;
-***REMOVED***)
+    })
 
 /* Nivo Lightbox
   ========================================================*/   
-   $('.lightbox').nivoLightbox(***REMOVED***
+   $('.lightbox').nivoLightbox({
     effect: 'fadeScale',
     keyboardNav: true,
-***REMOVED***);
+  });
 
 
 /* stellar js
   ========================================================
-  $.stellar(***REMOVED***
+  $.stellar({
     horizontalScrolling: true,
     verticalOffset: 40,
     responsive: true,
-***REMOVED***); */
+  }); */
 
 /* 
    Page Loader
    ==========================================================================
-  window.setTimeout(() => ***REMOVED***
-    $('#loader').fadeOut(() => ***REMOVED***
+  window.setTimeout(() => {
+    $('#loader').fadeOut(() => {
       if (!onload) return console.log(':(');
       onload();
-***REMOVED***);
-***REMOVED***, 150); */
+    });
+  }, 150); */
   
 
 }(jQuery));
 
-window.onload = async () => ***REMOVED***
-  await new Promise(res => ***REMOVED***
+window.onload = async () => {
+  await new Promise(res => {
     setTimeout(() => res(), 200);
-***REMOVED***);
+  });
   $('#loader').fadeOut();
 };

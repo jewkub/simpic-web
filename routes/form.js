@@ -2,38 +2,38 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user.js');
 const Token = require('../models/token.js');
-const ***REMOVED*** google } = require('googleapis');
-const ***REMOVED*** name: projectId } = require('../package.json');
+const { google } = require('googleapis');
+const { name: projectId } = require('../package.json');
 
 const Multer = require('multer');
-const multer = Multer(***REMOVED***
+const multer = Multer({
   storage: Multer.MemoryStorage,
-  limits: ***REMOVED***
+  limits: {
     fileSize: 10 * 1024 * 1024 // no larger than 10mb
-***REMOVED***
+  }
 });
 
-const ***REMOVED*** Storage } = require('@google-cloud/storage');
-const storage = new Storage(***REMOVED***
+const { Storage } = require('@google-cloud/storage');
+const storage = new Storage({
   projectId,
   keyFilename: './secret/simpic-web-f94582c3af8f.json',
 });
 const bucket = storage.bucket('simpic-web.appspot.com');
 
 const Firestore = require('@google-cloud/firestore');
-const db = new Firestore(***REMOVED***
+const db = new Firestore({
   projectId,
   keyFilename: './secret/simpic-web-f94582c3af8f.json',
 });
 
-router.get('/status', async (req, res, next) => ***REMOVED***
+router.get('/status', async (req, res, next) => {
   if (!req.user) return res.redirect('/register');
   if (req.user.get('admin')) return res.redirect('/admin');
   
-  res.render('form/status.ejs', ***REMOVED*** user: req.user });
+  res.render('form/status.ejs', { user: req.user });
 });
 
-router.get('/application', async (req, res, next) => ***REMOVED***
+router.get('/application', async (req, res, next) => {
   if (!req.user) return res.redirect('/register');
   if (req.user.get('admin')) return res.redirect('/admin');
 
@@ -41,11 +41,11 @@ router.get('/application', async (req, res, next) => ***REMOVED***
     .where('user', '=', req.user.ref)
     .get())
     .docs;
-  let files = (await bucket.getFiles(***REMOVED*** prefix: 'form' }))[0];
+  let files = (await bucket.getFiles({ prefix: 'form' }))[0];
   // console.log(files);
-  res.render('form/application.ejs', ***REMOVED*** user: req.user, form, files });
+  res.render('form/application.ejs', { user: req.user, form, files });
 });
-router.post('/application', async (req, res, next) => ***REMOVED***
+router.post('/application', async (req, res, next) => {
   let f1 = (await db.collection('form').where('user', '=', req.user.ref).where('field', '=', 'f1').get()).docs;
   let f2 = (await db.collection('form').where('user', '=', req.user.ref).where('field', '=', 'f2').get()).docs;
   let f3 = (await db.collection('form').where('user', '=', req.user.ref).where('field', '=', 'f3').get()).docs;
@@ -53,17 +53,17 @@ router.post('/application', async (req, res, next) => ***REMOVED***
   if (f1.length) status[1] = 'Submitted';
   if (f2.length) status[2] = 'Submitted';
   if (f3.length) status[3] = 'Submitted';
-  await req.user.ref.update(***REMOVED***
+  await req.user.ref.update({
     lock: [true, true, true, true],
     status
-***REMOVED***);
+  });
   res.redirect('/status');
 });
 
 
 
-router.post('/update', multer.any(), async (req, res, next) => ***REMOVED***
-  try ***REMOVED***
+router.post('/update', multer.any(), async (req, res, next) => {
+  try {
     if (!req.user) throw new Error('No login data');
 
     let lock = req.user.get('lock') || [];
@@ -73,64 +73,64 @@ router.post('/update', multer.any(), async (req, res, next) => ***REMOVED***
     if (lock[0] && req.body.field.charAt(0) != 'f') return ;
 
     // console.log(req.body);
-    req.files.forEach(e => ***REMOVED***
+    req.files.forEach(e => {
       // console.log(e);
       let ext = e.originalname.split('.').slice(-1)[0];
       const gcspath = 'form/' + req.user.get('email') + '-' + Date.now() + '.' + ext;
       req.body[e.fieldname] = gcspath;
       const file = bucket.file(gcspath);
   
-      const stream = file.createWriteStream(***REMOVED***
-        metadata: ***REMOVED***
+      const stream = file.createWriteStream({
+        metadata: {
           contentType: e.mimetype
-    ***REMOVED***,
+        },
         resumable: false
-  ***REMOVED***);
+      });
   
-      stream.on('error', (err) => ***REMOVED***
+      stream.on('error', (err) => {
         e.cloudStorageError = err;
         next(err);
-  ***REMOVED***);
+      });
   
-      stream.on('finish', () => ***REMOVED***
+      stream.on('finish', () => {
         e.cloudStorageObject = gcspath;
         file.makePublic();
-  ***REMOVED***);
+      });
   
       stream.end(e.buffer);
-***REMOVED***);
+    });
 
     let ans = await db
       .collection('form')
       .where('user', '=', req.user.ref)
       .where('field', '=', req.body.field).get();
-    if (ans.empty) ***REMOVED***
-      await db.collection('form').doc().create(***REMOVED***
+    if (ans.empty) {
+      await db.collection('form').doc().create({
         user: req.user.ref,
         field: req.body.field,
         value: req.body.value,
         type: req.body.type,
         email: req.user.get('email')
-  ***REMOVED***);
-***REMOVED***
-    else ***REMOVED***
-      if (ans.size > 1) ***REMOVED***
+      });
+    }
+    else {
+      if (ans.size > 1) {
         console.log('duplicate answer :(');
         console.log(req.user.get('email'));
-        ans.docs.splice(1).forEach(async e => ***REMOVED***
+        ans.docs.splice(1).forEach(async e => {
           await e.ref.delete();
-    ***REMOVED***);
-  ***REMOVED***
-      await ans.docs[0].ref.update(***REMOVED***
+        });
+      }
+      await ans.docs[0].ref.update({
         value: req.body.value,
-  ***REMOVED***);
-***REMOVED***
+      });
+    }
 
     res.send('ok');
-***REMOVED*** catch (e) ***REMOVED***
+  } catch (e) {
     console.error(e);
     res.send('not ok');
-***REMOVED***
+  }
 });
 
 module.exports = router;

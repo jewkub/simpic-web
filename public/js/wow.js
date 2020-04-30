@@ -1,165 +1,165 @@
-(function() ***REMOVED***
+(function() {
   var Util,
-    __bind = function(fn, me)***REMOVED*** return function()***REMOVED*** return fn.apply(me, arguments); }; };
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  Util = (function() ***REMOVED***
-    function Util() ***REMOVED***}
+  Util = (function() {
+    function Util() {}
 
-    Util.prototype.extend = function(custom, defaults) ***REMOVED***
+    Util.prototype.extend = function(custom, defaults) {
       var key, value;
-      for (key in custom) ***REMOVED***
+      for (key in custom) {
         value = custom[key];
-        if (value != null) ***REMOVED***
+        if (value != null) {
           defaults[key] = value;
-    ***REMOVED***
-  ***REMOVED***
+        }
+      }
       return defaults;
-***REMOVED***;
+    };
 
-    Util.prototype.isMobile = function(agent) ***REMOVED***
+    Util.prototype.isMobile = function(agent) {
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(agent);
-***REMOVED***;
+    };
 
     return Util;
 
-***REMOVED***)();
+  })();
 
-  this.WOW = (function() ***REMOVED***
-    WOW.prototype.defaults = ***REMOVED***
+  this.WOW = (function() {
+    WOW.prototype.defaults = {
       boxClass: 'wow',
       animateClass: 'animated',
       offset: 0,
       mobile: true
-***REMOVED***;
+    };
 
-    function WOW(options) ***REMOVED***
-      if (options == null) ***REMOVED***
-        options = ***REMOVED***};
-  ***REMOVED***
+    function WOW(options) {
+      if (options == null) {
+        options = {};
+      }
       this.scrollCallback = __bind(this.scrollCallback, this);
       this.scrollHandler = __bind(this.scrollHandler, this);
       this.start = __bind(this.start, this);
       this.scrolled = true;
       this.config = this.util().extend(options, this.defaults);
-***REMOVED***
+    }
 
-    WOW.prototype.init = function() ***REMOVED***
+    WOW.prototype.init = function() {
       var _ref;
       this.element = window.document.documentElement;
       this.boxes = this.element.getElementsByClassName(this.config.boxClass);
-      if (this.boxes.length) ***REMOVED***
-        if (this.disabled()) ***REMOVED***
+      if (this.boxes.length) {
+        if (this.disabled()) {
           return this.resetStyle();
-    ***REMOVED*** else ***REMOVED***
-          if ((_ref = document.readyState) === "interactive" || _ref === "complete") ***REMOVED***
+        } else {
+          if ((_ref = document.readyState) === "interactive" || _ref === "complete") {
             return this.start();
-      ***REMOVED*** else ***REMOVED***
+          } else {
             return document.addEventListener('DOMContentLoaded', this.start);
-      ***REMOVED***
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***;
+          }
+        }
+      }
+    };
 
-    WOW.prototype.start = function() ***REMOVED***
+    WOW.prototype.start = function() {
       var box, _i, _len, _ref;
       _ref = this.boxes;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) ***REMOVED***
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         box = _ref[_i];
         this.applyStyle(box, true);
-  ***REMOVED***
+      }
       window.addEventListener('scroll', this.scrollHandler, false);
       window.addEventListener('resize', this.scrollHandler, false);
       return this.interval = setInterval(this.scrollCallback, 50);
-***REMOVED***;
+    };
 
-    WOW.prototype.stop = function() ***REMOVED***
+    WOW.prototype.stop = function() {
       window.removeEventListener('scroll', this.scrollHandler, false);
       window.removeEventListener('resize', this.scrollHandler, false);
-      if (this.interval != null) ***REMOVED***
+      if (this.interval != null) {
         return clearInterval(this.interval);
-  ***REMOVED***
-***REMOVED***;
+      }
+    };
 
-    WOW.prototype.show = function(box) ***REMOVED***
+    WOW.prototype.show = function(box) {
       this.applyStyle(box);
       return box.className = "" + box.className + " " + this.config.animateClass;
-***REMOVED***;
+    };
 
-    WOW.prototype.applyStyle = function(box, hidden) ***REMOVED***
+    WOW.prototype.applyStyle = function(box, hidden) {
       var delay, duration, iteration;
       duration = box.getAttribute('data-wow-duration');
       delay = box.getAttribute('data-wow-delay');
       iteration = box.getAttribute('data-wow-iteration');
       return box.setAttribute('style', this.customStyle(hidden, duration, delay, iteration));
-***REMOVED***;
+    };
 
-    WOW.prototype.resetStyle = function() ***REMOVED***
+    WOW.prototype.resetStyle = function() {
       var box, _i, _len, _ref, _results;
       _ref = this.boxes;
       _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) ***REMOVED***
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         box = _ref[_i];
         _results.push(box.setAttribute('style', 'visibility: visible;'));
-  ***REMOVED***
+      }
       return _results;
-***REMOVED***;
+    };
 
-    WOW.prototype.customStyle = function(hidden, duration, delay, iteration) ***REMOVED***
+    WOW.prototype.customStyle = function(hidden, duration, delay, iteration) {
       var style;
       style = hidden ? "visibility: hidden; -webkit-animation-name: none; -moz-animation-name: none; animation-name: none;" : "visibility: visible;";
-      if (duration) ***REMOVED***
+      if (duration) {
         style += "-webkit-animation-duration: " + duration + "; -moz-animation-duration: " + duration + "; animation-duration: " + duration + ";";
-  ***REMOVED***
-      if (delay) ***REMOVED***
+      }
+      if (delay) {
         style += "-webkit-animation-delay: " + delay + "; -moz-animation-delay: " + delay + "; animation-delay: " + delay + ";";
-  ***REMOVED***
-      if (iteration) ***REMOVED***
+      }
+      if (iteration) {
         style += "-webkit-animation-iteration-count: " + iteration + "; -moz-animation-iteration-count: " + iteration + "; animation-iteration-count: " + iteration + ";";
-  ***REMOVED***
+      }
       return style;
-***REMOVED***;
+    };
 
-    WOW.prototype.scrollHandler = function() ***REMOVED***
+    WOW.prototype.scrollHandler = function() {
       return this.scrolled = true;
-***REMOVED***;
+    };
 
-    WOW.prototype.scrollCallback = function() ***REMOVED***
+    WOW.prototype.scrollCallback = function() {
       var box;
-      if (this.scrolled) ***REMOVED***
+      if (this.scrolled) {
         this.scrolled = false;
-        this.boxes = (function() ***REMOVED***
+        this.boxes = (function() {
           var _i, _len, _ref, _results;
           _ref = this.boxes;
           _results = [];
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) ***REMOVED***
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
             box = _ref[_i];
-            if (!(box)) ***REMOVED***
+            if (!(box)) {
               continue;
-        ***REMOVED***
-            if (this.isVisible(box)) ***REMOVED***
+            }
+            if (this.isVisible(box)) {
               this.show(box);
               continue;
-        ***REMOVED***
+            }
             _results.push(box);
-      ***REMOVED***
+          }
           return _results;
-    ***REMOVED***).call(this);
-        if (!this.boxes.length) ***REMOVED***
+        }).call(this);
+        if (!this.boxes.length) {
           return this.stop();
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***;
+        }
+      }
+    };
 
-    WOW.prototype.offsetTop = function(element) ***REMOVED***
+    WOW.prototype.offsetTop = function(element) {
       var top;
       top = element.offsetTop;
-      while (element = element.offsetParent) ***REMOVED***
+      while (element = element.offsetParent) {
         top += element.offsetTop;
-  ***REMOVED***
+      }
       return top;
-***REMOVED***;
+    };
 
-    WOW.prototype.isVisible = function(box) ***REMOVED***
+    WOW.prototype.isVisible = function(box) {
       var bottom, offset, top, viewBottom, viewTop;
       offset = box.getAttribute('data-wow-offset') || this.config.offset;
       viewTop = window.pageYOffset;
@@ -167,18 +167,18 @@
       top = this.offsetTop(box);
       bottom = top + box.clientHeight;
       return top <= viewBottom && bottom >= viewTop;
-***REMOVED***;
+    };
 
-    WOW.prototype.util = function() ***REMOVED***
+    WOW.prototype.util = function() {
       return this._util || (this._util = new Util());
-***REMOVED***;
+    };
 
-    WOW.prototype.disabled = function() ***REMOVED***
+    WOW.prototype.disabled = function() {
       return this.config.mobile === false && this.util().isMobile(navigator.userAgent);
-***REMOVED***;
+    };
 
     return WOW;
 
-***REMOVED***)();
+  })();
 
 }).call(this);

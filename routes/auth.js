@@ -9,12 +9,12 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const secret = require('../secret/secret.json');
 
-router.use(session(***REMOVED***
+router.use(session({
   name: 'session',
   secret: secret.session,
-  cookie: ***REMOVED***
+  cookie: {
     expires: new Date(2147483647000) // Tue, 19 Jan 2038 03:14:07 GMT
-***REMOVED***,
+  },
   /* saveUninitialized: false,
   resave: true */
 }));
@@ -25,55 +25,55 @@ router.use(flash());
 router.use(passport.initialize());
 router.use(passport.session());
 
-passport.use(new LocalStrategy(***REMOVED***
+passport.use(new LocalStrategy({
 	usernameField: 'email',
-}, async function (email, password, done) ***REMOVED***
-	try ***REMOVED***
+}, async function (email, password, done) {
+	try {
 		let user = await User.getUserByEmail(email);
-		if (!user) return done(null, false, ***REMOVED*** message: 'Unknown email' });
+		if (!user) return done(null, false, { message: 'Unknown email' });
 		let result = await User.comparePassword(password, user.get('password'));
 
-		if (!result) return done(null, false, ***REMOVED*** message: 'Wrong password' });
-		if (!user.get('verified')) return done(null, false, ***REMOVED*** message: '<span>Please verify your email first or <a href="/resend">resend the email</a></span>' });
+		if (!result) return done(null, false, { message: 'Wrong password' });
+		if (!user.get('verified')) return done(null, false, { message: '<span>Please verify your email first or <a href="/resend">resend the email</a></span>' });
 
 		return done(null, user);
-	} catch (e) ***REMOVED***
+	} catch (e) {
 		return done(e, false);
 	}
 }));
 
-passport.serializeUser(function (user, done) ***REMOVED***
+passport.serializeUser(function (user, done) {
 	done(null, user.id);
 });
 
-passport.deserializeUser(async function (id, done) ***REMOVED***
-	try ***REMOVED***
+passport.deserializeUser(async function (id, done) {
+	try {
 		let user = await User.getUserById(id);
 		done(null, user);
 		// done(null, id);
-	} catch (e) ***REMOVED***
+	} catch (e) {
 		done(e, null);
 	}
 });
 
 // Endpoint to login
 router.post('/login',
-  passport.authenticate('local', ***REMOVED***
+  passport.authenticate('local', {
     successRedirect: '/status',
     failureRedirect: '/',
     successFlash: false /* 'Login success' */,
     failureFlash: true
-***REMOVED***)
+  })
 );
 
 // Endpoint to get current user
-router.get('/user', function(req, res)***REMOVED***
+router.get('/user', function(req, res){
 	console.log(req.user);
   res.send(req.user);
 })
 
 // Endpoint to logout
-router.get('/logout', function(req, res)***REMOVED***
+router.get('/logout', function(req, res){
   req.logout();
   req.flash('success', 'Logout success')
   res.redirect('/');

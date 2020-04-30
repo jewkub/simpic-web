@@ -12,7 +12,7 @@
  *            http://creativecommons.org/licenses/by-nc/3.0/
  */
 
-(function($, undf)***REMOVED***
+(function($, undf){
 	'use strict';
 
 	/**
@@ -21,23 +21,23 @@
 	 * @extends jQuery
 	 */
 
-	$.MixItUp = function()***REMOVED***
+	$.MixItUp = function(){
 		var self = this;
 
 		self._execAction('_constructor', 0);
 
-		$.extend(self, ***REMOVED***
+		$.extend(self, {
 
 			/* Public Properties
 			---------------------------------------------------------------------- */
 
-			selectors: ***REMOVED***
+			selectors: {
 				target: '.mix',
 				filter: '.filter',
 				sort: '.sort'
 			},
 
-			animation: ***REMOVED***
+			animation: {
 				enable: true,
 				effects: 'fade scale',
 				duration: 600,
@@ -53,7 +53,7 @@
 				reverseOut: false
 			},
 
-			callbacks: ***REMOVED***
+			callbacks: {
 				onMixLoad: false,
 				onMixStart: false,
 				onMixBusy: false,
@@ -62,7 +62,7 @@
 				_user: false
 			},
 
-			controls: ***REMOVED***
+			controls: {
 				enable: true,
 				live: false,
 				toggleFilterButtons: false,
@@ -70,13 +70,13 @@
 				activeClass: 'active'
 			},
 
-			layout: ***REMOVED***
+			layout: {
 				display: 'inline-block',
 				containerClass: '',
 				containerClassFail: 'fail'
 			},
 
-			load: ***REMOVED***
+			load: {
 				filter: 'all',
 				sort: false
 			},
@@ -129,23 +129,23 @@
 	 * @override
 	 */
 
-	$.MixItUp.prototype = ***REMOVED***
+	$.MixItUp.prototype = {
 		constructor: $.MixItUp,
 
 		/* Static Properties
 		---------------------------------------------------------------------- */
 
-		_instances: ***REMOVED***},
-		_handled: ***REMOVED***
-			_filter: ***REMOVED***},
-			_sort: ***REMOVED***}
+		_instances: {},
+		_handled: {
+			_filter: {},
+			_sort: {}
 		},
-		_bound: ***REMOVED***
-			_filter: ***REMOVED***},
-			_sort: ***REMOVED***}
+		_bound: {
+			_filter: {},
+			_sort: {}
 		},
-		_actions: ***REMOVED***},
-		_filters: ***REMOVED***},
+		_actions: {},
+		_filters: {},
 
 		/* Static Methods
 		---------------------------------------------------------------------- */
@@ -153,12 +153,12 @@
 		/**
 		 * Extend
 		 * @since 2.1.0
-		 * @param ***REMOVED***object} new properties/methods
-		 * @extends ***REMOVED***object} prototype
+		 * @param {object} new properties/methods
+		 * @extends {object} prototype
 		 */
 
-		extend: function(extension)***REMOVED***
-			for(var key in extension)***REMOVED***
+		extend: function(extension){
+			for(var key in extension){
 				$.MixItUp.prototype[key] = extension[key];
 			}
 		},
@@ -166,49 +166,49 @@
 		/**
 		 * Add Action
 		 * @since 2.1.0
-		 * @param ***REMOVED***string} hook name
-		 * @param ***REMOVED***string} namespace
-		 * @param ***REMOVED***function} function to execute
-		 * @param ***REMOVED***number} priority
-		 * @extends ***REMOVED***object} $.MixItUp.prototype._actions
+		 * @param {string} hook name
+		 * @param {string} namespace
+		 * @param {function} function to execute
+		 * @param {number} priority
+		 * @extends {object} $.MixItUp.prototype._actions
 		 */
 
-		addAction: function(hook, name, func, priority)***REMOVED***
+		addAction: function(hook, name, func, priority){
 			$.MixItUp.prototype._addHook('_actions', hook, name, func, priority);
 		},
 
 		/**
 		 * Add Filter
 		 * @since 2.1.0
-		 * @param ***REMOVED***string} hook name
-		 * @param ***REMOVED***string} namespace
-		 * @param ***REMOVED***function} function to execute
-		 * @param ***REMOVED***number} priority
-		 * @extends ***REMOVED***object} $.MixItUp.prototype._filters
+		 * @param {string} hook name
+		 * @param {string} namespace
+		 * @param {function} function to execute
+		 * @param {number} priority
+		 * @extends {object} $.MixItUp.prototype._filters
 		 */
 
-		addFilter: function(hook, name, func, priority)***REMOVED***
+		addFilter: function(hook, name, func, priority){
 			$.MixItUp.prototype._addHook('_filters', hook, name, func, priority);
 		},
 
 		/**
 		 * Add Hook
 		 * @since 2.1.0
-		 * @param ***REMOVED***string} type of hook
-		 * @param ***REMOVED***string} hook name
-		 * @param ***REMOVED***function} function to execute
-		 * @param ***REMOVED***number} priority
-		 * @extends ***REMOVED***object} $.MixItUp.prototype._filters
+		 * @param {string} type of hook
+		 * @param {string} hook name
+		 * @param {function} function to execute
+		 * @param {number} priority
+		 * @extends {object} $.MixItUp.prototype._filters
 		 */
 
-		_addHook: function(type, hook, name, func, priority)***REMOVED***
+		_addHook: function(type, hook, name, func, priority){
 			var collection = $.MixItUp.prototype[type],
-				obj = ***REMOVED***};
+				obj = {};
 
 			priority = (priority === 1 || priority === 'post') ? 'post' : 'pre';
 
-			obj[hook] = ***REMOVED***};
-			obj[hook][priority] = ***REMOVED***};
+			obj[hook] = {};
+			obj[hook][priority] = {};
 			obj[hook][priority][name] = func;
 
 			$.extend(true, collection, obj);
@@ -221,11 +221,11 @@
 		/**
 		 * Initialise
 		 * @since 2.0.0
-		 * @param ***REMOVED***object} domNode
-		 * @param ***REMOVED***object} config
+		 * @param {object} domNode
+		 * @param {object} config
 		 */
 
-		_init: function(domNode, config)***REMOVED***
+		_init: function(domNode, config){
 			var self = this;
 
 			self._execAction('_init', 0, arguments);
@@ -246,7 +246,7 @@
 
 			self._$parent = self._$targets.parent().length ? self._$targets.parent() : self._$container;
 
-			if(self.load.sort)***REMOVED***
+			if(self.load.sort){
 				self._newSort = self._parseSort(self.load.sort);
 				self._newSortString = self.load.sort;
 				self._activeSort = self.load.sort;
@@ -262,14 +262,14 @@
 
 			self.controls.enable && self._bindHandlers();
 
-			if(self.controls.toggleFilterButtons)***REMOVED***
+			if(self.controls.toggleFilterButtons){
 				self._buildToggleArray();
 
-				for(var i = 0; i < self._toggleArray.length; i++)***REMOVED***
-					self._updateControls(***REMOVED***filter: self._toggleArray[i], sort: self._activeSort}, true);
+				for(var i = 0; i < self._toggleArray.length; i++){
+					self._updateControls({filter: self._toggleArray[i], sort: self._activeSort}, true);
 				};
-			} else if(self.controls.enable)***REMOVED***
-				self._updateControls(***REMOVED***filter: self._activeFilter, sort: self._activeSort});
+			} else if(self.controls.enable){
+				self._updateControls({filter: self._activeFilter, sort: self._activeSort});
 			}
 
 			self._filter();
@@ -292,16 +292,16 @@
 		 * @since 2.0.0
 		 */
 
-		_platformDetect: function()***REMOVED***
+		_platformDetect: function(){
 			var self = this,
 				vendorsTrans = ['Webkit', 'Moz', 'O', 'ms'],
 				vendorsRAF = ['webkit', 'moz'],
 				chrome = window.navigator.appVersion.match(/Chrome\/(\d+)\./) || false,
 				ff = typeof InstallTrigger !== 'undefined',
-				prefix = function(el)***REMOVED***
-					for (var i = 0; i < vendorsTrans.length; i++)***REMOVED***
-						if (vendorsTrans[i] + 'Transition' in el.style)***REMOVED***
-							return ***REMOVED***
+				prefix = function(el){
+					for (var i = 0; i < vendorsTrans.length; i++){
+						if (vendorsTrans[i] + 'Transition' in el.style){
+							return {
 								prefix: '-'+vendorsTrans[i].toLowerCase()+'-',
 								vendor: vendorsTrans[i]
 							};
@@ -329,7 +329,7 @@
 			 * window.requestAnimationFrame
 			 */
 
-			for(var x = 0; x < vendorsRAF.length && !window.requestAnimationFrame; x++)***REMOVED***
+			for(var x = 0; x < vendorsRAF.length && !window.requestAnimationFrame; x++){
 				window.requestAnimationFrame = window[vendorsRAF[x]+'RequestAnimationFrame'];
 			}
 
@@ -337,13 +337,13 @@
 			 * Object.getPrototypeOf
 			 */
 
-			if(typeof Object.getPrototypeOf !== 'function')***REMOVED***
-				if(typeof 'test'.__proto__ === 'object')***REMOVED***
-					Object.getPrototypeOf = function(object)***REMOVED***
+			if(typeof Object.getPrototypeOf !== 'function'){
+				if(typeof 'test'.__proto__ === 'object'){
+					Object.getPrototypeOf = function(object){
 						return object.__proto__;
 					};
-				} else ***REMOVED***
-					Object.getPrototypeOf = function(object)***REMOVED***
+				} else {
+					Object.getPrototypeOf = function(object){
 						return object.constructor.prototype;
 					};
 				}
@@ -353,13 +353,13 @@
 			 * Element.nextElementSibling
 			 */
 
-			if(self._domNode.nextElementSibling === undf)***REMOVED***
-				Object.defineProperty(Element.prototype, 'nextElementSibling',***REMOVED***
-					get: function()***REMOVED***
+			if(self._domNode.nextElementSibling === undf){
+				Object.defineProperty(Element.prototype, 'nextElementSibling',{
+					get: function(){
 						var el = this.nextSibling;
 
-						while(el)***REMOVED***
-							if(el.nodeType ===1)***REMOVED***
+						while(el){
+							if(el.nodeType ===1){
 								return el;
 							}
 							el = el.nextSibling;
@@ -375,38 +375,38 @@
 		/**
 		 * Refresh
 		 * @since 2.0.0
-		 * @param ***REMOVED***boolean} init
-		 * @param ***REMOVED***boolean} force
+		 * @param {boolean} init
+		 * @param {boolean} force
 		 */
 
-		_refresh: function(init, force)***REMOVED***
+		_refresh: function(init, force){
 			var self = this;
 
 			self._execAction('_refresh', 0, arguments);
 
 			self._$targets = self._$container.find(self.selectors.target);
 
-			for(var i = 0; i < self._$targets.length; i++)***REMOVED***
+			for(var i = 0; i < self._$targets.length; i++){
 				var target = self._$targets[i];
 
-				if(target.dataset === undf || force)***REMOVED***
+				if(target.dataset === undf || force){
 
-					target.dataset = ***REMOVED***};
+					target.dataset = {};
 
-					for(var j = 0; j < target.attributes.length; j++)***REMOVED***
+					for(var j = 0; j < target.attributes.length; j++){
 
 						var attr = target.attributes[j],
 							name = attr.name,
 							val = attr.value;
 
-						if(name.indexOf('data-') > -1)***REMOVED***
+						if(name.indexOf('data-') > -1){
 							var dataName = self._helpers._camelCase(name.substring(5,name.length));
 							target.dataset[dataName] = val;
 						}
 					}
 				}
 
-				if(target.mixParent === undf)***REMOVED***
+				if(target.mixParent === undf){
 					target.mixParent = self._id;
 				}
 			}
@@ -414,10 +414,10 @@
 			if(
 				(self._$targets.length && init) ||
 				(!self._origOrder.length && self._$targets.length)
-			)***REMOVED***
+			){
 				self._origOrder = [];
 
-				for(var i = 0; i < self._$targets.length; i++)***REMOVED***
+				for(var i = 0; i < self._$targets.length; i++){
 					var target = self._$targets[i];
 
 					self._origOrder.push(target);
@@ -432,30 +432,30 @@
 		 * @since 2.0.0
 		 */
 
-		_bindHandlers: function()***REMOVED***
+		_bindHandlers: function(){
 			var self = this,
 				filters = $.MixItUp.prototype._bound._filter,
 				sorts = $.MixItUp.prototype._bound._sort;
 
 			self._execAction('_bindHandlers', 0);
 
-			if(self.controls.live)***REMOVED***
+			if(self.controls.live){
 				self._$body
-					.on('click.mixItUp.'+self._id, self.selectors.sort, function()***REMOVED***
+					.on('click.mixItUp.'+self._id, self.selectors.sort, function(){
 						self._processClick($(this), 'sort');
 					})
-					.on('click.mixItUp.'+self._id, self.selectors.filter, function()***REMOVED***
+					.on('click.mixItUp.'+self._id, self.selectors.filter, function(){
 						self._processClick($(this), 'filter');
 					});
-			} else ***REMOVED***
+			} else {
 				self._$sortButtons = $(self.selectors.sort);
 				self._$filterButtons = $(self.selectors.filter);
 
-				self._$sortButtons.on('click.mixItUp.'+self._id, function()***REMOVED***
+				self._$sortButtons.on('click.mixItUp.'+self._id, function(){
 					self._processClick($(this), 'sort');
 				});
 
-				self._$filterButtons.on('click.mixItUp.'+self._id, function()***REMOVED***
+				self._$filterButtons.on('click.mixItUp.'+self._id, function(){
 					self._processClick($(this), 'filter');
 				});
 			}
@@ -469,20 +469,20 @@
 		/**
 		 * Process Click
 		 * @since 2.0.0
-		 * @param ***REMOVED***object} $button
-		 * @param ***REMOVED***string} type
+		 * @param {object} $button
+		 * @param {string} type
 		 */
 
-		_processClick: function($button, type)***REMOVED***
+		_processClick: function($button, type){
 			var self = this,
-				trackClick = function($button, type, off)***REMOVED***
+				trackClick = function($button, type, off){
 					var proto = $.MixItUp.prototype;
 
 					proto._handled['_'+type][self.selectors[type]] = (proto._handled['_'+type][self.selectors[type]] === undf) ?
 						1 :
 						proto._handled['_'+type][self.selectors[type]] + 1;
 
-					if(proto._handled['_'+type][self.selectors[type]] === proto._bound['_'+type][self.selectors[type]])***REMOVED***
+					if(proto._handled['_'+type][self.selectors[type]] === proto._bound['_'+type][self.selectors[type]]){
 						$button[(off ? 'remove' : 'add')+'Class'](self.controls.activeClass);
 						delete proto._handled['_'+type][self.selectors[type]];
 					}
@@ -490,44 +490,44 @@
 
 			self._execAction('_processClick', 0, arguments);
 
-			if(!self._mixing || (self.animation.queue && self._queue.length < self.animation.queueLimit))***REMOVED***
+			if(!self._mixing || (self.animation.queue && self._queue.length < self.animation.queueLimit)){
 				self._clicking = true;
 
-				if(type === 'sort')***REMOVED***
+				if(type === 'sort'){
 					var sort = $button.attr('data-sort');
 
-					if(!$button.hasClass(self.controls.activeClass) || sort.indexOf('random') > -1)***REMOVED***
+					if(!$button.hasClass(self.controls.activeClass) || sort.indexOf('random') > -1){
 						$(self.selectors.sort).removeClass(self.controls.activeClass);
 						trackClick($button, type);
 						self.sort(sort);
 					}
 				}
 
-				if(type === 'filter') ***REMOVED***
+				if(type === 'filter') {
 					var filter = $button.attr('data-filter'),
 						ndx,
 						seperator = self.controls.toggleLogic === 'or' ? ',' : '';
 
-					if(!self.controls.toggleFilterButtons)***REMOVED***
-						if(!$button.hasClass(self.controls.activeClass))***REMOVED***
+					if(!self.controls.toggleFilterButtons){
+						if(!$button.hasClass(self.controls.activeClass)){
 							$(self.selectors.filter).removeClass(self.controls.activeClass);
 							trackClick($button, type);
 							self.filter(filter);
 						}
-					} else ***REMOVED***
+					} else {
 						self._buildToggleArray();
 
-						if(!$button.hasClass(self.controls.activeClass))***REMOVED***
+						if(!$button.hasClass(self.controls.activeClass)){
 							trackClick($button, type);
 
 							self._toggleArray.push(filter);
-						} else ***REMOVED***
+						} else {
 							trackClick($button, type, true);
 							ndx = self._toggleArray.indexOf(filter);
 							self._toggleArray.splice(ndx, 1);
 						}
 
-						self._toggleArray = $.grep(self._toggleArray,function(n)***REMOVED***return(n);});
+						self._toggleArray = $.grep(self._toggleArray,function(n){return(n);});
 
 						self._toggleString = self._toggleArray.join(seperator);
 
@@ -536,8 +536,8 @@
 				}
 
 				self._execAction('_processClick', 1, arguments);
-			} else ***REMOVED***
-				if(typeof self.callbacks.onMixBusy === 'function')***REMOVED***
+			} else {
+				if(typeof self.callbacks.onMixBusy === 'function'){
 					self.callbacks.onMixBusy.call(self._domNode, self._state, self);
 				}
 				self._execAction('_processClickBusy', 1, arguments);
@@ -549,20 +549,20 @@
 		 * @since 2.0.0
 		 */
 
-		_buildToggleArray: function()***REMOVED***
+		_buildToggleArray: function(){
 			var self = this,
 				activeFilter = self._activeFilter.replace(/\s/g, '');
 
 			self._execAction('_buildToggleArray', 0, arguments);
 
-			if(self.controls.toggleLogic === 'or')***REMOVED***
+			if(self.controls.toggleLogic === 'or'){
 				self._toggleArray = activeFilter.split(',');
-			} else ***REMOVED***
+			} else {
 				self._toggleArray = activeFilter.split('.');
 
 				!self._toggleArray[0] && self._toggleArray.shift();
 
-				for(var i = 0, filter; filter = self._toggleArray[i]; i++)***REMOVED***
+				for(var i = 0, filter; filter = self._toggleArray[i]; i++){
 					self._toggleArray[i] = '.'+filter;
 				}
 			}
@@ -573,22 +573,22 @@
 		/**
 		 * Update Controls
 		 * @since 2.0.0
-		 * @param ***REMOVED***object} command
-		 * @param ***REMOVED***boolean} multi
+		 * @param {object} command
+		 * @param {boolean} multi
 		 */
 
-		_updateControls: function(command, multi)***REMOVED***
+		_updateControls: function(command, multi){
 			var self = this,
-				output = ***REMOVED***
+				output = {
 					filter: command.filter,
 					sort: command.sort
 				},
-				update = function($el, filter)***REMOVED***
-					try ***REMOVED***
+				update = function($el, filter){
+					try {
 						(multi && type === 'filter' && !(output.filter === 'none' || output.filter === '')) ?
 								$el.filter(filter).addClass(self.controls.activeClass) :
 								$el.removeClass(self.controls.activeClass).filter(filter).addClass(self.controls.activeClass);
-					} catch(e) ***REMOVED***}
+					} catch(e) {}
 				},
 				type = 'filter',
 				$el = null;
@@ -599,7 +599,7 @@
 			(command.sort === undf) && (output.sort = self._activeSort);
 			(output.filter === self.selectors.target) && (output.filter = 'all');
 
-			for(var i = 0; i < 2; i++)***REMOVED***
+			for(var i = 0; i < 2; i++){
 				$el = self.controls.live ? $(self.selectors[type]) : self['_$'+type+'Buttons'];
 				$el && update($el, '[data-'+type+'="'+output[type]+'"]');
 				type = 'sort';
@@ -613,17 +613,17 @@
 		 * @since 2.0.0
 		 */
 
-		_filter: function()***REMOVED***
+		_filter: function(){
 			var self = this;
 
 			self._execAction('_filter', 0);
 
-			for(var i = 0; i < self._$targets.length; i++)***REMOVED***
+			for(var i = 0; i < self._$targets.length; i++){
 				var $target = $(self._$targets[i]);
 
-				if($target.is(self._activeFilter))***REMOVED***
+				if($target.is(self._activeFilter)){
 					self._$show = self._$show.add($target);
-				} else ***REMOVED***
+				} else {
 					self._$hide = self._$hide.add($target);
 				}
 			}
@@ -636,14 +636,14 @@
 		 * @since 2.0.0
 		 */
 
-		_sort: function()***REMOVED***
+		_sort: function(){
 			var self = this,
-				arrayShuffle = function(oldArray)***REMOVED***
+				arrayShuffle = function(oldArray){
 					var newArray = oldArray.slice(),
 						len = newArray.length,
 						i = len;
 
-					while(i--)***REMOVED***
+					while(i--){
 						var p = parseInt(Math.random()*len);
 						var t = newArray[i];
 						newArray[i] = newArray[p];
@@ -656,13 +656,13 @@
 
 			self._startOrder = [];
 
-			for(var i = 0; i < self._$targets.length; i++)***REMOVED***
+			for(var i = 0; i < self._$targets.length; i++){
 				var target = self._$targets[i];
 
 				self._startOrder.push(target);
 			}
 
-			switch(self._newSort[0].sortBy)***REMOVED***
+			switch(self._newSort[0].sortBy){
 				case 'default':
 					self._newOrder = self._origOrder;
 					break;
@@ -673,7 +673,7 @@
 					self._newOrder = self._newSort[0].order;
 					break;
 				default:
-					self._newOrder = self._startOrder.concat().sort(function(a, b)***REMOVED***
+					self._newOrder = self._startOrder.concat().sort(function(a, b){
 						return self._compare(a, b);
 					});
 			}
@@ -684,18 +684,18 @@
 		/**
 		 * Compare Algorithm
 		 * @since 2.0.0
-		 * @param ***REMOVED***string|number} a
-		 * @param ***REMOVED***string|number} b
-		 * @param ***REMOVED***number} depth (recursion)
-		 * @return ***REMOVED***number}
+		 * @param {string|number} a
+		 * @param {string|number} b
+		 * @param {number} depth (recursion)
+		 * @return {number}
 		 */
 
-		_compare: function(a, b, depth)***REMOVED***
+		_compare: function(a, b, depth){
 			depth = depth ? depth : 0;
 
 			var self = this,
 				order = self._newSort[depth].order,
-				getData = function(el)***REMOVED***
+				getData = function(el){
 					return el.dataset[self._newSort[depth].sortBy] || 0;
 				},
 				attrA = isNaN(getData(a) * 1) ? getData(a).toLowerCase() : getData(a) * 1,
@@ -714,10 +714,10 @@
 		/**
 		 * Print Sort
 		 * @since 2.0.0
-		 * @param ***REMOVED***boolean} reset
+		 * @param {boolean} reset
 		 */
 
-		_printSort: function(reset)***REMOVED***
+		_printSort: function(reset){
 			var self = this,
 				order = reset ? self._startOrder : self._newOrder,
 				targets = self._$parent[0].querySelectorAll(self.selectors.target),
@@ -726,27 +726,27 @@
 
 			self._execAction('_printSort', 0, arguments);
 
-			for(var i = 0; i < targets.length; i++)***REMOVED***
+			for(var i = 0; i < targets.length; i++){
 				var target = targets[i],
 					whiteSpace = target.nextSibling;
 
 				if(target.style.position === 'absolute') continue;
 
-				if(whiteSpace && whiteSpace.nodeName === '#text')***REMOVED***
+				if(whiteSpace && whiteSpace.nodeName === '#text'){
 					self._$parent[0].removeChild(whiteSpace);
 				}
 
 				self._$parent[0].removeChild(target);
 			}
 
-			for(var i = 0; i < order.length; i++)***REMOVED***
+			for(var i = 0; i < order.length; i++){
 				var el = order[i];
 
-				if(self._newSort[0].sortBy === 'default' && self._newSort[0].order === 'desc' && !reset)***REMOVED***
+				if(self._newSort[0].sortBy === 'default' && self._newSort[0].order === 'desc' && !reset){
 					var firstChild = frag.firstChild;
 					frag.insertBefore(el, firstChild);
 					frag.insertBefore(document.createTextNode(' '), el);
-				} else ***REMOVED***
+				} else {
 					frag.appendChild(el);
 					frag.appendChild(document.createTextNode(' '));
 				}
@@ -762,18 +762,18 @@
 		/**
 		 * Parse Sort
 		 * @since 2.0.0
-		 * @param ***REMOVED***string} sortString
-		 * @return ***REMOVED***array} newSort
+		 * @param {string} sortString
+		 * @return {array} newSort
 		 */
 
-		_parseSort: function(sortString)***REMOVED***
+		_parseSort: function(sortString){
 			var self = this,
 				rules = typeof sortString === 'string' ? sortString.split(' ') : [sortString],
 				newSort = [];
 
-			for(var i = 0; i < rules.length; i++)***REMOVED***
+			for(var i = 0; i < rules.length; i++){
 				var rule = typeof sortString === 'string' ? rules[i].split(':') : ['custom', rules[i]],
-					ruleObj = ***REMOVED***
+					ruleObj = {
 						sortBy: self._helpers._camelCase(rule[0]),
 						order: rule[1] || 'asc'
 					};
@@ -789,42 +789,42 @@
 		/**
 		 * Parse Effects
 		 * @since 2.0.0
-		 * @return ***REMOVED***object} effects
+		 * @return {object} effects
 		 */
 
-		_parseEffects: function()***REMOVED***
+		_parseEffects: function(){
 			var self = this,
-				effects = ***REMOVED***
+				effects = {
 					opacity: '',
 					transformIn: '',
 					transformOut: '',
 					filter: ''
 				},
-				parse = function(effect, extract, reverse)***REMOVED***
-					if(self.animation.effects.indexOf(effect) > -1)***REMOVED***
-						if(extract)***REMOVED***
+				parse = function(effect, extract, reverse){
+					if(self.animation.effects.indexOf(effect) > -1){
+						if(extract){
 							var propIndex = self.animation.effects.indexOf(effect+'(');
-							if(propIndex > -1)***REMOVED***
+							if(propIndex > -1){
 								var str = self.animation.effects.substring(propIndex),
 									match = /\(([^)]+)\)/.exec(str),
 									val = match[1];
 
-									return ***REMOVED***val: val};
+									return {val: val};
 							}
 						}
 						return true;
-					} else ***REMOVED***
+					} else {
 						return false;
 					}
 				},
-				negate = function(value, invert)***REMOVED***
-					if(invert)***REMOVED***
+				negate = function(value, invert){
+					if(invert){
 						return value.charAt(0) === '-' ? value.substr(1, value.length) : '-'+value;
-					} else ***REMOVED***
+					} else {
 						return value;
 					}
 				},
-				buildTransform = function(key, invert)***REMOVED***
+				buildTransform = function(key, invert){
 					var transforms = [
 						['scale', '.01'],
 						['translateX', '20px'],
@@ -835,7 +835,7 @@
 						['rotateZ', '180deg'],
 					];
 
-					for(var i = 0; i < transforms.length; i++)***REMOVED***
+					for(var i = 0; i < transforms.length; i++){
 						var prop = transforms[i][0],
 							def = transforms[i][1],
 							inverted = invert && prop !== 'scale';
@@ -850,7 +850,7 @@
 
 			self.animation.reverseOut ? buildTransform('transformOut', true) : (effects.transformOut = effects.transformIn);
 
-			effects.transition = ***REMOVED***};
+			effects.transition = {};
 
 			effects.transition = self._getPrefixedCSS('transition','all '+self.animation.duration+'ms '+self.animation.easing+', opacity '+self.animation.duration+'ms linear');
 
@@ -863,17 +863,17 @@
 		/**
 		 * Build State
 		 * @since 2.0.0
-		 * @param ***REMOVED***boolean} future
-		 * @return ***REMOVED***object} futureState
+		 * @param {boolean} future
+		 * @return {object} futureState
 		 */
 
-		_buildState: function(future)***REMOVED***
+		_buildState: function(future){
 			var self = this,
-				state = ***REMOVED***};
+				state = {};
 
 			self._execAction('_buildState', 0);
 
-			state = ***REMOVED***
+			state = {
 				activeFilter: self._activeFilter === '' ? 'none' : self._activeFilter,
 				activeSort: future && self._newSortString ? self._newSortString : self._activeSort,
 				fail: !self._$show.length && self._activeFilter !== '',
@@ -886,9 +886,9 @@
 				display: future && self._newDisplay ? self._newDisplay : self.layout.display
 			};
 
-			if(future)***REMOVED***
+			if(future){
 				return self._execFilter('_buildState', state);
-			} else ***REMOVED***
+			} else {
 				self._state = state;
 
 				self._execAction('_buildState', 1);
@@ -898,13 +898,13 @@
 		/**
 		 * Go Mix
 		 * @since 2.0.0
-		 * @param ***REMOVED***boolean} animate
+		 * @param {boolean} animate
 		 */
 
-		_goMix: function(animate)***REMOVED***
+		_goMix: function(animate){
 			var self = this,
-				phase1 = function()***REMOVED***
-					if(self._chrome && (self._chrome === 31))***REMOVED***
+				phase1 = function(){
+					if(self._chrome && (self._chrome === 31)){
 						chromeFix(self._$parent[0]);
 					}
 
@@ -912,7 +912,7 @@
 
 					phase2();
 				},
-				phase2 = function()***REMOVED***
+				phase2 = function(){
 					var scrollTop = window.pageYOffset,
 						scrollLeft = window.pageXOffset,
 						docHeight = document.documentElement.scrollHeight;
@@ -927,22 +927,22 @@
 
 					self._prepTargets();
 
-					if(window.requestAnimationFrame)***REMOVED***
+					if(window.requestAnimationFrame){
 						requestAnimationFrame(phase3);
-					} else ***REMOVED***
-						setTimeout(function()***REMOVED***
+					} else {
+						setTimeout(function(){
 							phase3();
 						},20);
 					}
 				},
-				phase3 = function()***REMOVED***
+				phase3 = function(){
 					self._animateTargets();
 
-					if(self._targetsBound === 0)***REMOVED***
+					if(self._targetsBound === 0){
 						self._cleanUp();
 					}
 				},
-				chromeFix = function(grid)***REMOVED***
+				chromeFix = function(grid){
 					var parent = grid.parentElement,
 						placeholder = document.createElement('div'),
 						frag = document.createDocumentFragment();
@@ -961,7 +961,7 @@
 
 			self._$container.removeClass(self.layout.containerClassFail);
 
-			if(typeof self.callbacks.onMixStart === 'function')***REMOVED***
+			if(typeof self.callbacks.onMixStart === 'function'){
 				self.callbacks.onMixStart.call(self._domNode, self._state, futureState, self);
 			}
 
@@ -969,13 +969,13 @@
 
 			self._getOrigMixData();
 
-			if(animate && !self._suckMode)***REMOVED***
+			if(animate && !self._suckMode){
 
 				window.requestAnimationFrame ?
 					requestAnimationFrame(phase1) :
 					phase1();
 
-			} else ***REMOVED***
+			} else {
 				self._cleanUp();
 			}
 
@@ -987,17 +987,17 @@
 		 * @since 2.0.0
 		 */
 
-		_getTargetData: function(el, stage)***REMOVED***
+		_getTargetData: function(el, stage){
 			var self = this,
 				elStyle;
 
 			el.dataset[stage+'PosX'] = el.offsetLeft;
 			el.dataset[stage+'PosY'] = el.offsetTop;
 
-			if(self.animation.animateResizeTargets)***REMOVED***
+			if(self.animation.animateResizeTargets){
 				elStyle = !self._suckMode ?
 					window.getComputedStyle(el) :
-					***REMOVED***
+					{
 						marginBottom: '',
 						marginRight: ''
 					};
@@ -1014,9 +1014,9 @@
 		 * @since 2.0.0
 		 */
 
-		_getOrigMixData: function()***REMOVED***
+		_getOrigMixData: function(){
 			var self = this,
-				parentStyle = !self._suckMode ? window.getComputedStyle(self._$parent[0]) : ***REMOVED***boxSizing: ''},
+				parentStyle = !self._suckMode ? window.getComputedStyle(self._$parent[0]) : {boxSizing: ''},
 				parentBS = parentStyle.boxSizing || parentStyle[self._vendor+'BoxSizing'];
 
 			self._incPadding = (parentBS === 'border-box');
@@ -1033,7 +1033,7 @@
 				self._$parent.outerHeight() :
 				self._$parent.height();
 
-			for(var i = 0; i < self._$pre.length; i++)***REMOVED***
+			for(var i = 0; i < self._$pre.length; i++){
 				var el = self._$pre[i];
 
 				self._getTargetData(el, 'orig');
@@ -1047,20 +1047,20 @@
 		 * @since 2.0.0
 		 */
 
-		_setInter: function()***REMOVED***
+		_setInter: function(){
 			var self = this;
 
 			self._execAction('_setInter', 0);
 
-			if(self._changingLayout && self.animation.animateChangeLayout)***REMOVED***
+			if(self._changingLayout && self.animation.animateChangeLayout){
 				self._$toShow.css('display',self._newDisplay);
 
-				if(self._changingClass)***REMOVED***
+				if(self._changingClass){
 					self._$container
 						.removeClass(self.layout.containerClass)
 						.addClass(self._newClass);
 				}
-			} else ***REMOVED***
+			} else {
 				self._$toShow.css('display', self.layout.display);
 			}
 
@@ -1072,18 +1072,18 @@
 		 * @since 2.0.0
 		 */
 
-		_getInterMixData: function()***REMOVED***
+		_getInterMixData: function(){
 			var self = this;
 
 			self._execAction('_getInterMixData', 0);
 
-			for(var i = 0; i < self._$toShow.length; i++)***REMOVED***
+			for(var i = 0; i < self._$toShow.length; i++){
 				var el = self._$toShow[i];
 
 				self._getTargetData(el, 'inter');
 			}
 
-			for(var i = 0; i < self._$pre.length; i++)***REMOVED***
+			for(var i = 0; i < self._$pre.length; i++){
 				var el = self._$pre[i];
 
 				self._getTargetData(el, 'inter');
@@ -1097,7 +1097,7 @@
 		 * @since 2.0.0
 		 */
 
-		_setFinal: function()***REMOVED***
+		_setFinal: function(){
 			var self = this;
 
 			self._execAction('_setFinal', 0);
@@ -1106,7 +1106,7 @@
 
 			self._$toHide.removeStyle('display');
 
-			if(self._changingLayout && self.animation.animateChangeLayout)***REMOVED***
+			if(self._changingLayout && self.animation.animateChangeLayout){
 				self._$pre.css('display',self._newDisplay);
 			}
 
@@ -1118,18 +1118,18 @@
 		 * @since 2.0.0
 		 */
 
-		_getFinalMixData: function()***REMOVED***
+		_getFinalMixData: function(){
 			var self = this;
 
 			self._execAction('_getFinalMixData', 0);
 
-			for(var i = 0; i < self._$toShow.length; i++)***REMOVED***
+			for(var i = 0; i < self._$toShow.length; i++){
 				var el = self._$toShow[i];
 
 				self._getTargetData(el, 'final');
 			}
 
-			for(var i = 0; i < self._$pre.length; i++)***REMOVED***
+			for(var i = 0; i < self._$pre.length; i++){
 				var el = self._$pre[i];
 
 				self._getTargetData(el, 'final');
@@ -1145,7 +1145,7 @@
 
 			self._$pre.css('display',self.layout.display);
 
-			if(self._changingClass && self.animation.animateChangeLayout)***REMOVED***
+			if(self._changingClass && self.animation.animateChangeLayout){
 				self._$container
 					.removeClass(self._newClass)
 					.addClass(self.layout.containerClass);
@@ -1159,20 +1159,20 @@
 		 * @since 2.0.0
 		 */
 
-		_prepTargets: function()***REMOVED***
+		_prepTargets: function(){
 			var self = this,
-				transformCSS = ***REMOVED***
+				transformCSS = {
 					_in: self._getPrefixedCSS('transform', self.effects.transformIn),
 					_out: self._getPrefixedCSS('transform', self.effects.transformOut)
 				};
 
 			self._execAction('_prepTargets', 0);
 
-			if(self.animation.animateResizeContainer)***REMOVED***
+			if(self.animation.animateResizeContainer){
 				self._$parent.css('height',self._startHeight+'px');
 			}
 
-			for(var i = 0; i < self._$toShow.length; i++)***REMOVED***
+			for(var i = 0; i < self._$toShow.length; i++){
 				var el = self._$toShow[i],
 					$el = $(el);
 
@@ -1183,7 +1183,7 @@
 
 				$el.css(transformCSS._in);
 
-				if(self.animation.animateResizeTargets)***REMOVED***
+				if(self.animation.animateResizeTargets){
 					el.style.width = el.dataset.finalWidth+'px';
 					el.style.height = el.dataset.finalHeight+'px';
 					el.style.marginRight = -(el.dataset.finalWidth - el.dataset.interWidth) + (el.dataset.finalMarginRight * 1)+'px';
@@ -1191,10 +1191,10 @@
 				}
 			}
 
-			for(var i = 0; i < self._$pre.length; i++)***REMOVED***
+			for(var i = 0; i < self._$pre.length; i++){
 				var el = self._$pre[i],
 					$el = $(el),
-					translate = ***REMOVED***
+					translate = {
 						x: el.dataset.origPosX - el.dataset.interPosX,
 						y: el.dataset.origPosY - el.dataset.interPosY
 					},
@@ -1202,15 +1202,15 @@
 
 				$el.css(transformCSS);
 
-				if(self.animation.animateResizeTargets)***REMOVED***
+				if(self.animation.animateResizeTargets){
 					el.style.width = el.dataset.origWidth+'px';
 					el.style.height = el.dataset.origHeight+'px';
 
-					if(el.dataset.origWidth - el.dataset.finalWidth)***REMOVED***
+					if(el.dataset.origWidth - el.dataset.finalWidth){
 						el.style.marginRight = -(el.dataset.origWidth - el.dataset.interWidth) + (el.dataset.origMarginRight * 1)+'px';
 					}
 
-					if(el.dataset.origHeight - el.dataset.finalHeight)***REMOVED***
+					if(el.dataset.origHeight - el.dataset.finalHeight){
 						el.style.marginBottom = -(el.dataset.origHeight - el.dataset.interHeight) + (el.dataset.origMarginBottom * 1) +'px';
 					}
 				}
@@ -1224,7 +1224,7 @@
 		 * @since 2.0.0
 		 */
 
-		_animateTargets: function()***REMOVED***
+		_animateTargets: function(){
 			var self = this;
 
 			self._execAction('_animateTargets', 0);
@@ -1236,28 +1236,28 @@
 				.css(self._getPrefixedCSS('perspective', self.animation.perspectiveDistance+'px'))
 				.css(self._getPrefixedCSS('perspective-origin', self.animation.perspectiveOrigin));
 
-			if(self.animation.animateResizeContainer)***REMOVED***
+			if(self.animation.animateResizeContainer){
 				self._$parent
 					.css(self._getPrefixedCSS('transition','height '+self.animation.duration+'ms ease'))
 					.css('height',self._newHeight+'px');
 			}
 
-			for(var i = 0; i < self._$toShow.length; i++)***REMOVED***
+			for(var i = 0; i < self._$toShow.length; i++){
 				var el = self._$toShow[i],
 					$el = $(el),
-					translate = ***REMOVED***
+					translate = {
 						x: el.dataset.finalPosX - el.dataset.interPosX,
 						y: el.dataset.finalPosY - el.dataset.interPosY
 					},
 					delay = self._getDelay(i),
-					toShowCSS = ***REMOVED***};
+					toShowCSS = {};
 
 				el.style.opacity = '';
 
-				for(var j = 0; j < 2; j++)***REMOVED***
+				for(var j = 0; j < 2; j++){
 					var a = j === 0 ? a = self._prefix : '';
 
-					if(self._ff && self._ff <= 20)***REMOVED***
+					if(self._ff && self._ff <= 20){
 						toShowCSS[a+'transition-property'] = 'all';
 						toShowCSS[a+'transition-timing-function'] = self.animation.easing+'ms';
 						toShowCSS[a+'transition-duration'] = self.animation.duration+'ms';
@@ -1267,7 +1267,7 @@
 					toShowCSS[a+'transform'] = 'translate('+translate.x+'px,'+translate.y+'px)';
 				}
 
-				if(self.effects.transform || self.effects.opacity)***REMOVED***
+				if(self.effects.transform || self.effects.opacity){
 					self._bindTargetDone($el);
 				}
 
@@ -1276,10 +1276,10 @@
 					$el.css(self.effects.transition).css(toShowCSS);
 			}
 
-			for(var i = 0; i < self._$pre.length; i++)***REMOVED***
+			for(var i = 0; i < self._$pre.length; i++){
 				var el = self._$pre[i],
 					$el = $(el),
-					translate = ***REMOVED***
+					translate = {
 						x: el.dataset.finalPosX - el.dataset.interPosX,
 						y: el.dataset.finalPosY - el.dataset.interPosY
 					},
@@ -1288,39 +1288,39 @@
 				if(!(
 					el.dataset.finalPosX === el.dataset.origPosX &&
 					el.dataset.finalPosY === el.dataset.origPosY
-				))***REMOVED***
+				)){
 					self._bindTargetDone($el);
 				}
 
 				$el.css(self._getPrefixedCSS('transition', 'all '+self.animation.duration+'ms '+self.animation.easing+' '+delay+'ms'));
 				$el.css(self._getPrefixedCSS('transform', 'translate('+translate.x+'px,'+translate.y+'px)'));
 
-				if(self.animation.animateResizeTargets)***REMOVED***
-					if(el.dataset.origWidth - el.dataset.finalWidth && el.dataset.finalWidth * 1)***REMOVED***
+				if(self.animation.animateResizeTargets){
+					if(el.dataset.origWidth - el.dataset.finalWidth && el.dataset.finalWidth * 1){
 						el.style.width = el.dataset.finalWidth+'px';
 						el.style.marginRight = -(el.dataset.finalWidth - el.dataset.interWidth)+(el.dataset.finalMarginRight * 1)+'px';
 					}
 
-					if(el.dataset.origHeight - el.dataset.finalHeight && el.dataset.finalHeight * 1)***REMOVED***
+					if(el.dataset.origHeight - el.dataset.finalHeight && el.dataset.finalHeight * 1){
 						el.style.height = el.dataset.finalHeight+'px';
 						el.style.marginBottom = -(el.dataset.finalHeight - el.dataset.interHeight)+(el.dataset.finalMarginBottom * 1) +'px';
 					}
 				}
 			}
 
-			if(self._changingClass)***REMOVED***
+			if(self._changingClass){
 				self._$container
 					.removeClass(self.layout.containerClass)
 					.addClass(self._newClass);
 			}
 
-			for(var i = 0; i < self._$toHide.length; i++)***REMOVED***
+			for(var i = 0; i < self._$toHide.length; i++){
 				var el = self._$toHide[i],
 					$el = $(el),
 					delay = self._getDelay(i),
-					toHideCSS = ***REMOVED***};
+					toHideCSS = {};
 
-				for(var j = 0; j<2; j++)***REMOVED***
+				for(var j = 0; j<2; j++){
 					var a = j === 0 ? a = self._prefix : '';
 
 					toHideCSS[a+'transition-delay'] = delay+'ms';
@@ -1330,7 +1330,7 @@
 
 				$el.css(self.effects.transition).css(toHideCSS);
 
-				if(self.effects.transform || self.effects.opacity)***REMOVED***
+				if(self.effects.transform || self.effects.opacity){
 					self._bindTargetDone($el);
 				};
 			}
@@ -1342,26 +1342,26 @@
 		/**
 		 * Bind Targets TransitionEnd
 		 * @since 2.0.0
-		 * @param ***REMOVED***object} $el
+		 * @param {object} $el
 		 */
 
-		_bindTargetDone: function($el)***REMOVED***
+		_bindTargetDone: function($el){
 			var self = this,
 				el = $el[0];
 
 			self._execAction('_bindTargetDone', 0, arguments);
 
-			if(!el.dataset.bound)***REMOVED***
+			if(!el.dataset.bound){
 
 				el.dataset.bound = true;
 				self._targetsBound++;
 
-				$el.on('webkitTransitionEnd.mixItUp transitionend.mixItUp',function(e)***REMOVED***
+				$el.on('webkitTransitionEnd.mixItUp transitionend.mixItUp',function(e){
 					if(
 						(e.originalEvent.propertyName.indexOf('transform') > -1 ||
 						e.originalEvent.propertyName.indexOf('opacity') > -1) &&
 						$(e.originalEvent.target).is(self.selectors.target)
-					)***REMOVED***
+					){
 						$el.off('.mixItUp');
 						el.dataset.bound = '';
 						self._targetDone();
@@ -1377,7 +1377,7 @@
 		 * @since 2.0.0
 		 */
 
-		_targetDone: function()***REMOVED***
+		_targetDone: function(){
 			var self = this;
 
 			self._execAction('_targetDone', 0);
@@ -1394,12 +1394,12 @@
 		 * @since 2.0.0
 		 */
 
-		_cleanUp: function()***REMOVED***
+		_cleanUp: function(){
 			var self = this,
 				targetStyles = self.animation.animateResizeTargets ?
 					'transform opacity width height margin-bottom margin-right' :
 					'transform opacity',
-				unBrake = function()***REMOVED***
+				unBrake = function(){
 					self._$targets.removeStyle('transition', self._prefix);
 				};
 
@@ -1419,19 +1419,19 @@
 
 			self._$parent.removeStyle('height transition perspective-distance perspective perspective-origin-x perspective-origin-y perspective-origin perspectiveOrigin', self._prefix);
 
-			if(self._sorting)***REMOVED***
+			if(self._sorting){
 				self._printSort();
 				self._activeSort = self._newSortString;
 				self._sorting = false;
 			}
 
-			if(self._changingLayout)***REMOVED***
-				if(self._changingDisplay)***REMOVED***
+			if(self._changingLayout){
+				if(self._changingDisplay){
 					self.layout.display = self._newDisplay;
 					self._changingDisplay = false;
 				}
 
-				if(self._changingClass)***REMOVED***
+				if(self._changingClass){
 					self._$parent.removeClass(self.layout.containerClass).addClass(self._newClass);
 					self.layout.containerClass = self._newClass;
 					self._changingClass = false;
@@ -1444,40 +1444,40 @@
 
 			self._buildState();
 
-			if(self._state.fail)***REMOVED***
+			if(self._state.fail){
 				self._$container.addClass(self.layout.containerClassFail);
 			}
 
 			self._$show = $();
 			self._$hide = $();
 
-			if(window.requestAnimationFrame)***REMOVED***
+			if(window.requestAnimationFrame){
 				requestAnimationFrame(unBrake);
 			}
 
 			self._mixing = false;
 
-			if(typeof self.callbacks._user === 'function')***REMOVED***
+			if(typeof self.callbacks._user === 'function'){
 				self.callbacks._user.call(self._domNode, self._state, self);
 			}
 
-			if(typeof self.callbacks.onMixEnd === 'function')***REMOVED***
+			if(typeof self.callbacks.onMixEnd === 'function'){
 				self.callbacks.onMixEnd.call(self._domNode, self._state, self);
 			}
 
 			self._$container.trigger('mixEnd', [self._state, self]);
 
-			if(self._state.fail)***REMOVED***
+			if(self._state.fail){
 				(typeof self.callbacks.onMixFail === 'function') && self.callbacks.onMixFail.call(self._domNode, self._state, self);
 				self._$container.trigger('mixFail', [self._state, self]);
 			}
 
-			if(self._loading)***REMOVED***
+			if(self._loading){
 				(typeof self.callbacks.onMixLoad === 'function') && self.callbacks.onMixLoad.call(self._domNode, self._state, self);
 				self._$container.trigger('mixLoad', [self._state, self]);
 			}
 
-			if(self._queue.length)***REMOVED***
+			if(self._queue.length){
 				self._execAction('_queue', 0);
 
 				self.multiMix(self._queue[0][0],self._queue[0][1],self._queue[0][2]);
@@ -1492,19 +1492,19 @@
 		/**
 		 * Get Prefixed CSS
 		 * @since 2.0.0
-		 * @param ***REMOVED***string} property
-		 * @param ***REMOVED***string} value
-		 * @param ***REMOVED***boolean} prefixValue
-		 * @return ***REMOVED***object} styles
+		 * @param {string} property
+		 * @param {string} value
+		 * @param {boolean} prefixValue
+		 * @return {object} styles
 		 */
 
-		_getPrefixedCSS: function(property, value, prefixValue)***REMOVED***
+		_getPrefixedCSS: function(property, value, prefixValue){
 			var self = this,
-				styles = ***REMOVED***},
+				styles = {},
 				prefix = '',
 				i = -1;
 
-			for(i = 0; i < 2; i++)***REMOVED***
+			for(i = 0; i < 2; i++){
 				prefix = i === 0 ? self._prefix : '';
 				prefixValue ? styles[prefix+property] = prefix+value : styles[prefix+property] = value;
 			}
@@ -1515,11 +1515,11 @@
 		/**
 		 * Get Delay
 		 * @since 2.0.0
-		 * @param ***REMOVED***number} i
-		 * @return ***REMOVED***number} delay
+		 * @param {number} i
+		 * @return {number} delay
 		 */
 
-		_getDelay: function(i)***REMOVED***
+		_getDelay: function(i){
 			var self = this,
 				n = typeof self.animation.staggerSequence === 'function' ? self.animation.staggerSequence.call(self._domNode, i, self._state) : i,
 				delay = self.animation.stagger ? n * self.animation.staggerDuration : 0;
@@ -1530,27 +1530,27 @@
 		/**
 		 * Parse MultiMix Arguments
 		 * @since 2.0.0
-		 * @param ***REMOVED***array} args
-		 * @return ***REMOVED***object} output
+		 * @param {array} args
+		 * @return {object} output
 		 */
 
-		_parseMultiMixArgs: function(args)***REMOVED***
+		_parseMultiMixArgs: function(args){
 			var self = this,
-				output = ***REMOVED***
+				output = {
 					command: null,
 					animate: self.animation.enable,
 					callback: null
 				};
 
-			for(var i = 0; i < args.length; i++)***REMOVED***
+			for(var i = 0; i < args.length; i++){
 				var arg = args[i];
 
-				if(arg !== null)***REMOVED***
-					if(typeof arg === 'object' || typeof arg === 'string')***REMOVED***
+				if(arg !== null){
+					if(typeof arg === 'object' || typeof arg === 'string'){
 						output.command = arg;
-					} else if(typeof arg === 'boolean')***REMOVED***
+					} else if(typeof arg === 'boolean'){
 						output.animate = arg;
-					} else if(typeof arg === 'function')***REMOVED***
+					} else if(typeof arg === 'function'){
 						output.callback = arg;
 					}
 				}
@@ -1562,33 +1562,33 @@
 		/**
 		 * Parse Insert Arguments
 		 * @since 2.0.0
-		 * @param ***REMOVED***array} args
-		 * @return ***REMOVED***object} output
+		 * @param {array} args
+		 * @return {object} output
 		 */
 
-		_parseInsertArgs: function(args)***REMOVED***
+		_parseInsertArgs: function(args){
 			var self = this,
-				output = ***REMOVED***
+				output = {
 					index: 0,
 					$object: $(),
-					multiMix: ***REMOVED***filter: self._state.activeFilter},
+					multiMix: {filter: self._state.activeFilter},
 					callback: null
 				};
 
-			for(var i = 0; i < args.length; i++)***REMOVED***
+			for(var i = 0; i < args.length; i++){
 				var arg = args[i];
 
-				if(typeof arg === 'number')***REMOVED***
+				if(typeof arg === 'number'){
 					output.index = arg;
-				} else if(typeof arg === 'object' && arg instanceof $)***REMOVED***
+				} else if(typeof arg === 'object' && arg instanceof $){
 					output.$object = arg;
-				} else if(typeof arg === 'object' && self._helpers._isElement(arg))***REMOVED***
+				} else if(typeof arg === 'object' && self._helpers._isElement(arg)){
 					output.$object = $(arg);
-				} else if(typeof arg === 'object' && arg !== null)***REMOVED***
+				} else if(typeof arg === 'object' && arg !== null){
 					output.multiMix = arg;
-				} else if(typeof arg === 'boolean' && !arg)***REMOVED***
+				} else if(typeof arg === 'boolean' && !arg){
 					output.multiMix = false;
-				} else if(typeof arg === 'function')***REMOVED***
+				} else if(typeof arg === 'function'){
 					output.callback = arg;
 				}
 			}
@@ -1599,17 +1599,17 @@
 		/**
 		 * Execute Action
 		 * @since 2.0.0
-		 * @param ***REMOVED***string} methodName
-		 * @param ***REMOVED***boolean} isPost
-		 * @param ***REMOVED***array} args
+		 * @param {string} methodName
+		 * @param {boolean} isPost
+		 * @param {array} args
 		 */
 
-		_execAction: function(methodName, isPost, args)***REMOVED***
+		_execAction: function(methodName, isPost, args){
 			var self = this,
 				context = isPost ? 'post' : 'pre';
 
-			if(!self._actions.isEmptyObject && self._actions.hasOwnProperty(methodName))***REMOVED***
-				for(var key in self._actions[methodName][context])***REMOVED***
+			if(!self._actions.isEmptyObject && self._actions.hasOwnProperty(methodName)){
+				for(var key in self._actions[methodName][context]){
 					self._actions[methodName][context][key].call(self, args);
 				}
 			}
@@ -1618,19 +1618,19 @@
 		/**
 		 * Execute Filter
 		 * @since 2.0.0
-		 * @param ***REMOVED***string} methodName
-		 * @param ***REMOVED***mixed} value
-		 * @return ***REMOVED***mixed} value
+		 * @param {string} methodName
+		 * @param {mixed} value
+		 * @return {mixed} value
 		 */
 
-		_execFilter: function(methodName, value, args)***REMOVED***
+		_execFilter: function(methodName, value, args){
 			var self = this;
 
-			if(!self._filters.isEmptyObject && self._filters.hasOwnProperty(methodName))***REMOVED***
-				for(var key in self._filters[methodName])***REMOVED***
+			if(!self._filters.isEmptyObject && self._filters.hasOwnProperty(methodName)){
+				for(var key in self._filters[methodName]){
 					return self._filters[methodName][key].call(self, args);
 				}
-			} else ***REMOVED***
+			} else {
 				return value;
 			}
 		},
@@ -1638,17 +1638,17 @@
 		/* Helpers
 		---------------------------------------------------------------------- */
 
-		_helpers: ***REMOVED***
+		_helpers: {
 
 			/**
 			 * CamelCase
 			 * @since 2.0.0
-			 * @param ***REMOVED***string}
-			 * @return ***REMOVED***string}
+			 * @param {string}
+			 * @return {string}
 			 */
 
-			_camelCase: function(string)***REMOVED***
-				return string.replace(/-([a-z])/g, function(g)***REMOVED***
+			_camelCase: function(string){
+				return string.replace(/-([a-z])/g, function(g){
 						return g[1].toUpperCase();
 				});
 			},
@@ -1656,14 +1656,14 @@
 			/**
 			 * Is Element
 			 * @since 2.1.3
-			 * @param ***REMOVED***object} element to test
-			 * @return ***REMOVED***boolean}
+			 * @param {object} element to test
+			 * @return {boolean}
 			 */
 
-			_isElement: function(el)***REMOVED***
-				if(window.HTMLElement)***REMOVED***
+			_isElement: function(el){
+				if(window.HTMLElement){
 					return el instanceof HTMLElement;
-				} else ***REMOVED***
+				} else {
 					return (
 						el !== null &&
 						el.nodeType === 1 &&
@@ -1679,10 +1679,10 @@
 		/**
 		 * Is Mixing
 		 * @since 2.0.0
-		 * @return ***REMOVED***boolean}
+		 * @return {boolean}
 		 */
 
-		isMixing: function()***REMOVED***
+		isMixing: function(){
 			var self = this;
 
 			return self._execFilter('isMixing', self._mixing);
@@ -1691,58 +1691,58 @@
 		/**
 		 * Filter (public)
 		 * @since 2.0.0
-		 * @param ***REMOVED***array} arguments
+		 * @param {array} arguments
 		 */
 
-		filter: function()***REMOVED***
+		filter: function(){
 			var self = this,
 				args = self._parseMultiMixArgs(arguments);
 
 			self._clicking && (self._toggleString = '');
 
-			self.multiMix(***REMOVED***filter: args.command}, args.animate, args.callback);
+			self.multiMix({filter: args.command}, args.animate, args.callback);
 		},
 
 		/**
 		 * Sort (public)
 		 * @since 2.0.0
-		 * @param ***REMOVED***array} arguments
+		 * @param {array} arguments
 		 */
 
-		sort: function()***REMOVED***
+		sort: function(){
 			var self = this,
 				args = self._parseMultiMixArgs(arguments);
 
-			self.multiMix(***REMOVED***sort: args.command}, args.animate, args.callback);
+			self.multiMix({sort: args.command}, args.animate, args.callback);
 		},
 
 		/**
 		 * Change Layout (public)
 		 * @since 2.0.0
-		 * @param ***REMOVED***array} arguments
+		 * @param {array} arguments
 		 */
 
-		changeLayout: function()***REMOVED***
+		changeLayout: function(){
 			var self = this,
 				args = self._parseMultiMixArgs(arguments);
 
-			self.multiMix(***REMOVED***changeLayout: args.command}, args.animate, args.callback);
+			self.multiMix({changeLayout: args.command}, args.animate, args.callback);
 		},
 
 		/**
 		 * MultiMix
 		 * @since 2.0.0
-		 * @param ***REMOVED***array} arguments
+		 * @param {array} arguments
 		 */
 
-		multiMix: function()***REMOVED***
+		multiMix: function(){
 			var self = this,
 				args = self._parseMultiMixArgs(arguments);
 
 			self._execAction('multiMix', 0, arguments);
 
-			if(!self._mixing)***REMOVED***
-				if(self.controls.enable && !self._clicking)***REMOVED***
+			if(!self._mixing){
+				if(self.controls.enable && !self._clicking){
 					self.controls.toggleFilterButtons && self._buildToggleArray();
 					self._updateControls(args.command, self.controls.toggleFilterButtons);
 				}
@@ -1758,7 +1758,7 @@
 
 				self._refresh();
 
-				if(sort)***REMOVED***
+				if(sort){
 					self._newSort = self._parseSort(sort);
 					self._newSortString = sort;
 
@@ -1766,7 +1766,7 @@
 					self._sort();
 				}
 
-				if(filter !== undf)***REMOVED***
+				if(filter !== undf){
 					filter = (filter === 'all') ? self.selectors.target : filter;
 
 					self._activeFilter = filter;
@@ -1774,14 +1774,14 @@
 
 				self._filter();
 
-				if(changeLayout)***REMOVED***
+				if(changeLayout){
 					self._newDisplay = (typeof changeLayout === 'string') ? changeLayout : changeLayout.display || self.layout.display;
 					self._newClass = changeLayout.containerClass || '';
 
 					if(
 						self._newDisplay !== self.layout.display ||
 						self._newClass !== self.layout.containerClass
-					)***REMOVED***
+					){
 						self._changingLayout = true;
 
 						self._changingClass = (self._newClass !== self.layout.containerClass);
@@ -1795,16 +1795,16 @@
 
 				self._execAction('multiMix', 1, arguments);
 
-			} else ***REMOVED***
-				if(self.animation.queue && self._queue.length < self.animation.queueLimit)***REMOVED***
+			} else {
+				if(self.animation.queue && self._queue.length < self.animation.queueLimit){
 					self._queue.push(arguments);
 
 					(self.controls.enable && !self._clicking) && self._updateControls(args.command);
 
 					self._execAction('multiMixQueue', 1, arguments);
 
-				} else ***REMOVED***
-					if(typeof self.callbacks.onMixBusy === 'function')***REMOVED***
+				} else {
+					if(typeof self.callbacks.onMixBusy === 'function'){
 						self.callbacks.onMixBusy.call(self._domNode, self._state, self);
 					}
 					self._$container.trigger('mixBusy', [self._state, self]);
@@ -1817,30 +1817,30 @@
 		/**
 		 * Insert
 		 * @since 2.0.0
-		 * @param ***REMOVED***array} arguments
+		 * @param {array} arguments
 		 */
 
-		insert: function()***REMOVED***
+		insert: function(){
 			var self = this,
 				args = self._parseInsertArgs(arguments),
 				callback = (typeof args.callback === 'function') ? args.callback : null,
 				frag = document.createDocumentFragment(),
-				target = (function()***REMOVED***
+				target = (function(){
 					self._refresh();
 
-					if(self._$targets.length)***REMOVED***
+					if(self._$targets.length){
 						return (args.index < self._$targets.length || !self._$targets.length) ?
 							self._$targets[args.index] :
 							self._$targets[self._$targets.length-1].nextElementSibling;
-					} else ***REMOVED***
+					} else {
 						return self._$parent[0].children[0];
 					}
 				})();
 
 			self._execAction('insert', 0, arguments);
 
-			if(args.$object)***REMOVED***
-				for(var i = 0; i < args.$object.length; i++)***REMOVED***
+			if(args.$object){
+				for(var i = 0; i < args.$object.length; i++){
 					var el = args.$object[i];
 
 					frag.appendChild(el);
@@ -1852,7 +1852,7 @@
 
 			self._execAction('insert', 1, arguments);
 
-			if(typeof args.multiMix === 'object')***REMOVED***
+			if(typeof args.multiMix === 'object'){
 				self.multiMix(args.multiMix, callback);
 			}
 		},
@@ -1860,10 +1860,10 @@
 		/**
 		 * Prepend
 		 * @since 2.0.0
-		 * @param ***REMOVED***array} arguments
+		 * @param {array} arguments
 		 */
 
-		prepend: function()***REMOVED***
+		prepend: function(){
 			var self = this,
 				args = self._parseInsertArgs(arguments);
 
@@ -1873,10 +1873,10 @@
 		/**
 		 * Append
 		 * @since 2.0.0
-		 * @param ***REMOVED***array} arguments
+		 * @param {array} arguments
 		 */
 
-		append: function()***REMOVED***
+		append: function(){
 			var self = this,
 				args = self._parseInsertArgs(arguments);
 
@@ -1886,25 +1886,25 @@
 		/**
 		 * Get Option
 		 * @since 2.0.0
-		 * @param ***REMOVED***string} string
-		 * @return ***REMOVED***mixed} value
+		 * @param {string} string
+		 * @return {mixed} value
 		 */
 
-		getOption: function(string)***REMOVED***
+		getOption: function(string){
 			var self = this,
-				getProperty = function(obj, prop)***REMOVED***
+				getProperty = function(obj, prop){
 					var parts = prop.split('.'),
 						last = parts.pop(),
 						l = parts.length,
 						i = 1,
 						current = parts[0] || prop;
 
-					while((obj = obj[current]) && i < l)***REMOVED***
+					while((obj = obj[current]) && i < l){
 						current = parts[i];
 						i++;
 					}
 
-					if(obj !== undf)***REMOVED***
+					if(obj !== undf){
 						return obj[last] !== undf ? obj[last] : obj;
 					}
 				};
@@ -1915,10 +1915,10 @@
 		/**
 		 * Set Options
 		 * @since 2.0.0
-		 * @param ***REMOVED***object} config
+		 * @param {object} config
 		 */
 
-		setOptions: function(config)***REMOVED***
+		setOptions: function(config){
 			var self = this;
 
 			self._execAction('setOptions', 0, arguments);
@@ -1931,10 +1931,10 @@
 		/**
 		 * Get State
 		 * @since 2.0.0
-		 * @return ***REMOVED***object} state
+		 * @return {object} state
 		 */
 
-		getState: function()***REMOVED***
+		getState: function(){
 			var self = this;
 
 			return self._execFilter('getState', self._state, self);
@@ -1945,7 +1945,7 @@
 		 * @since 2.1.2
 		 */
 
-		forceRefresh: function()***REMOVED***
+		forceRefresh: function(){
 			var self = this;
 
 			self._refresh(false, true);
@@ -1954,10 +1954,10 @@
 		/**
 		 * Destroy
 		 * @since 2.0.0
-		 * @param ***REMOVED***boolean} hideAll
+		 * @param {boolean} hideAll
 		 */
 
-		destroy: function(hideAll)***REMOVED***
+		destroy: function(hideAll){
 			var self = this,
 				filters = $.MixItUp.prototype._bound._filter,
 				sorts = $.MixItUp.prototype._bound._sort;
@@ -1969,7 +1969,7 @@
 				.add($(self.selectors.filter))
 				.off('.mixItUp');
 
-			for(var i = 0; i < self._$targets.length; i++)***REMOVED***
+			for(var i = 0; i < self._$targets.length; i++){
 				var target = self._$targets[i];
 
 				hideAll && (target.style.display = '');
@@ -1979,15 +1979,15 @@
 
 			self._execAction('destroy', 1, arguments);
 
-			if(filters[self.selectors.filter] && filters[self.selectors.filter] > 1) ***REMOVED***
+			if(filters[self.selectors.filter] && filters[self.selectors.filter] > 1) {
 				filters[self.selectors.filter]--;
-			} else if(filters[self.selectors.filter] === 1) ***REMOVED***
+			} else if(filters[self.selectors.filter] === 1) {
 				delete filters[self.selectors.filter];
 			}
 
-			if(sorts[self.selectors.sort] && sorts[self.selectors.sort] > 1) ***REMOVED***
+			if(sorts[self.selectors.sort] && sorts[self.selectors.sort] > 1) {
 				sorts[self.selectors.sort]--;
-			} else if(sorts[self.selectors.sort] === 1) ***REMOVED***
+			} else if(sorts[self.selectors.sort] === 1) {
 				delete sorts[self.selectors.sort];
 			}
 
@@ -2005,13 +2005,13 @@
 	 * @extends $.fn
 	 */
 
-	$.fn.mixItUp = function()***REMOVED***
+	$.fn.mixItUp = function(){
 		var args = arguments,
 			dataReturn = [],
 			eachReturn,
-			_instantiate = function(domNode, settings)***REMOVED***
+			_instantiate = function(domNode, settings){
 				var instance = new $.MixItUp(),
-					rand = function()***REMOVED***
+					rand = function(){
 						return ('00000'+(Math.random()*16777216<<0).toString(16)).substr(-6).toUpperCase();
 					};
 
@@ -2019,7 +2019,7 @@
 
 				domNode.id = !domNode.id ? 'MixItUp'+rand() : domNode.id;
 
-				if(!instance._instances[domNode.id])***REMOVED***
+				if(!instance._instances[domNode.id]){
 					instance._instances[domNode.id] = instance;
 					instance._init(domNode, settings);
 				}
@@ -2027,23 +2027,23 @@
 				instance._execAction('_instantiate', 1, arguments);
 			};
 
-		eachReturn = this.each(function()***REMOVED***
-			if(args && typeof args[0] === 'string')***REMOVED***
+		eachReturn = this.each(function(){
+			if(args && typeof args[0] === 'string'){
 				var instance = $.MixItUp.prototype._instances[this.id];
-				if(args[0] === 'isLoaded')***REMOVED***
+				if(args[0] === 'isLoaded'){
 					dataReturn.push(instance ? true : false);
-				} else ***REMOVED***
+				} else {
 					var data = instance[args[0]](args[1], args[2], args[3]);
 					if(data !== undf)dataReturn.push(data);
 				}
-			} else ***REMOVED***
+			} else {
 				_instantiate(this, args[0]);
 			}
 		});
 
-		if(dataReturn.length)***REMOVED***
+		if(dataReturn.length){
 			return dataReturn.length > 1 ? dataReturn : dataReturn[0];
-		} else ***REMOVED***
+		} else {
 			return eachReturn;
 		}
 	};
@@ -2054,16 +2054,16 @@
 	 * @extends $.fn
 	 */
 
-	$.fn.removeStyle = function(style, prefix)***REMOVED***
+	$.fn.removeStyle = function(style, prefix){
 		prefix = prefix ? prefix : '';
 
-		return this.each(function()***REMOVED***
+		return this.each(function(){
 			var el = this,
 				styles = style.split(' ');
 
-			for(var i = 0; i < styles.length; i++)***REMOVED***
-				for(var j = 0; j < 4; j++)***REMOVED***
-					switch (j) ***REMOVED***
+			for(var i = 0; i < styles.length; i++){
+				for(var j = 0; j < 4; j++){
+					switch (j) {
 						case 0:
 							var prop = styles[i];
 							break;
@@ -2081,7 +2081,7 @@
 						el.style[prop] !== undf &&
 						typeof el.style[prop] !== 'unknown' &&
 						el.style[prop].length > 0
-					)***REMOVED***
+					){
 						el.style[prop] = '';
 					}
 
@@ -2089,7 +2089,7 @@
 				}
 			}
 
-			if(el.attributes && el.attributes.style && el.attributes.style !== undf && el.attributes.style.value === '')***REMOVED***
+			if(el.attributes && el.attributes.style && el.attributes.style !== undf && el.attributes.style.value === ''){
 				el.attributes.removeNamedItem('style');
 			}
 		});

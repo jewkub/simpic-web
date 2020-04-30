@@ -110,86 +110,86 @@
 
     <%- include('includes/body.ejs'); %>
     <script>
-      $('.login-a').click(function (e) ***REMOVED***
+      $('.login-a').click(function (e) {
         e.preventDefault();
-        $('#register').slideUp(function (e) ***REMOVED***
+        $('#register').slideUp(function (e) {
           $('#login').slideDown();
           $('.login-a').hide();
           $('.register-a').show();
-    ***REMOVED***);
-  ***REMOVED***);
+        });
+      });
 
-      $('.register-a').click(function (e) ***REMOVED***
+      $('.register-a').click(function (e) {
         e.preventDefault();
-        $('#login').slideUp(function (e) ***REMOVED***
+        $('#login').slideUp(function (e) {
           $('#register').slideDown();
           $('.login-a').show();
           $('.register-a').hide();
-    ***REMOVED***);
-  ***REMOVED***);
+        });
+      });
 
       const $emailInput = $('#emailInput');
       // const $formSubmit = $('#formSubmit');
       const $emailInvalid = $('#emailInvalid');
       const $passwordInput = $('#passwordInput');
       const $passwordConfirmInput = $('#passwordConfirmInput');
-      [$emailInput, $passwordConfirmInput, $passwordInput].forEach(e => ***REMOVED***
-        e.focus(event => ***REMOVED***
+      [$emailInput, $passwordConfirmInput, $passwordInput].forEach(e => {
+        e.focus(event => {
           e.removeClass('is-valid');
           e.removeClass('is-invalid');
-    ***REMOVED***);
-  ***REMOVED***);
-      $emailInput.on('focusout', event => ***REMOVED***
-        if($emailInput[0].checkValidity() === true) ***REMOVED***
-          $.get('/register/validemail', ***REMOVED*** email: $emailInput.val() }, data => ***REMOVED***
+        });
+      });
+      $emailInput.on('focusout', event => {
+        if($emailInput[0].checkValidity() === true) {
+          $.get('/register/validemail', { email: $emailInput.val() }, data => {
             // console.log(data.alreadyUsed);
             if ($emailInput.hasClass('is-valid') || $emailInput.hasClass('is-invalid')) return ;
-            if (data.error) ***REMOVED***
+            if (data.error) {
               $emailInput.addClass('is-invalid');
               $emailInvalid.html('Some error!');
-        ***REMOVED***
-            else if (data.alreadyUsed) ***REMOVED***
+            }
+            else if (data.alreadyUsed) {
               $emailInput.addClass('is-invalid');
               $emailInvalid.html('Email already used');
-        ***REMOVED***
-            else ***REMOVED***
+            }
+            else {
               $emailInput.addClass('is-valid');
-        ***REMOVED***
-      ***REMOVED***);
-    ***REMOVED***
-        else ***REMOVED***
+            }
+          });
+        }
+        else {
           $emailInput.addClass('is-invalid');
           $emailInvalid.html('Invalid email');
-    ***REMOVED***
-  ***REMOVED***);
-      $passwordInput.on('focus', event => ***REMOVED***
-        if($passwordConfirmInput.hasClass('is-valid') || $passwordConfirmInput.hasClass('is-invalid')) ***REMOVED***
+        }
+      });
+      $passwordInput.on('focus', event => {
+        if($passwordConfirmInput.hasClass('is-valid') || $passwordConfirmInput.hasClass('is-invalid')) {
           $passwordConfirmInput.removeClass('is-valid');
           $passwordConfirmInput.removeClass('is-invalid');
           $passwordConfirmInput.addClass('is-validating');
-    ***REMOVED***
-  ***REMOVED***);
-      $passwordInput.on('focusout', event => ***REMOVED***
-        if($passwordConfirmInput.hasClass('is-validating')) ***REMOVED***
+        }
+      });
+      $passwordInput.on('focusout', event => {
+        if($passwordConfirmInput.hasClass('is-validating')) {
           $passwordConfirmInput.trigger('focusout');
-    ***REMOVED***
+        }
         if($passwordInput.val().length < 4) $passwordInput.addClass('is-invalid');
         else $passwordInput.addClass('is-valid');
-  ***REMOVED***);
-      $passwordConfirmInput.on('focusout', event => ***REMOVED***
+      });
+      $passwordConfirmInput.on('focusout', event => {
         if($passwordInput.val() != $passwordConfirmInput.val()) $passwordConfirmInput.addClass('is-invalid');
         else $passwordConfirmInput.addClass('is-valid');
-  ***REMOVED***);
-      /* $('#login-form').on('submit', function(event) ***REMOVED***
-        if ($('#login-form input:not(.is-valid)').length > 0) ***REMOVED***
+      });
+      /* $('#login-form').on('submit', function(event) {
+        if ($('#login-form input:not(.is-valid)').length > 0) {
           event.preventDefault();
           event.stopPropagation();
-          $('#login-form input:not(.is-valid)').each(function(i) ***REMOVED***
+          $('#login-form input:not(.is-valid)').each(function(i) {
             $(this).trigger('focusout');
-      ***REMOVED***);
-    ***REMOVED***
+          });
+        }
         else $('input[type=submit]', this).attr('disabled', 'disabled');
-  ***REMOVED***); */
+      }); */
     </script>
   </body>
 </html>

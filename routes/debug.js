@@ -1,25 +1,25 @@
 const express = require('express');
 const router = express.Router();
-const ***REMOVED*** name: projectId } = require('../package.json');
+const { name: projectId } = require('../package.json');
 
 const Firestore = require('@google-cloud/firestore');
-const db = new Firestore(***REMOVED***
+const db = new Firestore({
   projectId,
   keyFilename: './secret/simpic-web-f94582c3af8f.json',
 });
 
 //error test
-router.get('/err', (req, res, next) => ***REMOVED***
+router.get('/err', (req, res, next) => {
   next(new Error('eiei'));
 });
 
 // get session
-router.get('/session', (req, res, next) => ***REMOVED***
+router.get('/session', (req, res, next) => {
   console.log(req.session);
   next(new Error('don\'t come here!'));
 });
 
-router.get('/early', async (req, res, next) => ***REMOVED***
+router.get('/early', async (req, res, next) => {
   ['pannathorn0769@gmail.com',
 'simpicfkuns@gmail.com',
 'deborachai20@gmail.com',
@@ -37,15 +37,15 @@ router.get('/early', async (req, res, next) => ***REMOVED***
 'nisatamtam@gmail.com',
 '916858880@qq.com',
 'siscaifak123@gmail.com',
-'bihonrainbow@gmail.com',].forEach(async e => ***REMOVED***
-    (await db.collection('users').where('email', '=', e).get()).docs[0].ref.update(***REMOVED***
+'bihonrainbow@gmail.com',].forEach(async e => {
+    (await db.collection('users').where('email', '=', e).get()).docs[0].ref.update({
       type: 'early'
-***REMOVED***);
-***REMOVED***);
+    });
+  });
   res.redirect('/');
 });
 
-router.get('/regular', async (req, res, next) => ***REMOVED***
+router.get('/regular', async (req, res, next) => {
   [
 'kmhs.fk@ugm.ac.id',
 'ryanleeyb@gmail.com',
@@ -76,44 +76,44 @@ router.get('/regular', async (req, res, next) => ***REMOVED***
 'armsuper_ps01@hotmail.com',
 'nanakhairunnisa88@gmail.com',
 'ssuraiya@usm.my',
-].forEach(async e => ***REMOVED***
-    (await db.collection('users').where('email', '=', e).get()).docs[0].ref.update(***REMOVED***
+].forEach(async e => {
+    (await db.collection('users').where('email', '=', e).get()).docs[0].ref.update({
       type: 'regular'
-***REMOVED***);
-***REMOVED***);
+    });
+  });
   res.redirect('/');
 });
 
-router.get('/observer', async (req, res, next) => ***REMOVED***
+router.get('/observer', async (req, res, next) => {
   ['komson_patho@hotmail.com',
-'abdullah_micro49@yahoo.com',].forEach(async e => ***REMOVED***
-    (await db.collection('users').where('email', '=', e).get()).docs[0].ref.update(***REMOVED***
+'abdullah_micro49@yahoo.com',].forEach(async e => {
+    (await db.collection('users').where('email', '=', e).get()).docs[0].ref.update({
       type: 'observer'
-***REMOVED***);
-***REMOVED***);
+    });
+  });
   res.redirect('/');
 });
 
-router.get('/email', (req, res, next) => ***REMOVED***
+router.get('/email', (req, res, next) => {
   res.send(req.user.get('email'));
 });
 
-router.get('/new', async (req, res, next) => ***REMOVED***
-  /* for (let i = 1; i <= 59; i++) await db.collection('exam').doc().create(***REMOVED***
+router.get('/new', async (req, res, next) => {
+  /* for (let i = 1; i <= 59; i++) await db.collection('exam').doc().create({
     answerType: 'text',
     num: i,
     part: 1
-***REMOVED***);
-  await db.collection('exam').doc().create(***REMOVED***
+  });
+  await db.collection('exam').doc().create({
     answerType: 'upload',
     num: 60,
     part: 1
-***REMOVED***);
-  await db.collection('exam').doc().create(***REMOVED***
+  });
+  await db.collection('exam').doc().create({
     answerType: 'upload',
     num: 61,
     part: 1
-***REMOVED***); */
+  }); */
 
   res.send('ok');
 });

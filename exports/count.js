@@ -1,10 +1,10 @@
 const Datastore = require('@google-cloud/datastore');
-const ***REMOVED*** name: projectId } = require('../package.json');
-const datastore = new Datastore(***REMOVED***
+const { name: projectId } = require('../package.json');
+const datastore = new Datastore({
   projectId: projectId,
 });
 /* const Storage = require('@google-cloud/storage');
-const storage = new Storage(***REMOVED***
+const storage = new Storage({
   projectId: projectId,
 });
 const bucket = storage.bucket('simc-web.appspot.com'); */
@@ -14,9 +14,9 @@ let query = datastore
   .filter('agree', '=', true);
 datastore
   .runQuery(query)
-  .then(res => ***REMOVED***
+  .then(res => {
     console.log(res[0].length);
-    res[0].forEach(e => ***REMOVED***
+    res[0].forEach(e => {
       let query = datastore
         .createQuery('Answers')
         .filter('email', '=', e.email)
@@ -24,8 +24,8 @@ datastore
         .filter('num', '=', 7);
       datastore
         .runQuery(query)
-        .then(res => ***REMOVED***
+        .then(res => {
           if(res[0][0] == 'เขจรไลย์') console.log(e.email);
-    ***REMOVED***);
-***REMOVED***);
-***REMOVED***);
+        });
+    });
+  });

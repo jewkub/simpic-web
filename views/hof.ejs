@@ -7,31 +7,31 @@
 		<!-- Bootstrap core CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
 		<style>
-      :root ***REMOVED***
+      :root {
       --widthpic: 150px;
       --heightpic: 100px;
-  ***REMOVED***
-      .grandchampion ***REMOVED***
+      }
+      .grandchampion {
         /*text-indent: 50px;*/
-  ***REMOVED***
-      .flagpicture ***REMOVED***
+      }
+      .flagpicture {
         width: 200px;
         height: 133px;
         margin-left: 5px;
-  ***REMOVED***
-      .winner ***REMOVED***
+      }
+      .winner {
         width: 450px;
         height: 300px;
         display: block;
         margin-bottom: 10px;
           margin-left: auto;
           margin-right: auto;
-  ***REMOVED***
-      .facultylogo ***REMOVED***
+      }
+      .facultylogo {
         width: 100px;
         height: 100px;
         margin-left: 20px;
-  ***REMOVED***
+      }
 		</style>
 	</head>
 	<body>
@@ -42,11 +42,11 @@
           <div class="list-group" role="tablist">
             <%
               let year = ['2019', '2018', '2017', '2016', '2015', '2014', '2013', '2012'];
-              year.forEach((e, i) => ***REMOVED***
+              year.forEach((e, i) => {
             %>
                 <a class="list-group-item list-group-item-action <%= i == 0 ? 'active' : '' %>" id="list-<%= e %>" data-toggle="list" href="#tab-<%= e %>" role="tab"><%= e %></a>
             <%
-          ***REMOVED***);
+              });
             %>
           </div>
         </div>

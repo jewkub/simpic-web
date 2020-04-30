@@ -294,7 +294,7 @@
         <!-- Portfolio Recent Projects -->
         <div id="portfolio" class="row" style="">
           <%
-            files.forEach((file) => ***REMOVED***
+            files.forEach((file) => {
               /* let type = '';
               if (file.name.includes('comp')) type = 'comp';
               else if (file.name.includes('sight')) type = 'sight';
@@ -313,7 +313,7 @@
               </div>
             </div>
           <%
-        ***REMOVED***);
+            });
           %>
         </div>
       <!-- Container Ends -->
@@ -446,11 +446,11 @@
         <div class="row justify-content-center">
           <!-- <h4>Coming Soon</h4> -->
           <%
-            sponsors.forEach(e => ***REMOVED***
+            sponsors.forEach(e => {
           %>
           <div class="col-6 col-sm-4 col-lg-3 col-xl-2 pb-3"><img src="https://storage.googleapis.com/simpic-web.appspot.com/<%= e.name %>" alt="<%= e.name %>" style="width: 100%;"></div>
           <%
-        ***REMOVED***);
+            });
           %>
         </div>
       </div>
@@ -491,44 +491,44 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js" integrity="sha256-2RS1U6UNZdLS0Bc9z2vsvV4yLIbJNKxyA4mrx5uossk=" crossorigin="anonymous"></script>
     <%- include('includes/body.ejs'); %>
     <script>
-        document.addEventListener("touchstart", function() ***REMOVED***}, false); // https://stackoverflow.com/q/18047353/4468834
+        document.addEventListener("touchstart", function() {}, false); // https://stackoverflow.com/q/18047353/4468834
     </script>
     <script>
       Swal
-        .fire(***REMOVED***
+        .fire({
           imageUrl: 'https://storage.googleapis.com/simpic-web.appspot.com/public/announce1.jpg',
           imageAlt: 'Announcement 1'
-    ***REMOVED***)
-        .then(r => ***REMOVED***
-          Swal.fire(***REMOVED***
+        })
+        .then(r => {
+          Swal.fire({
           imageUrl: 'https://storage.googleapis.com/simpic-web.appspot.com/public/announce2.jpg',
           imageAlt: 'Announcement 2'
-    ***REMOVED***);
-    ***REMOVED***);
+        });
+        });
     </script>
 
     <!-- float facebook like box start -->
     <script async defer id="float_fb" data-href="https://www.facebook.com/SIMPICOfficial/">
-      (function() ***REMOVED***
-        var defaults = ***REMOVED***
+      (function() {
+        var defaults = {
             container_width:280,
             height:224,
             show_facepile:'true',
             tabs:'',
             href:''
-      ***REMOVED***,
+          },
           cfg = $("#float_fb").data(),
           iframe = 'https://www.facebook.com/v2.9/plugins/page.php?',
           params = [],
           png = 'https://storage.googleapis.com/simpic-web.appspot.com/public/widget.png'
         var val;
         for(var k in defaults)
-        ***REMOVED***
+        {
             if(typeof cfg[k] === 'undefined')
                 cfg[k] = defaults[k];
             val = cfg[k];
             params.push(k + '=' + val);
-    ***REMOVED***
+        }
         iframe += params.join('&');
 
         // var status_ = 'hide'; // showing, hiding, show, hide
@@ -544,7 +544,7 @@
             top_ = 50;
         var right_ = cfg.container_width * -1;
 
-        var css = ***REMOVED***
+        var css = {
           width:cfg.container_width,
           height:cfg.height,
           position:'fixed',
@@ -553,39 +553,39 @@
           visibility:'visible',
           backgroundColor:'white',
           zIndex:5000
-    ***REMOVED***;
+        };
 
-        w.find('iframe').attr(***REMOVED***width:cfg.width, height:cfg.height}).attr('src', iframe);
+        w.find('iframe').attr({width:cfg.width, height:cfg.height}).attr('src', iframe);
 
         w.css(css);
 
-        /* w.find('img').hover(function() ***REMOVED***
-            w.animate(***REMOVED***right: 0}, function()***REMOVED*** status_ = 'show'; });
-    ***REMOVED***);
+        /* w.find('img').hover(function() {
+            w.animate({right: 0}, function(){ status_ = 'show'; });
+        });
 
-        w.mousemove(function(e)***REMOVED***
+        w.mousemove(function(e){
             e.stopPropagation();
-    ***REMOVED***);
+        });
 
-        $("body").mousemove(function() ***REMOVED***
-          w.animate(***REMOVED***right:right_}, function()***REMOVED*** status_ = 'hide';});
-    ***REMOVED***); */
-  ***REMOVED***)();
+        $("body").mousemove(function() {
+          w.animate({right:right_}, function(){ status_ = 'hide';});
+        }); */
+      })();
     </script>
     <!-- float facebook like box end -->
     <script>
-      $(function() ***REMOVED***
-        Swal.mixin(***REMOVED***
+      $(function() {
+        Swal.mixin({
           confirmButtonText: 'OK',
-    ***REMOVED***).queue([
-        <% if (alert.error) alert.error.forEach((e) => ***REMOVED*** %>
-          ***REMOVED***type: 'error', title: '<%- addSlashes(e) %>'},
+        }).queue([
+        <% if (alert.error) alert.error.forEach((e) => { %>
+          {type: 'error', title: '<%- addSlashes(e) %>'},
         <% }); 
-        if (alert.success) alert.success.forEach((e) => ***REMOVED*** %>
-          ***REMOVED***type: 'success', title: '<%- addSlashes(e) %>'},
+        if (alert.success) alert.success.forEach((e) => { %>
+          {type: 'success', title: '<%- addSlashes(e) %>'},
         <% }); %>
         ]);
-  ***REMOVED***);
+      });
     </script>
     
   </body>

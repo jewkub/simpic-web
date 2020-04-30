@@ -58,7 +58,7 @@ $letter-spacing: 0px;
  /* ==========================================================================
    2. GENERAL
    ========================================================================== */
-	body***REMOVED***
+	body{
 		font-family: 'Poppins', sans-serif;
 		color: #333;
 		font-size: 14px;
@@ -66,75 +66,75 @@ $letter-spacing: 0px;
 		background: #fff;
 		overflow-x: hidden;
 	}
-	html***REMOVED***
+	html{
 		overflow-x: hidden;
 	}
-	p***REMOVED***
+	p{
 		font-size: 14px;
 		line-height: 26px;
 	}
-	a:hover, a:focus ***REMOVED***
+	a:hover, a:focus {
 	    color: $preset;
 	}
-	a***REMOVED***
+	a{
 		-webkit-transition: all 0.2s linear;
 		-moz-transition: all 0.2s linear;
 		-o-transition: all 0.2s linear;
 		transition: all 0.2s linear;
 	}
-	h1,h2,h3,h4,h5***REMOVED***
+	h1,h2,h3,h4,h5{
 		font-family: 'Poppins', sans-serif;
 		font-size: 40px;	
 		font-weight: 700;
 		letter-spacing: 1px;
 	}
-	ul***REMOVED***
+	ul{
 		margin: 0;
 		padding: 0;
-		li***REMOVED***
+		li{
 			list-style: none;
 		}
 	}
 	a:hover,
-	a:focus***REMOVED***
+	a:focus{
 		text-decoration: none;
 		outline: none;
 	}
-	a:not([href]):not([tabindex])***REMOVED***
+	a:not([href]):not([tabindex]){
 		color: #fff;
 	}
-	a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover***REMOVED***
+	a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover{
 		color: $preset;
 	}
 
 /* ==========================================================================
    2.1 Section Title
    ========================================================================== */
-	.section***REMOVED***
+	.section{
 		padding: 80px 0;
 	}
-	.section-header***REMOVED***
+	.section-header{
 		color: #fff;
 		margin-bottom: 40px;
 		text-align: center;
-		.section-title***REMOVED***
+		.section-title{
 			font-size: 42px;
 			margin-top: 0;
 			text-transform: uppercase;
 			font-weight: 700;
 			color: #333;
 			position: relative;
-			span***REMOVED***
+			span{
 				color: $preset
 			}
 		}
-		.section-subtitle***REMOVED***
+		.section-subtitle{
 			margin-top: 15px;
 			color: #333;
 			font-size: 14px;
 			font-weight: 400;
 		}
-		.lines***REMOVED***
+		.lines{
 			margin: auto;
 			width: 70px;
 			position: relative;
@@ -146,7 +146,7 @@ $letter-spacing: 0px;
 /* ==========================================================================
    2.2 Buttons
    ========================================================================== */
-	.btn***REMOVED***
+	.btn{
 		font-size: 14px;
 		padding: 11px 40px;
 		border-radius: 0px;
@@ -160,19 +160,19 @@ $letter-spacing: 0px;
 		display: inline-block;
 	}
 	.btn:focus,
-	.btn:active***REMOVED***
+	.btn:active{
 		box-shadow: none;
 		outline: none;
 		color: #fff;
 	}
-	.btn-common***REMOVED***
+	.btn-common{
 		border: 1px solid $preset;
 		background: $preset;
 		position: relative;
 		color: #fff;
 		z-index: 1;
 		border-radius: 30px;
-		&:hover***REMOVED***
+		&:hover{
 			color: #fff;
 			background: $preset-drack;
 			border-color: $preset-drack;
@@ -181,52 +181,52 @@ $letter-spacing: 0px;
 			-webkit-transition: all .50s ease-in-out;
 		}
 	}
-	.btn-border***REMOVED***
+	.btn-border{
 		color: #fff;
 		background-color: transparent;
 		border: 2px solid #fff;
 		border-radius: 4px;
-		&:hover***REMOVED***
+		&:hover{
 			border: 2px solid #fff;
 			color: #fff;
 			background-color: $preset;
 		}
 	}
-	.btn-lg***REMOVED***
+	.btn-lg{
 		padding: 14px 33px;
 		text-transform: uppercase;
 		font-size: 16px;
 	}
-	.btn-rm***REMOVED***
+	.btn-rm{
 		padding: 7px 0px;
 		color: #999;
 		text-transform: capitalize;
-		i***REMOVED***
+		i{
 			vertical-align: middle;
 		}
 	}
-	button:focus***REMOVED***
+	button:focus{
 		outline: none!important;
 	}
-	.clear***REMOVED***
+	.clear{
 		clear: both;
 	}
 
 /* ==========================================================================
    2.3 Social Iocns
    ========================================================================== */
-	.social-icons ***REMOVED***
+	.social-icons {
 		margin-top:40px
 	}
-	.social-icons ul ***REMOVED***
+	.social-icons ul {
 		margin:0;
 		padding:0;
 		list-style:none
 	}
-	.social-icons ul li ***REMOVED***
+	.social-icons ul li {
 		display:inline
 	}
-	.social-icons ul li a ***REMOVED***
+	.social-icons ul li a {
 		display:inline-block;
 		margin-right: 5px;
 		margin-bottom: 15px;
@@ -238,62 +238,62 @@ $letter-spacing: 0px;
 		background: #ddd;
 		font-size: 16px
 	}
-	.social-icons ul li a:hover ***REMOVED***
+	.social-icons ul li a:hover {
 		color:#fff
 	}
-	.facebook a ***REMOVED***
+	.facebook a {
 		color:#4867AA
 	}
-	.facebook a:hover ***REMOVED***
+	.facebook a:hover {
 		background:#4867AA
 	}
-	.twitter a ***REMOVED***
+	.twitter a {
 		color:#1DA1F2
 	}
-	.twitter a:hover ***REMOVED***
+	.twitter a:hover {
 		background:#1DA1F2
 	}
-	.google-plus a ***REMOVED***
+	.google-plus a {
 		color:#DD4D42
 	}
-	.google-plus a:hover ***REMOVED***
+	.google-plus a:hover {
 		background:#DD4D42
 	}
-	.youtube a ***REMOVED***
+	.youtube a {
 		color:#DF2926
 	}
-	.youtube a:hover ***REMOVED***
+	.youtube a:hover {
 		background:#DF2926
 	}
-	.linkedin a ***REMOVED***
+	.linkedin a {
 		color:#007BB6
 	}
-	.linkedin a:hover ***REMOVED***
+	.linkedin a:hover {
 		background:#007BB6
 	}
-	.pinterest a ***REMOVED***
+	.pinterest a {
 		color:#BD081C
 	}
-	.pinterest a:hover ***REMOVED***
+	.pinterest a:hover {
 		background:#BD081C
 	}
-	.dribbble a ***REMOVED***
+	.dribbble a {
 		color:#EA4C89
 	}
-	.dribbble a:hover ***REMOVED***
+	.dribbble a:hover {
 		background:#EA4C89
 	}
-	.behance a ***REMOVED***
+	.behance a {
 		color:#0B7CFF
 	}
-	.behance a:hover ***REMOVED***
+	.behance a:hover {
 		background:#0B7CFF
 	}
 
 	 /* ==========================================================================
 	 2.4  Pre Loader
 	 ========================================================================== */
-	#loader***REMOVED***
+	#loader{
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -302,14 +302,14 @@ $letter-spacing: 0px;
 		background: #333;
 		z-index: 9999999999;
 	}
-	.spinner ***REMOVED***
+	.spinner {
 	  width: 40px;
 	  height: 40px;
 	  top: 45%;
 	  position: relative;
 	  margin: 0px auto;
 	}
-	.double-bounce1, .double-bounce2 ***REMOVED***
+	.double-bounce1, .double-bounce2 {
 	  width: 100%;
 	  height: 100%;
 	  border-radius: 50%;
@@ -321,37 +321,37 @@ $letter-spacing: 0px;
 	  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
 	  animation: sk-bounce 2.0s infinite ease-in-out;
 	}
-	.double-bounce2 ***REMOVED***
+	.double-bounce2 {
 	  -webkit-animation-delay: -1.0s;
 	  animation-delay: -1.0s;
 	}
 
-	@-webkit-keyframes sk-bounce ***REMOVED***
-	  0%, 100% ***REMOVED*** -webkit-transform: scale(0.0) }
-	  50% ***REMOVED*** -webkit-transform: scale(1.0) }
+	@-webkit-keyframes sk-bounce {
+	  0%, 100% { -webkit-transform: scale(0.0) }
+	  50% { -webkit-transform: scale(1.0) }
 	}
 
-	@keyframes sk-bounce ***REMOVED***
-	  0%, 100% ***REMOVED*** 
+	@keyframes sk-bounce {
+	  0%, 100% { 
 	    transform: scale(0.0);
 	    -webkit-transform: scale(0.0);
-	***REMOVED*** 50% ***REMOVED*** 
+	  } 50% { 
 	    transform: scale(1.0);
 	    -webkit-transform: scale(1.0);
-	***REMOVED***
+	  }
 	}
 
 	/* ========================================================================== 
   -2.5 Scroll To Up 
    ========================================================================== */
-	.back-to-top ***REMOVED***
+	.back-to-top {
 	  display: none;
 	  position: fixed;
 	  bottom: 18px;
 	  right: 15px;
 	}
 
-	.back-to-top i ***REMOVED***
+	.back-to-top i {
 	  display: block;
 	  width: 36px;
 	  height: 36px;
@@ -370,13 +370,13 @@ $letter-spacing: 0px;
 	/* ==========================================================================
    3. Hero Area
    ========================================================================== */
-	#hero-area***REMOVED***
+	#hero-area{
 		background: url(../img/hero-area.jpg) fixed no-repeat;
 		background-size: cover;
 		color: #fff;
 		overflow: hidden;
 		position: relative;
-		.overlay***REMOVED***
+		.overlay{
 			position: absolute;
 			width: 100%;
 			height: 100%;
@@ -385,33 +385,33 @@ $letter-spacing: 0px;
 			background: $preset;
 			opacity: 0.9;
 		}
-		.contents***REMOVED***
+		.contents{
 			padding: 200px 0 130px;
-			h1***REMOVED***	
+			h1{	
 				color: #fff;
 				font-size: 42px;
 				font-weight: 700;
 				margin-bottom: 25px;
 			}
-			p***REMOVED***
+			p{
 				font-size: 14px;
 				color: #fff;
 				font-weight: 400;
 				line-height: 30px;
 				letter-spacing: 0.5px;
 			}
-			.btn***REMOVED***margin: 25px 25px 0px 0px; text-transform: uppercase;}
+			.btn{margin: 25px 25px 0px 0px; text-transform: uppercase;}
 		}
-		.banner_bottom_btn***REMOVED***
+		.banner_bottom_btn{
 			margin-top: 40px;
-			i***REMOVED***
+			i{
 				color: #fff;
 				font-size: 48px;
 				-webkit-transition: all 0.2s linear;
 				-moz-transition: all 0.2s linear;
 				-o-transition: all 0.2s linear;
 				transition: all 0.2s linear;
-				&:hover***REMOVED***
+				&:hover{
 					color: $preset;
 				}
 			}
@@ -421,11 +421,11 @@ $letter-spacing: 0px;
 /* ==========================================================================
    4. Navbar Style
    ========================================================================== */
-	.navbar-brand***REMOVED***
+	.navbar-brand{
 	  position: relative;
 	  padding: 0px;
 	}
-	.top-nav-collapse***REMOVED***
+	.top-nav-collapse{
 	  background: #fff;
 	  z-index: 999999;
 	  top: 0px!important;
@@ -437,26 +437,26 @@ $letter-spacing: 0px;
 	  animation-fill-mode: both;
 	  -webkit-animation-name: fadeInDown;
 	  animation-name: fadeInDown;
-	  .navbar-brand***REMOVED***
+	  .navbar-brand{
 	    top: 0px;
-	***REMOVED***
+	  }
 	  background: #fff!important;
-	  .navbar-nav .nav-link***REMOVED***
+	  .navbar-nav .nav-link{
 	    color: #333 !important;
 	    margin-top: 0px!important;
 	    margin-bottom: 0px!important;
-	    &:hover***REMOVED***
+	    &:hover{
 	    	color: $preset!important;
-	***REMOVED***
-	***REMOVED***
-		.navbar-nav .nav-link.active***REMOVED***
+	    }
+	  }
+		.navbar-nav .nav-link.active{
 			color: #fff!important;
 		}
 	}
-	.indigo***REMOVED***
+	.indigo{
 	  background: transparent;
 	}
-	.navbar-expand-lg .navbar-nav .nav-link***REMOVED***
+	.navbar-expand-lg .navbar-nav .nav-link{
 	  color: #fff;
 	  padding: 0 22px;
 	  margin-top: 20px;
@@ -470,83 +470,83 @@ $letter-spacing: 0px;
 	}
 	.navbar-expand-lg .navbar-nav li a:hover, 
 	.navbar-expand-lg .navbar-nav li .active > a, 
-	.navbar-expand-lg .navbar-nav li a:focus***REMOVED***
+	.navbar-expand-lg .navbar-nav li a:focus{
 	  color: $preset;
 	}
-	.navbar .nav-link.active***REMOVED***
+	.navbar .nav-link.active{
 		color: #fff!important;
 		background: $preset;
 	}
-	.dropdown-toggle::after***REMOVED***
+	.dropdown-toggle::after{
 	  display: none;
 	}
-	.slicknav_btn***REMOVED***
+	.slicknav_btn{
 	  border-color: $preset;
 	}
-	.slicknav_menu .slicknav_icon-bar***REMOVED***
+	.slicknav_menu .slicknav_icon-bar{
 	  background: $preset;
 	}
 	/* only small tablets */
-	@media (min-width: 768px) and (max-width: 991px) ***REMOVED***
-	   #nav-main li a.nav-link***REMOVED***
+	@media (min-width: 768px) and (max-width: 991px) {
+	   #nav-main li a.nav-link{
 	    padding-top: 18px;
-	***REMOVED***
+	  }
 	}
-	.navbar-toggler***REMOVED***
+	.navbar-toggler{
 	  display: none;
 	}
 	// Mobile Menu
-	.mobile-menu***REMOVED***
+	.mobile-menu{
 	  display: none;
 	}
-	.slicknav_menu ***REMOVED***
+	.slicknav_menu {
 	  display:none;
 	}
 
-	@media screen and (max-width: 768px) ***REMOVED***
-	  .navbar-header***REMOVED***
+	@media screen and (max-width: 768px) {
+	  .navbar-header{
 	    width: 100%;
-	***REMOVED***
-	  .navbar-brand***REMOVED***
+	  }
+	  .navbar-brand{
 	    position: absolute;
 	    padding: 15px;
 	    top: 0;
-	    img***REMOVED***
+	    img{
 	      width: 70%;
-	***REMOVED***
+	    }
 	}
-	  #mobile-menu ***REMOVED***
+	  #mobile-menu {
 	    display:none;
-	***REMOVED***
+	  }
 	  
-	  .slicknav_menu ***REMOVED***
+	  .slicknav_menu {
 	    display:block;
-	***REMOVED***
-	  .slicknav_nav .active a***REMOVED***
+	  }
+	  .slicknav_nav .active a{
 	    background: $preset;
 	    color: #fff;
-	***REMOVED***
-	  .slicknav_nav a:hover, .slicknav_nav .active***REMOVED***
+	  }
+	  .slicknav_nav a:hover, .slicknav_nav .active{
 	    color: $preset;
 	    background: #f8f9fa;
-	***REMOVED***
-	  .slicknav_nav .dropdown li a.active***REMOVED***
+	  }
+	  .slicknav_nav .dropdown li a.active{
 	    background: #f8f9fa;
 	    color: $preset;
-	***REMOVED***
+	  }
 	}
 
 /* ==========================================================================
   5. Services section
    ========================================================================== */
-   .item-boxes***REMOVED***
+   .item-boxes{
    		text-align: center;
    		padding: 0px 15px;
    		margin-bottom: 15px;
    		-webkit-transition: all 0.3s ease 0s;
 		-moz-transition: all 0.3s ease 0s;
 		transition: all 0.3s ease 0s;
-   		.icon***REMOVED***
+   		.icon{
    			width: 60px;
 			height: 60px;
 			text-align: center;
@@ -557,41 +557,41 @@ $letter-spacing: 0px;
 			-webkit-transition: all 0.3s ease-in-out;
 			-moz-transition: all 0.3s ease-in-out;
 			transition: all 0.3s ease-in-out;
-			i***REMOVED***
+			i{
 				font-size: 26px;
 				line-height: 60px;
 				color: $preset;
 			}
    		}
-   		h4***REMOVED***
+   		h4{
    			font-size: 20px;
    			font-weight: 700;
    			margin-bottom: 10px;
    		}
    	}
-   	.item-boxes:hover .icon***REMOVED***
+   	.item-boxes:hover .icon{
 		background: $preset;
    	}
-   	.item-boxes:hover .icon i***REMOVED***
+   	.item-boxes:hover .icon i{
    		color: #fff;
    	}
 
  /* ==========================================================================
   6. Features Section Style
    ========================================================================== */
-	#features***REMOVED***
+	#features{
 		background: url(../img/bg1.jpg) fixed no-repeat;
 		background-size: cover;
 		color: #fff;
 		overflow: hidden;
 		position: relative;
-		.section-title***REMOVED***
+		.section-title{
 			color: #fff;
 		}
-		.section-subtitle***REMOVED***
+		.section-subtitle{
 			color: #fff;
 		}
-		.icon ***REMOVED***
+		.icon {
 			display: inline-block;
 			width: 60px;
 			height: 60px;
@@ -600,9 +600,9 @@ $letter-spacing: 0px;
 			position: relative;
 			z-index: 1;
 		}
-		.box-item ***REMOVED***
+		.box-item {
 			padding: 15px 0;
-			.icon ***REMOVED***
+			.icon {
 				border: 1px solid $preset;
 				text-align: center;
 				float: left;
@@ -610,7 +610,7 @@ $letter-spacing: 0px;
 				-moz-transition: all 0.2s linear;
 				-o-transition: all 0.2s linear;
 				transition: all 0.2s linear;
-				i ***REMOVED***
+				i {
 					color: $preset;
 					font-size: 24px;
 					line-height: 60px;
@@ -620,31 +620,31 @@ $letter-spacing: 0px;
 					transition: all 0.2s linear;
 				}
 			}
-			.text ***REMOVED***
+			.text {
 				padding-left: 80px;
-				h4 ***REMOVED***
+				h4 {
 					color: $preset;
 					font-weight: 700;
 					font-size: 16px;
 					text-transform: uppercase;
 					line-height: 22px;
 				}
-				p ***REMOVED***
+				p {
 					font-size: 14px;
 					line-height: 26px;
 				}
 			}
-			&:hover ***REMOVED***
-				.icon ***REMOVED***
+			&:hover {
+				.icon {
 					background: $preset;
-					i ***REMOVED***
+					i {
 						color: #ffffff;
 					}
 				}
 			}
 		}
-		.show-box ***REMOVED***
-			img***REMOVED***
+		.show-box {
+			img{
 			    position: absolute;
 				bottom: -120px;
 			}
@@ -654,23 +654,23 @@ $letter-spacing: 0px;
 /* ==========================================================================
   7. Video promo Style
    ========================================================================== */
-   .video-promo***REMOVED***
+   .video-promo{
 	   	background: #61D2B4;
 		color: #fff;
 		overflow: hidden;
 		position: relative;	
-		.video-promo-content***REMOVED***
+		.video-promo-content{
 			color: #fff;
-			h2***REMOVED***
+			h2{
 				color: #fff;
 				font-size: 30px;
 				text-transform: uppercase;
 				margin-bottom: 30px;
 			}
-			p***REMOVED***
+			p{
 				margin-bottom: 30px;
 			}
-			.video-popup***REMOVED***
+			.video-popup{
 				width: 80px;
 				height: 80px;
 				text-align: center;
@@ -682,13 +682,13 @@ $letter-spacing: 0px;
 				-webkit-transition: all 0.5s ease-in-out;
 				-moz-transition: all 0.5s ease-in-out;
 				transition: all 0.5s ease-in-out;
-				  i***REMOVED***
+				  i{
 				  	line-height: 72px;
-				***REMOVED***
+				  }
 			}
 		}
- ***REMOVED***
-  .overlay***REMOVED***
+   }
+  .overlay{
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -703,52 +703,52 @@ $letter-spacing: 0px;
  /* ==========================================================================
   8. Portfolio Section
    ========================================================================== */
-	#portfolios***REMOVED***
-	  .mix***REMOVED***
+	#portfolios{
+	  .mix{
 	    padding: 10px;
-	***REMOVED***
-	  .portfolio-item***REMOVED***
-		.shot-item***REMOVED***
+	  }
+	  .portfolio-item{
+		.shot-item{
 			margin: 0px;
 		}
-	***REMOVED***
+	  }
 	}
-	#portfolio .mix***REMOVED***
+	#portfolio .mix{
 	  display: none;
 	}
-	.controls***REMOVED***
+	.controls{
 	  text-align: center;
 	  padding: 0px 0px 20px;  
-	  .active***REMOVED***
+	  .active{
 	    color: $preset!important;
 	    border-color: $preset;
 	    background: transparent;
-	***REMOVED***
-	  .btn***REMOVED***
+	  }
+	  .btn{
 	  	text-transform: uppercase;
 	  	margin: 2px;
-	***REMOVED***
-	  &:hover***REMOVED***
+	  }
+	  &:hover{
 	  	cursor: pointer;
-	***REMOVED***
+	  }
 	}
-	.portfolio-img ***REMOVED***
+	.portfolio-img {
 	    overflow: hidden;
 	    display: block;
 	    position: relative;
-    img***REMOVED***
+    img{
     	width: 100%;
-***REMOVED***
-***REMOVED***
-	.shot-item***REMOVED***
+    }
+  }
+	.shot-item{
 		margin-right: 15px;
 		border-radius: 4px;
 		background: #fff;   
 		position: relative;		
-		img***REMOVED***
+		img{
 			width: 100%;
 		}
-		.overlay***REMOVED***
+		.overlay{
 			position: absolute;
 			width: 100%;
 			height: 100%;
@@ -759,10 +759,10 @@ $letter-spacing: 0px;
 			left: 0;
 		}
 	}
-	.shot-item:hover .overlay***REMOVED***
+	.shot-item:hover .overlay{
 		opacity: 1;
 	}
-	.overlay .item-icon ***REMOVED***
+	.overlay .item-icon {
 		height: 48px;
 		width: 48px;
 		line-height: 48px;
@@ -783,12 +783,12 @@ $letter-spacing: 0px;
 		transition: all 0.5s ease-in-out;
 		border: 1px solid $preset;
 		border-radius: 50%;
-		&:hover***REMOVED***
+		&:hover{
 			background: $preset;
 			color: #fff;
 		}
 	}
-	.shot-item:hover .item-icon ***REMOVED***
+	.shot-item:hover .item-icon {
 		visibility:visible;
 		opacity:1;
 	}
@@ -797,7 +797,7 @@ $letter-spacing: 0px;
 	 /* ==========================================================================
 	9. Pricing Table
 	========================================================================== */
-    .pricing-table***REMOVED***
+    .pricing-table{
     		padding: 0px 0px 40px 0px;
     		margin: 0 auto;
 			margin-bottom: 5px;
@@ -808,11 +808,11 @@ $letter-spacing: 0px;
 			-webkit-transition: all 0.3s;
 			-moz-transition: all 0.3s;
 			transition: all 0.3s;
-			&:hover***REMOVED***
+			&:hover{
 				box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);			
 			}	
-			.pricing-details***REMOVED***
-				h2***REMOVED***
+			.pricing-details{
+				h2{
 					font-size: 26px;
 				    font-weight: 700;
 				    color: #333;
@@ -821,87 +821,87 @@ $letter-spacing: 0px;
 				    background: #f1f1f1;
 				    padding: 30px 0;
 				}
-				span***REMOVED***
+				span{
 					display: inline-block;
 					font-size: 48px;
 					font-weight: 400;
 					color: $preset;
 					margin-bottom: 20px;
 				}
-				ul***REMOVED***
+				ul{
 					margin-bottom: 35px;
-					li***REMOVED***
+					li{
 						padding: 10px;
 						font-size: 15px;
 						border-bottom: 1px dotted #f1f1f1;
 					}
 				}
 			}
-***REMOVED***
-    .table-left***REMOVED***
+    }
+    .table-left{
     	margin-top: 20px;
-***REMOVED***
+    }
 
 /* ==========================================================================
  10. Counter Section Style
  ========================================================================== */
-   .counters***REMOVED***
+   .counters{
 	   	background: url(../img/counter.jpg) fixed;
 		position: relative;
-		.facts-item***REMOVED***
+		.facts-item{
 			text-align: center;
 			color: #fff;
-			.icon***REMOVED***
+			.icon{
 				margin-bottom: 30px;
-				i***REMOVED***
+				i{
 					font-size: 50px;
 					color: #fff;
 				}
 			}
 			
-			.fact-count***REMOVED***
-				h3***REMOVED***
+			.fact-count{
+				h3{
 					font-size: 35px;
 					color: #fff;
 					margin-bottom: 15px;
 				}
-				h4***REMOVED***
+				h4{
 					font-size: 20px;
 					font-weight: 400;
 					color: #fff;
 				}
 			}
 		}
- ***REMOVED***
+   }
 
 /* ==========================================================================
 11. Testimonial Section Style
  ========================================================================== */  
-	#testimonial ***REMOVED***
+	#testimonial {
 		background: url(../img/testimonial-bg.jpg) fixed no-repeat;
 		background-size: cover;
 		color: #fff;
 		overflow: hidden;
 		position: relative;	
 	}	
-	.testimonial-item***REMOVED***
+	.testimonial-item{
 		text-align: center;
-		img ***REMOVED***
+		img {
 		  	width:80px;
 		  	border: 3px solid #fff;
 			height:80px;
 			border-radius: 50%;
 		}
-		.testimonial-text***REMOVED***
-			 h3 ***REMOVED***
+		.testimonial-text{
+			 h3 {
 			  	font-size: 15px;
 				font-weight: 700;
 			}
-			span***REMOVED***
+			span{
 				font-size: 14px;
 				color: #999;
 			}
-			p ***REMOVED***			  	
+			p {			  	
 			  	font-size: 14px;
 				font-weight: 400;
 			  	padding: 36px 10px 30px 10px;
@@ -911,21 +911,21 @@ $letter-spacing: 0px;
 
 		}
 	}
-	.owl-theme .owl-controls .owl-page span***REMOVED***
+	.owl-theme .owl-controls .owl-page span{
 		background: $preset;
 	}
-	.owl-theme .owl-controls***REMOVED***
+	.owl-theme .owl-controls{
 		margin-top: 20px;
 	}
  /* ==========================================================================
   12. Team Section
    ========================================================================== */
-   .single-team:hover .team-details***REMOVED***
+   .single-team:hover .team-details{
 		opacity: 1;
- ***REMOVED***
-    .single-team:hover .team-inner***REMOVED***
- ***REMOVED***
-   .single-team***REMOVED***
+   }
+    .single-team:hover .team-inner{
+   }
+   .single-team{
 	   	position: relative;
 	   	-webkit-transition: 0.5s;
 		transition: 0.5s;
@@ -933,14 +933,14 @@ $letter-spacing: 0px;
 		border-radius: 0px;
 		background: $preset;
 		overflow: hidden;
-   	img***REMOVED***
+   	img{
    		width: 100%;
    	}
-   	.team-inner***REMOVED***
+   	.team-inner{
 		-webkit-transition: 0.5s;
 		transition: 0.5s;
    	}
-   	.team-details***REMOVED***
+   	.team-details{
 			text-align: center;
 			-webkit-transition: 0.5s;
 			-moz-transition: 0.5s;
@@ -948,20 +948,20 @@ $letter-spacing: 0px;
 			border-radius: 0px;
 			background: #f1f1f1;
 			padding: 15px;
-		.team-title***REMOVED***
+		.team-title{
 			margin-bottom: 5px;
 			font-size: 20px;
 			font-weight: 700;
 			color: #333;
 		}
-		p***REMOVED***
+		p{
 			color: #333;
 		}
    	}
-   	.social-list***REMOVED***
-   		li***REMOVED***
+   	.social-list{
+   		li{
    			display: inline-block;
-   			a***REMOVED***
+   			a{
    				display: block;
 			    height: 34px;
 			    line-height: 34px;
@@ -977,106 +977,106 @@ $letter-spacing: 0px;
 				transition: 0.5s;
    			}
    		}
-   		.facebook a:hover***REMOVED***
+   		.facebook a:hover{
    			background: #4867aa;
    			color: #fff;
    		}
-   		.twitter a:hover***REMOVED***
+   		.twitter a:hover{
    			background: #1da1f2;
    			color: #fff;
    		}
-   		.google-plus a:hover***REMOVED***
+   		.google-plus a:hover{
    			background: #dd4d42;
    			color: #fff;
    		}
-   		.linkedin a:hover***REMOVED***
+   		.linkedin a:hover{
    			background: #007bb6;
    			color: #fff;
    		}
    	}
- ***REMOVED***
+   }
 
 
 /* ==========================================================================
   13. Blog 
    ========================================================================== */
-  #blog***REMOVED***
-    .blog-item-wrapper***REMOVED***
+  #blog{
+    .blog-item-wrapper{
       background: #fff;
       border-radius: 0px;     
       -webkit-transition: transform 0.2s linear, -webkit-box-shadow 0.2s linear;
       -moz-transition: transform 0.2s linear, -moz-box-shadow 0.2s linear;
       transition: transform 0.2s linear, box-shadow 0.2s linear;
-***REMOVED***
-    .blog-item-wrapper:hover .blog-item-img:before***REMOVED***
+    }
+    .blog-item-wrapper:hover .blog-item-img:before{
     	opacity: 1;
     	height: 100%;
     	width: 100%;
-***REMOVED***
-    .blog-item-img***REMOVED***
+    }
+    .blog-item-img{
       position: relative; 
-      img***REMOVED***
+      img{
         width: 100%;
-  ***REMOVED***
-***REMOVED***
-    .blog-item-text***REMOVED***
+      }
+    }
+    .blog-item-text{
        padding: 20px 0;      
-      h3***REMOVED***
+      h3{
         line-height: 26px;
         font-size: 18px;
         font-weight: 700;
         margin-bottom: 10px;
-        a***REMOVED***
+        a{
 	      	color: #333;
-	      	&:hover***REMOVED***
+	      	&:hover{
 	      		color: $preset;
 	      	}
-	***REMOVED***
-  ***REMOVED***
-      p***REMOVED***
+	    }
+      }
+      p{
       		line-height: 25px; margin-bottom: 20px;
       	}    
-  ***REMOVED***
-***REMOVED***
-  .meta-tags***REMOVED***
+      }
+  }
+  .meta-tags{
     margin-bottom: 20px;
-    span***REMOVED***
+    span{
     	color: #999;
       	margin-right: 10px;
-      i***REMOVED***
+      i{
         margin-right: 5px;
-  ***REMOVED***
-      a***REMOVED***
+      }
+      a{
       	color: #999;
-      	&:hover***REMOVED***
+      	&:hover{
       		color: $preset;
       	}
-  ***REMOVED***
-***REMOVED***
-***REMOVED***
+      }
+    }
+  }
 
  
 /* ==========================================================================
   14. Contact Us
   ========================================================================== */
-  .contact-us***REMOVED***
-  	h3***REMOVED***
+  .contact-us{
+  	h3{
   		font-size: 36px;
   		margin-bottom: 45px;
   	}
-  	p***REMOVED***
-  		span***REMOVED***
+  	p{
+  		span{
   			color: $preset;
   			padding-left: 10px;
   		}
   	}
-***REMOVED***
-  #contact***REMOVED***
+  }
+  #contact{
 		background: #343a40;
 	    color: #fff;
 	    position: relative;
 	} 
-  .form-control***REMOVED***
+  .form-control{
 	 	width: 100%;
 		margin-bottom: 10px;
 		padding: 14px;
@@ -1089,23 +1089,23 @@ $letter-spacing: 0px;
 		-moz-transition: all 0.3s;
 		transition: all 0.3s;
 	}
-	.form-control:focus***REMOVED***
+	.form-control:focus{
 		box-shadow: none;
 		color: #fff;
 		border-color: $preset;
 		background: transparent;
 		outline: none;
 	}
-	.btn.disabled, .btn:disabled***REMOVED***
+	.btn.disabled, .btn:disabled{
 		opacity: 1;
 	}
 	
-	.text-danger***REMOVED***
+	.text-danger{
 		font-size: 14px;
 		margin-top: 10px;
 	}
-	.list-unstyled***REMOVED***
-		li***REMOVED***
+	.list-unstyled{
+		li{
 			color: #d9534f;
 		}
 	}
@@ -1113,37 +1113,37 @@ $letter-spacing: 0px;
 /* ==========================================================================
 15. Footer Style
  ========================================================================== */
-footer***REMOVED***
+footer{
 	background: #292f35;
 	padding: 20px 0;
 }
-.footer-links***REMOVED***
+.footer-links{
 	line-height: 48px;
-	li***REMOVED***
+	li{
 		float: left;
-		a***REMOVED***
+		a{
 			color: #fff;
 	    margin-right: 15px;
 	    transition: all 0.3s ease-in-out;
 	    -webkit-transition: all 0.3s ease-in-out;
 	    -moz-transition: all 0.3s ease-in-out;
-	    &:hover***REMOVED***
+	    &:hover{
 	    	color: $preset;
-	***REMOVED***
+	    }
 		}
 	}
 }
-.copyright***REMOVED***
+.copyright{
 	margin-top: 10px;
 	float: right;
-p***REMOVED***
+p{
   color: #fff;
-  a***REMOVED***
+  a{
     color: #fff;
-    &:hover***REMOVED***
+    &:hover{
       color: $preset;
-***REMOVED***
-***REMOVED***
+    }
+  }
 }
 }
 

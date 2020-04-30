@@ -10,31 +10,31 @@
  * @version 3.0.0
  *
  * Example usage:
- * $('#nav').onePageNav(***REMOVED***
+ * $('#nav').onePageNav({
  *   currentClass: 'current',
  *   changeHash: false,
  *   scrollSpeed: 750
  * });
  */
 
-;(function($, window, document, undefined)***REMOVED***
+;(function($, window, document, undefined){
 
 	// our plugin constructor
-	var OnePageNav = function(elem, options)***REMOVED***
+	var OnePageNav = function(elem, options){
 		this.elem = elem;
 		this.$elem = $(elem);
 		this.options = options;
 		this.metadata = this.$elem.data('plugin-options');
 		this.$win = $(window);
-		this.sections = ***REMOVED***};
+		this.sections = {};
 		this.didScroll = false;
 		this.$doc = $(document);
 		this.docHeight = this.$doc.height();
 	};
 
 	// the plugin prototype
-	OnePageNav.prototype = ***REMOVED***
-		defaults: ***REMOVED***
+	OnePageNav.prototype = {
+		defaults: {
 			navItems: 'a',
 			currentClass: 'current',
 			changeHash: false,
@@ -47,15 +47,15 @@
 			scrollChange: false
 		},
 
-		init: function() ***REMOVED***
+		init: function() {
 			// Introduce defaults that can be extended either
 			// globally or using an object literal.
-			this.config = $.extend(***REMOVED***}, this.defaults, this.options, this.metadata);
+			this.config = $.extend({}, this.defaults, this.options, this.metadata);
 
 			this.$nav = this.$elem.find(this.config.navItems);
 
 			//Filter any links out of the nav
-			if(this.config.filter !== '') ***REMOVED***
+			if(this.config.filter !== '') {
 				this.$nav = this.$nav.filter(this.config.filter);
 			}
 
@@ -74,63 +74,63 @@
 			return this;
 		},
 
-		adjustNav: function(self, $parent) ***REMOVED***
+		adjustNav: function(self, $parent) {
 			self.$elem.find('.' + self.config.currentClass).removeClass(self.config.currentClass);
 			$parent.addClass(self.config.currentClass);
 		},
 
-		bindInterval: function() ***REMOVED***
+		bindInterval: function() {
 			var self = this;
 			var docHeight;
 
-			self.$win.on('scroll.onePageNav', function() ***REMOVED***
+			self.$win.on('scroll.onePageNav', function() {
 				self.didScroll = true;
 			});
 
-			self.t = setInterval(function() ***REMOVED***
+			self.t = setInterval(function() {
 				docHeight = self.$doc.height();
 
 				//If it was scrolled
-				if(self.didScroll) ***REMOVED***
+				if(self.didScroll) {
 					self.didScroll = false;
 					self.scrollChange();
 				}
 
 				//If the document height changes
-				if(docHeight !== self.docHeight) ***REMOVED***
+				if(docHeight !== self.docHeight) {
 					self.docHeight = docHeight;
 					self.getPositions();
 				}
 			}, 250);
 		},
 
-		getHash: function($link) ***REMOVED***
+		getHash: function($link) {
 			return $link.attr('href').split('#')[1];
 		},
 
-		getPositions: function() ***REMOVED***
+		getPositions: function() {
 			var self = this;
 			var linkHref;
 			var topPos;
 			var $target;
 
-			self.$nav.each(function() ***REMOVED***
+			self.$nav.each(function() {
 				linkHref = self.getHash($(this));
 				$target = $('#' + linkHref);
 
-				if($target.length) ***REMOVED***
+				if($target.length) {
 					topPos = $target.offset().top;
 					self.sections[linkHref] = Math.round(topPos);
 				}
 			});
 		},
 
-		getSection: function(windowPos) ***REMOVED***
+		getSection: function(windowPos) {
 			var returnValue = null;
 			var windowHeight = Math.round(this.$win.height() * this.config.scrollThreshold);
 
-			for(var section in this.sections) ***REMOVED***
-				if((this.sections[section] - windowHeight) < windowPos) ***REMOVED***
+			for(var section in this.sections) {
+				if((this.sections[section] - windowHeight) < windowPos) {
 					returnValue = section;
 				}
 			}
@@ -138,15 +138,15 @@
 			return returnValue;
 		},
 
-		handleClick: function(e) ***REMOVED***
+		handleClick: function(e) {
 			var self = this;
 			var $link = $(e.currentTarget);
 			var $parent = $link.parent();
 			var newLoc = '#' + self.getHash($link);
 
-			if(!$parent.hasClass(self.config.currentClass)) ***REMOVED***
+			if(!$parent.hasClass(self.config.currentClass)) {
 				//Start callback
-				if(self.config.begin) ***REMOVED***
+				if(self.config.begin) {
 					self.config.begin();
 				}
 
@@ -157,9 +157,9 @@
 				self.unbindInterval();
 
 				//Scroll to the correct position
-				self.scrollTo(newLoc, function() ***REMOVED***
+				self.scrollTo(newLoc, function() {
 					//Do we need to change the hash?
-					if(self.config.changeHash) ***REMOVED***
+					if(self.config.changeHash) {
 						window.location.hash = newLoc;
 					}
 
@@ -167,7 +167,7 @@
 					self.bindInterval();
 
 					//End callback
-					if(self.config.end) ***REMOVED***
+					if(self.config.end) {
 						self.config.end();
 					}
 				});
@@ -176,37 +176,37 @@
 			e.preventDefault();
 		},
 
-		scrollChange: function() ***REMOVED***
+		scrollChange: function() {
 			var windowTop = this.$win.scrollTop();
 			var position = this.getSection(windowTop);
 			var $parent;
 
 			//If the position is set
-			if(position !== null) ***REMOVED***
+			if(position !== null) {
 				$parent = this.$elem.find('a[href$="#' + position + '"]').parent();
 
 				//If it's not already the current section
-				if(!$parent.hasClass(this.config.currentClass)) ***REMOVED***
+				if(!$parent.hasClass(this.config.currentClass)) {
 					//Change the highlighted nav item
 					this.adjustNav(this, $parent);
 
 					//If there is a scrollChange callback
-					if(this.config.scrollChange) ***REMOVED***
+					if(this.config.scrollChange) {
 						this.config.scrollChange($parent);
 					}
 				}
 			}
 		},
 
-		scrollTo: function(target, callback) ***REMOVED***
+		scrollTo: function(target, callback) {
 			var offset = $(target).offset().top;
 
-			$('html, body').animate(***REMOVED***
+			$('html, body').animate({
 				scrollTop: offset
 			}, this.config.scrollSpeed, this.config.easing, callback);
 		},
 
-		unbindInterval: function() ***REMOVED***
+		unbindInterval: function() {
 			clearInterval(this.t);
 			this.$win.unbind('scroll.onePageNav');
 		}
@@ -214,8 +214,8 @@
 
 	OnePageNav.defaults = OnePageNav.prototype.defaults;
 
-	$.fn.onePageNav = function(options) ***REMOVED***
-		return this.each(function() ***REMOVED***
+	$.fn.onePageNav = function(options) {
+		return this.each(function() {
 			new OnePageNav(this, options).init();
 		});
 	};

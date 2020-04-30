@@ -20,7 +20,7 @@
           <div class="card-body">
             <h5 class="card-title">Status</h5>
             <%
-              ['School and team information', 'Letter of approval', 'Motivation letter', 'Short essay'].forEach((e, i) => ***REMOVED***
+              ['School and team information', 'Letter of approval', 'Motivation letter', 'Short essay'].forEach((e, i) => {
             %>
                 <div class="form-row">
                   <div class="col-auto col-form-label">
@@ -40,7 +40,7 @@
                   </div>
                 </div>
             <%
-          ***REMOVED***);
+              });
             %>
           </div>
         </div>
@@ -50,7 +50,7 @@
           <div class="card-body">
             <h5 class="card-title">Lock</h5>
             <%
-              ['School and team information', 'Letter of approval', 'Motivation letter', 'Short essay'].forEach((e, i) => ***REMOVED***
+              ['School and team information', 'Letter of approval', 'Motivation letter', 'Short essay'].forEach((e, i) => {
             %>
                 <div class="form-row">
                   <div class="col-auto col-form-label">
@@ -66,7 +66,7 @@
                   </div>
                 </div>
             <%
-          ***REMOVED***);
+              });
             %>
           </div>
         </div>
@@ -107,7 +107,7 @@
               </div>
             </div>
             <%
-              ['Flight information', 'Your accomodation'].forEach((e, i) => ***REMOVED***
+              ['Flight information', 'Your accomodation'].forEach((e, i) => {
             %>
                 <div class="form-row">
                   <div class="col-auto col-form-label">
@@ -118,7 +118,7 @@
                   </div>
                 </div>
             <%
-          ***REMOVED***);
+              });
             %>
           </div>
         </div>
@@ -131,41 +131,41 @@
     </div>
     <%- include('../includes/body.ejs'); %>
     <script type="text/javascript">
-      $(() => ***REMOVED***
+      $(() => {
         <%
           let lock = user.get('lock') || [];
-          lock.forEach((e, i) => ***REMOVED***
+          lock.forEach((e, i) => {
         %>
             $('*[name="l<%= i+1 %>"] option[value="<%= e %>"]').prop('selected', true);
         <%
-      ***REMOVED***);
+          });
 
           let status = user.get('status') || [];
-          status.forEach((e, i) => ***REMOVED***
+          status.forEach((e, i) => {
         %>
             $('*[name="s<%= i+1 %>"] option[value="<%= e %>"]').prop('selected', true);
         <%
-      ***REMOVED***);
+          });
           let comment = user.get('comment') || [];
-          comment.forEach((e, i) => ***REMOVED***
+          comment.forEach((e, i) => {
         %>
             $('#c<%= i+1 %>').val('<%= e %>');
         <%
-      ***REMOVED***);
+          });
           let extra = user.get('extra') || [];
         %>
           $('*[name="x1"] option[value="<%= extra[0] %>"]').prop('selected', true);
         <%
-          extra.forEach((e, i) => ***REMOVED***
+          extra.forEach((e, i) => {
             if (i == 0) return ;
         %>
             $('#x<%= i+1 %>').val('<%= e %>');
         <%
-      ***REMOVED***);
+          });
           let payment = user.get('payment');
         %>
         $('#payment option[value="<%= payment %>"]').prop('selected', true);
-  ***REMOVED***);
+      });
     </script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper.min.js" integrity="sha256-3Iu0zFU6cPS92RSC3Pe4DBwjIV/9XKyzYTqKZzly6A8=" crossorigin="anonymous"></script>

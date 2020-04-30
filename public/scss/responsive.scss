@@ -1,95 +1,95 @@
 
 /* only small desktops */
-@media (min-width: 992px) and (max-width: 1199px) ***REMOVED***
+@media (min-width: 992px) and (max-width: 1199px) {
     
 }
 
 /* tablets */
-@media (max-width: 991px) ***REMOVED***
+@media (max-width: 991px) {
 
 }
 
 /* only small tablets */
-@media (min-width: 768px) and (max-width: 991px) ***REMOVED***
-    #hero-area .contents h1***REMOVED***
+@media (min-width: 768px) and (max-width: 991px) {
+    #hero-area .contents h1{
         font-size: 28px;
-***REMOVED***
-    .item-boxes h4***REMOVED***
+    }
+    .item-boxes h4{
         font-size: 18px;
-***REMOVED***
-    #features .show-box img***REMOVED***
+    }
+    #features .show-box img{
         display: none;
-***REMOVED***
-    .pricing-table .pricing-details ul li***REMOVED***
+    }
+    .pricing-table .pricing-details ul li{
         font-size: 12px;
-***REMOVED***
-    .counters .facts-item .fact-count h4***REMOVED***
+    }
+    .counters .facts-item .fact-count h4{
         font-size: 14px;
-***REMOVED***
-    .single-team***REMOVED***
+    }
+    .single-team{
         margin-bottom: 30px;
-***REMOVED***
-    .meta-tags span***REMOVED***
+    }
+    .meta-tags span{
         margin-right: 3px;
-***REMOVED***
-    .meta-tags span i***REMOVED***
+    }
+    .meta-tags span i{
         margin-right: 0px;
-***REMOVED***
-    #blog .blog-item-text h3***REMOVED***
+    }
+    #blog .blog-item-text h3{
         font-size: 14px;
         line-height: 20px;
-***REMOVED***
+    }
 
 }
 
 /* mobile or only mobile */
-@media (max-width: 767px) ***REMOVED***
-    .section-header .section-title***REMOVED***
+@media (max-width: 767px) {
+    .section-header .section-title{
         font-size: 20px;
-***REMOVED***
-    #hero-area .contents***REMOVED***
+    }
+    #hero-area .contents{
         padding: 100px 0 80px;
-***REMOVED***
-    #hero-area .contents h1***REMOVED***
+    }
+    #hero-area .contents h1{
         font-size: 18px;
         line-height: 30px;
-***REMOVED***
-    #features .show-box img***REMOVED***
+    }
+    #features .show-box img{
         display: none;
-***REMOVED***
-    #features .box-item .text h4***REMOVED***
+    }
+    #features .box-item .text h4{
         font-size: 14px;
-***REMOVED***
-    .controls***REMOVED***
+    }
+    .controls{
         margin: 0px;
-        .btn***REMOVED***
+        .btn{
             font-size: 13px;
             padding: 7px 7px;
-    ***REMOVED***
-***REMOVED***
-    .video-promo .video-promo-content h2***REMOVED***
+        }
+    }
+    .video-promo .video-promo-content h2{
         font-size: 22px;
-***REMOVED***
-    .pricing-table***REMOVED***
+    }
+    .pricing-table{
         margin-bottom: 15px;
-***REMOVED***
-    .counters .facts-item***REMOVED***
+    }
+    .counters .facts-item{
         margin-bottom: 30px;
-***REMOVED***
-    .single-team***REMOVED***
+    }
+    .single-team{
         margin-bottom: 15px;
-***REMOVED***
-    .contact-us***REMOVED***
+    }
+    .contact-us{
         margin-bottom: 30px;
-***REMOVED***
-    .contact-us h3***REMOVED***
+    }
+    .contact-us h3{
         font-size: 28px;
-***REMOVED***
-    .footer-links li a***REMOVED***
+    }
+    .footer-links li a{
         margin-right: 10px;
-***REMOVED***
-    .copyright***REMOVED***
+    }
+    .copyright{
         float: left;
-***REMOVED***
+    }
 
 }

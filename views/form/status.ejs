@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" integrity="sha256-2bAj1LMT7CXUYUwuEnqqooPb1W0Sw0uKMsqNH0HwMa4=" crossorigin="anonymous" />
     <style>
-      .tab span ***REMOVED***
+      .tab span {
         padding-left: 1rem;
-  ***REMOVED***
-      .tab span::before ***REMOVED***
+      }
+      .tab span::before {
         content: "- ";
-  ***REMOVED***
+      }
     </style>
   </head>
   <body>
@@ -44,31 +44,31 @@
           </tr>
           <%
             let comment = user.get('comment');
-            for (let i = 0; i < 4; i++) ***REMOVED***
+            for (let i = 0; i < 4; i++) {
               status[i] = status[i] || 'Not submitted';
-        ***REMOVED***
-            ['School and team information', 'Letter of Approval', 'Motivation Letter', 'Short Essay'].forEach((e, i) => ***REMOVED***
+            }
+            ['School and team information', 'Letter of Approval', 'Motivation Letter', 'Short Essay'].forEach((e, i) => {
           %>
               <tr>
                 <th scope="row"><%= i+1 %></th>
                 <td><%= e %></td>
                 <td>
                   <%
-                    if (status[i] == 'Unapproved') ***REMOVED***
+                    if (status[i] == 'Unapproved') {
                   %>
                       <a href='#' onclick="swal.fire('<%= comment[i] || 'N/A' %>'); return false;" style="color: red;"><%= status[i] %></a>
                   <%
-                ***REMOVED***
-                    else ***REMOVED***
+                    }
+                    else {
                   %>
                       <span style="<%= status[i] == 'Approved' ? 'color: green;' : '' %>"><%= status[i] %></span>
                   <%
-                ***REMOVED***
+                    }
                   %>
                 </td>
               </tr>
           <%
-        ***REMOVED***);
+            });
           %>
           <tr>
             <th scope="row"></th>
@@ -112,16 +112,16 @@
     <%- include('../includes/body.ejs'); %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js" integrity="sha256-7OUNnq6tbF4510dkZHCRccvQfRlV3lPpBTJEljINxao=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-      $(() => ***REMOVED***
-        $('.nav-link[href="/status"]').each(function (i) ***REMOVED***
+      $(() => {
+        $('.nav-link[href="/status"]').each(function (i) {
           let self = this;
-          window.setTimeout(() => ***REMOVED***
+          window.setTimeout(() => {
             $(self).addClass('active');
-      ***REMOVED***, 500);
-    ***REMOVED***);
+          }, 500);
+        });
         <%
-        if (user.get('payment') != 'Paid') ***REMOVED***
-          if (user.get('type') == 'early') ***REMOVED***
+        if (user.get('payment') != 'Paid') {
+          if (user.get('type') == 'early') {
         %>
             Swal.fire(`Congratulations`, 
 `Your team has been selected to participating in SIMPIC 2020.<br>
@@ -130,7 +130,7 @@ Please complete the following tasks within December 24, 2019 to confirm your par
 2) Complete the Additional information form via <a href="https://docs.google.com/forms/d/1v6Zmg9wk9F7BdylsCcQrvcnpcj3ekTIhQbsQ6SakJDw/edit?usp=sharing">this link</a> including selection of the sightseeing routes<br>
 3) Follow us both on Facebook: SIMPIC & Instagram: @simpic_official for upcoming essential information.`);
         <%
-      ***REMOVED*** else if (user.get('type') == 'regular') ***REMOVED***
+          } else if (user.get('type') == 'regular') {
         %>
             Swal.fire(`Congratulations`,
 `Your team has been selected to participating in SIMPIC 2020.<br>
@@ -139,7 +139,7 @@ Please complete the following tasks within December 24, 2019 to confirm your par
 2) Complete the Additional information form via <a href="https://docs.google.com/forms/d/1v6Zmg9wk9F7BdylsCcQrvcnpcj3ekTIhQbsQ6SakJDw/edit?usp=sharing">this link</a> including selection of the sightseeing routes<br>
 3) Follow us both on Facebook: SIMPIC & Instagram: @simpic_official for upcoming essential information.`);
         <%
-      ***REMOVED*** else if (user.get('type') == 'observer') ***REMOVED***
+          } else if (user.get('type') == 'observer') {
         %>
             Swal.fire(`Almost Complete to be participating in SIMPIC 2020 as an Observer.`,
 `Please complete the following tasks within December 24, 2019 to confirm your participations.<br>
@@ -147,10 +147,10 @@ Please complete the following tasks within December 24, 2019 to confirm your par
 2) Complete the Additional information form via <a href="https://docs.google.com/forms/d/1v6Zmg9wk9F7BdylsCcQrvcnpcj3ekTIhQbsQ6SakJDw/edit?usp=sharing">this link</a> including selection of the sightseeing routes<br>
 3) Follow us both on Facebook: SIMPIC & Instagram: @simpic_official for upcoming essential information.`);
         <%
-      ***REMOVED***
-    ***REMOVED***
+          }
+        }
         %>
-  ***REMOVED***);
+      });
     </script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper.min.js" integrity="sha256-3Iu0zFU6cPS92RSC3Pe4DBwjIV/9XKyzYTqKZzly6A8=" crossorigin="anonymous"></script>

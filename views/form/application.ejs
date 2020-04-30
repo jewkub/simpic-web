@@ -6,56 +6,56 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" integrity="sha256-2bAj1LMT7CXUYUwuEnqqooPb1W0Sw0uKMsqNH0HwMa4=" crossorigin="anonymous" />
     <style type="text/css">
-      @keyframes lds-rolling ***REMOVED***
-        0% ***REMOVED***
+      @keyframes lds-rolling {
+        0% {
           -webkit-transform: translate(-50%, -50%) rotate(0deg);
           transform: translate(-50%, -50%) rotate(0deg);
-    ***REMOVED***
-        100% ***REMOVED***
+        }
+        100% {
           -webkit-transform: translate(-50%, -50%) rotate(360deg);
           transform: translate(-50%, -50%) rotate(360deg);
-    ***REMOVED***
-  ***REMOVED***
-      @-webkit-keyframes lds-rolling ***REMOVED***
-        0% ***REMOVED***
+        }
+      }
+      @-webkit-keyframes lds-rolling {
+        0% {
           -webkit-transform: translate(-50%, -50%) rotate(0deg);
           transform: translate(-50%, -50%) rotate(0deg);
-    ***REMOVED***
-        100% ***REMOVED***
+        }
+        100% {
           -webkit-transform: translate(-50%, -50%) rotate(360deg);
           transform: translate(-50%, -50%) rotate(360deg);
-    ***REMOVED***
-  ***REMOVED***
-      .lds-rolling ***REMOVED***
+        }
+      }
+      .lds-rolling {
         position: relative;
-  ***REMOVED***
+      }
       .lds-rolling div,
-      .lds-rolling div:after ***REMOVED***
+      .lds-rolling div:after {
         position: absolute;
         width: 160px;
         height: 160px;
         border: 20px solid #f8b976;
         border-top-color: transparent;
         border-radius: 50%;
-  ***REMOVED***
-      .lds-rolling div ***REMOVED***
+      }
+      .lds-rolling div {
         -webkit-animation: lds-rolling 1s linear infinite;
         animation: lds-rolling 1s linear infinite;
         top: 100px;
         left: 100px;
-  ***REMOVED***
-      .lds-rolling div:after ***REMOVED***
+      }
+      .lds-rolling div:after {
         -webkit-transform: rotate(90deg);
         transform: rotate(90deg);
-  ***REMOVED***
-      .lds-rolling ***REMOVED***
+      }
+      .lds-rolling {
         width: 39px !important;
         height: 39px !important;
         -webkit-transform: translate(-19.5px, -19.5px) scale(0.195) translate(19.5px, 19.5px);
         transform: translate(-19.5px, -19.5px) scale(0.195) translate(19.5px, 19.5px);
-  ***REMOVED***
+      }
     </style>
-    <!-- <style type="text/css">div.image ***REMOVED***max-width: 256px;max-height: 256px;background-image: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjkuNzU2IDI5Ljc1NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjkuNzU2IDI5Ljc1NjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiBjbGFzcz0iIj48Zz48Zz4KCTxwYXRoIHN0eWxlPSJmaWxsOiMwQkM3MjIiIGQ9Ik0yOS4wNDksNS4wMDlMMjguMTksNC4xNTFjLTAuOTQzLTAuOTQ1LTIuNDg4LTAuOTQ1LTMuNDM0LDBMMTAuMTcyLDE4LjczN2wtNS4xNzUtNS4xNzMgICBjLTAuOTQzLTAuOTQ0LTIuNDg5LTAuOTQ0LTMuNDMyLDAuMDAxbC0wLjg1OCwwLjg1N2MtMC45NDMsMC45NDQtMC45NDMsMi40ODksMCwzLjQzM2w3Ljc0NCw3Ljc1MiAgIGMwLjk0NCwwLjk0MywyLjQ4OSwwLjk0MywzLjQzMywwTDI5LjA0OSw4LjQ0MkMyOS45OTEsNy40OTgsMjkuOTkxLDUuOTUzLDI5LjA0OSw1LjAwOXoiIGRhdGEtb3JpZ2luYWw9IiMwMTAwMDIiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiMwMTAwMDIiPjwvcGF0aD4KPC9nPjwvZz4gPC9zdmc+)}</style> -->
+    <!-- <style type="text/css">div.image {max-width: 256px;max-height: 256px;background-image: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjkuNzU2IDI5Ljc1NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjkuNzU2IDI5Ljc1NjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiBjbGFzcz0iIj48Zz48Zz4KCTxwYXRoIHN0eWxlPSJmaWxsOiMwQkM3MjIiIGQ9Ik0yOS4wNDksNS4wMDlMMjguMTksNC4xNTFjLTAuOTQzLTAuOTQ1LTIuNDg4LTAuOTQ1LTMuNDM0LDBMMTAuMTcyLDE4LjczN2wtNS4xNzUtNS4xNzMgICBjLTAuOTQzLTAuOTQ0LTIuNDg5LTAuOTQ0LTMuNDMyLDAuMDAxbC0wLjg1OCwwLjg1N2MtMC45NDMsMC45NDQtMC45NDMsMi40ODksMCwzLjQzM2w3Ljc0NCw3Ljc1MiAgIGMwLjk0NCwwLjk0MywyLjQ4OSwwLjk0MywzLjQzMywwTDI5LjA0OSw4LjQ0MkMyOS45OTEsNy40OTgsMjkuOTkxLDUuOTUzLDI5LjA0OSw1LjAwOXoiIGRhdGEtb3JpZ2luYWw9IiMwMTAwMDIiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiMwMTAwMDIiPjwvcGF0aD4KPC9nPjwvZz4gPC9zdmc+)}</style> -->
   </head>
   <body>
     <%- include('nav.ejs'); %>
@@ -131,7 +131,7 @@
         <br>
 
         <div class="accordion" id="accordion">
-          <% for (let i = 1; i <= 5; i++) ***REMOVED*** %>
+          <% for (let i = 1; i <= 5; i++) { %>
             <div class="card">
               <div class="card-header" id="header-<%= i %>">
                 <a class="btn btn-primary" data-toggle="collapse" href="#collapse-<%= i %>" role="button" aria-expanded="false" aria-controls="collapse-<%= i %>">
@@ -141,13 +141,13 @@
               <div class="collapse" id="collapse-<%= i %>" aria-labelledby="header-<%= i %>" data-parent="#accordion">
                 <div class="card-body" id="card-<%= i %>">
                   <h5 class="card-title"><%= i == 5 ? 'Advisor' : 'Contestant ' + i %></h5>
-                  <% ['Name', 'Nickname', 'Email', 'Age', 'Gender', 'Allergy', 'Food issue', 'Facebook'].forEach((e, ii) => ***REMOVED*** %>
+                  <% ['Name', 'Nickname', 'Email', 'Age', 'Gender', 'Allergy', 'Food issue', 'Facebook'].forEach((e, ii) => { %>
                     <div class="form-row">
                       <div class="col-auto col-form-label">
-                        <label for="c<%= i %>-<%= ii+1 %>"><%= e %><% if (ii == 5) ***REMOVED*** %><br><small class="text-muted">e.g. wheat, seafood, sulfa</small><% } else if (ii == 6) ***REMOVED*** %><br><small class="text-muted">if any</small><% } %></label>
+                        <label for="c<%= i %>-<%= ii+1 %>"><%= e %><% if (ii == 5) { %><br><small class="text-muted">e.g. wheat, seafood, sulfa</small><% } else if (ii == 6) { %><br><small class="text-muted">if any</small><% } %></label>
                       </div>
                       <div class="col<%= ii == 6 ? ' form-row' : '' %>">
-                        <% if (ii == 6) ***REMOVED*** %>
+                        <% if (ii == 6) { %>
                           <div class="col-auto">
                             <select class="custom-select" name="c<%= i %>-7" id="c<%= i %>-7" others="c<%= i %>-7-1" requiredd>
                               <option disabled selected value="0">Please select</option>
@@ -159,8 +159,8 @@
                           </div>
                           <div class="col"><input type="text" class="form-control" name="c<%= i %>-7-1" id="c<%= i %>-7-1" placeholder="Others" disabled></div>
                         <%
-                      ***REMOVED***
-                          else if (ii == 4) ***REMOVED***
+                          }
+                          else if (ii == 4) {
                         %>
                           <select class="custom-select" name="c<%= i %>-5" id="c<%= i %>-5" requiredd>
                             <option disabled selected value="0">Please select</option>
@@ -168,11 +168,11 @@
                             <option value="female">Female</option>
                           </select>
                         <%
-                      ***REMOVED*** else ***REMOVED***
+                          } else {
                         %>
                             <input type="text" class="form-control" id="c<%= i %>-<%= ii+1 %>" name="c<%= i %>-<%= ii+1 %>" placeholder="<%= e %>" requiredd>
                         <%
-                      ***REMOVED***
+                          }
                         %>
                       </div>
                     </div>
@@ -221,53 +221,53 @@
     <%- include('../includes/body.ejs'); %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js" integrity="sha256-7OUNnq6tbF4510dkZHCRccvQfRlV3lPpBTJEljINxao=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-      $(() => ***REMOVED***
+      $(() => {
         $('.back-to-top').detach();
         <%
-          form.forEach(e => ***REMOVED***
+          form.forEach(e => {
             e.field = e.get('field');
             e.value = e.get('value');
             e.type = e.get('type');
 
-            if (e.type == 'text') ***REMOVED*** // essay
+            if (e.type == 'text') { // essay
         %>
             $('#<%= e.field %>').val('<%= e.value.replace(/\r\n/g, "\\n") %>');
         <%
-        ***REMOVED***
-            else if (e.type == 'select') ***REMOVED*** // select
+            }
+            else if (e.type == 'select') { // select
         %>
         $('*[name=<%= e.field %>] option[value="<%= e.value %>"]').prop('selected', true);
         <%
-        ***REMOVED***
-            else if (e.type == 'file') ***REMOVED*** // file
+            }
+            else if (e.type == 'file') { // file
         %>
         $('#p-<%= e.field %>').html('Download your submitted file <a href="https://storage.googleapis.com/simpic-web.appspot.com/<%= e.value %>" target="_blank">here</a>');
         <%
-        ***REMOVED***
-      ***REMOVED***);
+            }
+          });
         %>
         <%
           let lock = user.get('lock');
           lock = lock || [];
           let l = [, 'f1', 'f2', 'f3'];
-          if (lock[0]) ***REMOVED***
+          if (lock[0]) {
         %>
             $('input:not(#f1, #f2, #f3)').attr('disabled', '');
             $('select').attr('disabled', '');
         <%
-      ***REMOVED***
-          for (let i = 1; i < 4; i++) ***REMOVED***
-            if (lock[i]) ***REMOVED***
+          }
+          for (let i = 1; i < 4; i++) {
+            if (lock[i]) {
         %>
               $('#f' + <%= i %>).attr('disabled', '');
         <%
-        ***REMOVED***
-      ***REMOVED***
+            }
+          }
         %>
 
-        $('#send').click(function(e) ***REMOVED***
+        $('#send').click(function(e) {
           e.preventDefault();
-          Swal.fire(***REMOVED***
+          Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
             type: 'warning',
@@ -276,26 +276,26 @@
             
             confirmButtonText: 'Confirm',
             cancelButtonText: 'Recheck'
-      ***REMOVED***).then((result) => ***REMOVED***
-            if (result.value) ***REMOVED***
+          }).then((result) => {
+            if (result.value) {
               // $('form')[0].submit();
               $('#realsub').click();
-        ***REMOVED***
-      ***REMOVED***)
-    ***REMOVED***);
-        $('.nav-link[href="/application"]').each(function (i) ***REMOVED***
+            }
+          })
+        });
+        $('.nav-link[href="/application"]').each(function (i) {
           let self = this;
-          window.setTimeout(() => ***REMOVED***
+          window.setTimeout(() => {
             $(self).addClass('active');
-      ***REMOVED***, 1000);
-    ***REMOVED***);
+          }, 1000);
+        });
 
-        $('input').change(function () ***REMOVED***
+        $('input').change(function () {
           // alert('aa')
           update(this);
-    ***REMOVED***);
+        });
 
-        let update = (e) => ***REMOVED***
+        let update = (e) => {
           e = $(e);
           if ($('#loader').is(':visible')) return false;
           if (!e.attr('id')) return false;
@@ -314,26 +314,26 @@
           else formData.append("value", e.val());
           request.send(formData);
 
-          request.addEventListener('loadend', e => ***REMOVED***
+          request.addEventListener('loadend', e => {
             $('#loading').hide();
             $('#success').show();
             if (request.response == 'not ok') alert('cannot save');
-      ***REMOVED***);
-    ***REMOVED***
+          });
+        }
 
-        $('select').change(function () ***REMOVED***
+        $('select').change(function () {
           let e = $(this);
           let others = $('#' + e.attr('others'));
           if (e.val() == 'others') others.removeAttr('disabled');
-          else ***REMOVED***
+          else {
             others.val('');
             update(others);
             others.attr('disabled', '');
-      ***REMOVED***
+          }
           update(this);
-    ***REMOVED***);
+        });
         $('select').trigger('change');
-  ***REMOVED***);
+      });
     </script>
   </body>
 </html>

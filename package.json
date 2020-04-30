@@ -1,24 +1,24 @@
-***REMOVED***
+{
   "name": "simpic-web",
   "version": "1.0.0",
   "description": "Registration website used in SIMPIC",
   "main": "server.js",
-  "scripts": ***REMOVED***
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "deploy": "gcloud app deploy --project=simpic-web"
-***REMOVED***,
-  "repository": ***REMOVED***
+  },
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/jewkub/simpic-web.git"
-***REMOVED***,
+  },
   "author": "Jew",
   "license": "MIT",
-  "bugs": ***REMOVED***
+  "bugs": {
     "url": "https://github.com/jewkub/simpic-web/issues"
-***REMOVED***,
+  },
   "homepage": "https://github.com/jewkub/simpic-web#readme",
-  "dependencies": ***REMOVED***
+  "dependencies": {
     "@google-cloud/firestore": "^2.2.9",
     "@google-cloud/storage": "^3.2.1",
     "bcryptjs": "^2.4.3",
@@ -33,8 +33,8 @@
     "nodemailer": "^6.3.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
-***REMOVED***,
-  "devDependencies": ***REMOVED***
+  },
+  "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "babel-loader": "^8.0.6",
@@ -51,5 +51,5 @@
     "webpack": "^4.39.3",
     "webpack-bundle-analyzer": "^3.4.1",
     "webpack-cli": "^3.3.7"
-***REMOVED***
+  }
 }

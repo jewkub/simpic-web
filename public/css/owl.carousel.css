@@ -4,7 +4,7 @@
  */
 
 /* clearfix */
-.owl-carousel .owl-wrapper:after ***REMOVED***
+.owl-carousel .owl-wrapper:after {
 	content: ".";
 	display: block;
 	clear: both;
@@ -13,23 +13,23 @@
 	height: 0;
 }
 /* display none until init */
-.owl-carousel***REMOVED***
+.owl-carousel{
 	display: none;
 	position: relative;
 	width: 100%;
 	-ms-touch-action: pan-y;
 }
-.owl-carousel .owl-wrapper***REMOVED***
+.owl-carousel .owl-wrapper{
 	display: none;
 	position: relative;
 	-webkit-transform: translate3d(0px, 0px, 0px);
 }
-.owl-carousel .owl-wrapper-outer***REMOVED***
+.owl-carousel .owl-wrapper-outer{
 	overflow: hidden;
 	position: relative;
 	width: 100%;
 }
-.owl-carousel .owl-wrapper-outer.autoHeight***REMOVED***
+.owl-carousel .owl-wrapper-outer.autoHeight{
 	-webkit-transition: height 500ms ease-in-out;
 	-moz-transition: height 500ms ease-in-out;
 	-ms-transition: height 500ms ease-in-out;
@@ -37,14 +37,14 @@
 	transition: height 500ms ease-in-out;
 }
 	
-.owl-carousel .owl-item***REMOVED***
+.owl-carousel .owl-item{
 	float: left;
 }
 .owl-controls .owl-page,
-.owl-controls .owl-buttons div***REMOVED***
+.owl-controls .owl-buttons div{
 	cursor: pointer;
 }
-.owl-controls ***REMOVED***
+.owl-controls {
 	-webkit-user-select: none;
 	-khtml-user-select: none;
 	-moz-user-select: none;
@@ -54,13 +54,13 @@
 }
 
 /* mouse grab icon */
-.grabbing ***REMOVED*** 
+.grabbing { 
     cursor:url(grabbing.png) 8 8, move;
 }
 
 /* fix */
 .owl-carousel  .owl-wrapper,
-.owl-carousel  .owl-item***REMOVED***
+.owl-carousel  .owl-item{
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility:    hidden;
 	-ms-backface-visibility:     hidden;
@@ -70,7 +70,7 @@
 }
 
 /* Feel free to change duration  */ 
-.animated  ***REMOVED***
+.animated  {
   -webkit-animation-duration : 1000 ms  ;
   animation-duration : 1000 ms  ;
   -webkit-animation-fill-mode : both  ;
@@ -78,32 +78,32 @@
 }  
 /* .owl-animated-out - only for current item */ 
 /* This is very important class. Use z-index if you want move Out item above In item */ 
-.owl-animated-out ***REMOVED***
+.owl-animated-out {
   z-index : 1 
- ***REMOVED***
+   }
 /* .owl-animated-in - only for upcoming item
 /* This is very important class. Use z-index if you want move In item above Out item */ 
-.owl-animated-in ***REMOVED***
+.owl-animated-in {
   z-index : 0 
- ***REMOVED***
+   }
 /* .fadeOut is style taken from Animation.css and this is how it looks in owl.carousel.css:  */ 
-.fadeOut  ***REMOVED***
+.fadeOut  {
   -webkit-animation-name : fadeOut  ;
   animation-name : fadeOut  ;
 }  
-@-webkit-keyframes  fadeOut  ***REMOVED***
-  0% ***REMOVED***
+@-webkit-keyframes  fadeOut  {
+  0% {
     opacity : 1   ;
-***REMOVED***  
-  100% ***REMOVED***
+  }  
+  100% {
     opacity : 0   ;
-***REMOVED***  
+  }  
 }
-@keyframes  fadeOut  ***REMOVED***
-  0% ***REMOVED***
+@keyframes  fadeOut  {
+  0% {
     opacity : 1   ;
-***REMOVED***  
-  100% ***REMOVED***
+  }  
+  100% {
     opacity : 0   ;
-***REMOVED***  
+  }  
 }
