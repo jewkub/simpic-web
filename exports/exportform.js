@@ -6,14 +6,14 @@ const { name: projectId } = require('../package.json');
 const { Storage } = require('@google-cloud/storage');
 const storage = new Storage({
   projectId,
-  keyFilename: '../secret/simpic-web-f94582c3af8f.json',
+  keyFilename: 'secret/simpic-web-f94582c3af8f.json',
 });
 const bucket = storage.bucket('simpic-web.appspot.com');
 
 const Firestore = require('@google-cloud/firestore');
 const db = new Firestore({
   projectId,
-  keyFilename: '../secret/simpic-web-f94582c3af8f.json',
+  keyFilename: 'secret/simpic-web-f94582c3af8f.json',
 });
 
 // If modifying these scopes, delete token.json.
@@ -23,7 +23,7 @@ const TOKEN_PATH = 'token.json';
 async function main(auth) {
   const sheets = google.sheets({version: 'v4', auth});
 
-  let dg = [], obs = [];
+  let dg = [];
   let users = (await db.collection('users').orderBy('id').get()).docs;
   // users.forEach(async u => {
   for (let u of users) {
@@ -32,13 +32,13 @@ async function main(auth) {
     .where('user', '=', u.ref)
     .get()).docs;
     for (let i = 1; i <= 5; i++) {
-      let col = [u.get('id'), u.get('code'), u.get('email')], isobs = false;
+      let col = [u.get('id'), u.get('code'), u.get('email')];
       col[7] = i != 5 ? 'Contestant ' + i : 'Advisor';
-      col[19] = u.get('payment');
+      col[21] = u.get('payment') || '';
       let extra = u.get('extra') || [];
-      col[20] = extra[0] || '';
-      col[21] = extra[1] || '';
-      col[22] = extra[2] || '';
+      col[22] = extra[0] || '';
+      col[23] = extra[1] || '';
+      col[24] = extra[2] || '';
 
       data.forEach(e => {
         let field = e.get('field'), value = e.get('value');
@@ -48,40 +48,40 @@ async function main(auth) {
         else if (field == 'in4' && value != 'others') col[6] = value;
         else if (field == 'in4-1' && value) col[6] = 'others: ' + value;
 
-        else if (field == 'as') isobs = (value == 'observer');
+        else if (field == 'place') col[8] = value;
 
-        else if (field == 'c' + i + '-1') col[8] = value;
-        else if (field == 'c' + i + '-2') col[9] = value;
-        else if (field == 'c' + i + '-3') col[10] = value;
-        else if (field == 'c' + i + '-4') col[11] = value;
-        else if (field == 'c' + i + '-5') col[12] = value;
-        else if (field == 'c' + i + '-6') col[13] = value;
-        else if (field == 'c' + i + '-7' && value != 'others') col[14] = value;
-        else if (field == 'c' + i + '-7-1' && value) col[14] = 'others: ' + value;
-        else if (field == 'c' + i + '-8') col[15] = value;
+        else if (field == 'c' + i + '-1') col[9] = value;
+        else if (field == 'c' + i + '-2') col[10] = value;
+        else if (field == 'c' + i + '-3') col[11] = value;
+        else if (field == 'c' + i + '-4') col[12] = value;
+        else if (field == 'c' + i + '-5') col[13] = value;
+        else if (field == 'c' + i + '-6') col[14] = value;
+        else if (field == 'c' + i + '-7' && value != 'others') col[15] = value;
+        else if (field == 'c' + i + '-7-1' && value) col[15] = 'others: ' + value;
+        else if (field == 'c' + i + '-8') col[16] = value;
 
-        else if (field == 'f1') col[18] = 'https://storage.googleapis.com/simpic-web.appspot.com/' + value;
-        else if (field == 'f2') col[17] = 'https://storage.googleapis.com/simpic-web.appspot.com/' + value;
-        else if (field == 'f3') col[16] = 'https://storage.googleapis.com/simpic-web.appspot.com/' + value;
+        else if (field == 'f1') col[20] = 'https://storage.googleapis.com/simpic-web.appspot.com/' + value;
+        else if (field == 'f2') col[19] = 'https://storage.googleapis.com/simpic-web.appspot.com/' + value;
+        else if (field == 'f3') col[18] = 'https://storage.googleapis.com/simpic-web.appspot.com/' + value;
+        else if (field == 'f4') col[17] = 'https://storage.googleapis.com/simpic-web.appspot.com/' + value;
       });
-      if (!isobs) dg.push(col);
-      else obs.push(col);
+      /* if (!isobs) dg.push(col);
+      else obs.push(col); */
+      dg.push(col);
     }
   };
-  dg.push(['Last update', (new Date()).toString(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
-  obs.push(['Last update', (new Date()).toString(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
-  for (let i = dg.length; i < 297; i++) dg.push(['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
-  for (let i = obs.length; i < 297; i++) obs.push(['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
+  dg.push(['Last update', (new Date()).toString(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
+  // obs.push(['Last update', (new Date()).toString(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
+  for (let i = dg.length; i < 297; i++) dg.push(['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
   for (let i = 0; i < 297; i++) {
     for (let j = 0; j < 19; j++) {
       dg[i][j] = dg[i][j] || '';
-      obs[i][j] = obs[i][j] || '';
     }
   }
 
-  let range = 'DG!A3:W3000';
+  let range = 'DG!A3:AF3000';
   sheets.spreadsheets.values.update({
-    spreadsheetId: '1b_v12Koq3p3oS1gsId_wbXLCY4Xtcw0MNkreNN05Yok',
+    spreadsheetId: '1tT8hhbfNe-yzM_Q1fFBv4MIrFH2N2VzKpwPAQAQqhCo',
     range: range,
     valueInputOption: 'RAW',
     // insertDataOption: 'OVERWRITE',
@@ -98,7 +98,7 @@ async function main(auth) {
     }
   });
 
-  range = 'Observer!A3:W3000';
+  /* range = 'Observer!A3:W3000';
   sheets.spreadsheets.values.update({
     spreadsheetId: '1b_v12Koq3p3oS1gsId_wbXLCY4Xtcw0MNkreNN05Yok',
     range: range,
@@ -115,13 +115,13 @@ async function main(auth) {
       console.error(err);
       return;
     }
-  });
+  }); */
 }
 
 // ------------------------
 
 // Load client secrets from a local file.
-fs.readFile('../secret/credentials.json', (err, content) => {
+fs.readFile('secret/credentials.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Google Sheets API.
   authorize(JSON.parse(content), main);

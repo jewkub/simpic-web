@@ -17,7 +17,7 @@ let User = module.exports;
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const passwordRegex = /^[\x21-\x7e]{4,}$/;
 
-User.createUser = async function (email, password) {
+User.createUser = async function (email, password, locale) {
   if (!emailRegex.test(email)) throw new Error('invalid email');
   if (!passwordRegex.test(password)) throw new Error('invalid password');
 
@@ -39,6 +39,7 @@ User.createUser = async function (email, password) {
   await ref.create({
     email: email,
     password: hash,
+    locale: locale,
     id: cnt+1
   });
   db.collection('u').doc().set({
@@ -55,15 +56,26 @@ User.sendConfirmation = async function (user, host) {
 
   var mailOptions = {
     from: {
-      name: 'SIMPIC 2020',
+      name: 'SIMPICSED',
       address: 'contact.simpic@gmail.com'
     },
     to: (await user.get()).get('email'),
     subject: 'Account Verification Token',
-    text: 'Dear Sir / Madam,\n\n\tThank you for your interest in SIMPIC. After you click verifying link below, you will get into our application form to register for our competition.\n\tIn status page, there will be a unique team code for your account e.g. A1 or C3. This code will be used when you contact with us and will be used in the payment period.\n\tAll registration process will be done on website www.simpicofficial.org. Information about registration & accommodations is available on Facebook: https://www.facebook.com/SIMPICOfficial or feel free to contact us directly via contact.simpic@gmail.com.\n\tWe look forward to meeting you in SIMPIC 2020.\n\n\tPlease verify your account by clicking the link: \nhttps:\/\/' + host + '\/confirmation?token=' + token.get('token') + '\n\nBest regards,\nSIMPIC 2020 committee'
+    text:
+`Dear Sir / Madam,
+
+\tThank you for your interest in SIMPICSED. After you click verifying link below, you will get into our application form to register for our competition.
+\tIn status page, there will be a unique team code for your account e.g. A1 or C3. This code will be used when you contact with us and will be used in the payment period.
+\tAll registration process will be done on website www.simpicofficial.org. Information about registration & accommodations is available on Facebook: https://www.facebook.com/SIMPICOfficial or feel free to contact us directly via contact.simpic@gmail.com.
+\tWe look forward to meeting you in SIMPICSED.
+
+\tPlease verify your account by clicking the link: 
+https://${host}/confirmation?token=${ token.get('token') }
+
+Best regards,
+SIMPICSED committee`
   };
   await transporter.sendMail(mailOptions);
-  // res.send('A verification email has been sent to ' + user.email + '.');
 };
 
 User.checkValidEmail = async function (email) {

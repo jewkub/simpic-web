@@ -83,15 +83,6 @@ h1, h2, h3, h4, h5 {
   letter-spacing: 1px;
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-ul li {
-  list-style: none;
-}
-
 a:hover,
 a:focus {
   text-decoration: none;
@@ -435,7 +426,7 @@ button:focus {
   overflow: hidden;
   position: relative;
 }
-@media only screen and (min-width: 992px) {
+@media only screen and (min-device-width: 992px) {
   #hero-area {
     background-attachment: fixed;
   }
@@ -684,7 +675,7 @@ button:focus {
   overflow: hidden;
   position: relative;
 }
-@media only screen and (min-width: 992px) {
+@media only screen and (min-device-width: 992px) {
   #features {
     background-attachment: fixed;
   }
@@ -985,7 +976,7 @@ button:focus {
 
   position: relative;
 }
-@media only screen and (min-width: 992px) {
+@media only screen and (min-device-width: 992px) {
   .counters {
     background-attachment: fixed;
   }

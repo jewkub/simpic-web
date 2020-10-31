@@ -2,7 +2,7 @@
 <html>
   <head>
     <%- include('../includes/head.ejs'); %>
-    <title>Application - SIMPIC 2020</title>
+    <title>Application - SIMPICSED</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" integrity="sha256-2bAj1LMT7CXUYUwuEnqqooPb1W0Sw0uKMsqNH0HwMa4=" crossorigin="anonymous" />
     <style type="text/css">
@@ -64,7 +64,7 @@
     <div class="container">
       <br><br>
       <h2>Application Form - Team #<%= user.get('code') %></h2>
-      <p class="text-muted">Team #<%= user.get('code') %></p>
+      <p class="text-muted">Team #<%= user.get('code') %> - <%= user.get('locale') %> medical school</p>
       <br>
 
       <form method="post" action="/application" enctype="multipart/form-data">
@@ -88,18 +88,18 @@
             </div>
             <div class="form-row">
               <div class="col-auto col-form-label">
-                <label for="in3">Country</label>
+                <label for="country">Country</label>
               </div>
               <div class="col">
-                <input type="text" class="form-control" id="in3" name="in3" placeholder="Country" required>
+                <input type="text" class="form-control" id="country" value="<%= user.get('locale') == 'Thai' ? 'Thailand' : 'International' %>" disabled />
               </div>
             </div>
             <div class="form-row">
               <div class="col-auto col-form-label">
-                <label for="in4">How do you know SIMPIC?</label>
+                <label for="in3">How do you know SIMPIC?</label>
               </div>
               <div class="col-sm-auto col-3">
-                <select class="custom-select" name="in4" id="in4" others="in4-1">
+                <select class="custom-select" name="in3" id="in3" others="in3-1">
                   <option disabled selected value="0">Please select</option>
                   <option value="facebook">Facebook</option>
                   <option value="email">Email</option>
@@ -110,22 +110,27 @@
                 </select>
                 <br>
               </div>
-              <div class="col"><input type="text" class="form-control" id="in4-1" name="in4-1" placeholder="Others" disabled></div>
+              <div class="col"><input type="text" class="form-control" id="in3-1" name="in3-1" placeholder="Others" disabled></div>
             </div>
             <div class="form-row">
               <div class="col-auto col-form-label">
-                <label for="in4">Register as </label>
+                <label for="place">Registration</label>
               </div>
               <div class="col">
-                <select class="custom-select" name="as" id="as">
+                <select class="custom-select" name="place" id="place">
                   <option disabled selected value="0">Please select</option>
-                  <option value="team">A competing team</option>
-                  <option value="observer">An observer</option>
+                  <option value="onsite">On-site competition</option>
+                  <option value="online">Online competition</option>
                 </select>
                 <br>
               </div>
             </div>
-            <p style="color: blue;">*If you register as an observer, please fill in only in ‘Contestant 1’ section. And you don’t need to upload a Letter of Approval, a Motivation Letter, or a Short Essay.</p>
+            <p style="color: blue;"><%= 
+              user.get('locale') == 'Thai' ? 
+                '*If you apply for an online competition, please fill only in \'contestant 1-4\' section. And you do not need to upload Motivation letter and short essay.':
+                '*If you prefer to transfer to transfer the on-site registration, please upload a letter of approval, a motivation letter, a short essay and a consent letter'
+                %>
+            </p>
           </div>
         </div>
         <br>
@@ -187,23 +192,29 @@
           <div class="card">
             <div class="card-body">
               <div class="form-group">
-                <label for="f1">Letter of Approval, <a target="_blank" href="https://drive.google.com/file/d/1GnsxorMmmfJNVriA7mkPISpFP9zTrVLz/view">Download form</a><span class="text-muted" style="font-style: italic;"> *The file should be uploaded in pdf or jpg format</span></label>
+                <label for="f1">Letter of Approval, <a target="_blank" href="https://drive.google.com/file/d/1GnsxorMmmfJNVriA7mkPISpFP9zTrVLz/view">Download form</a></label>
                 <input type="file" class="form-control-file align-middle" id="f1" name="f1"/>
                 <p id="p-f1"></p>
               </div>
-              <div class="form-group">
-                <label for="f2">Motivation Letter<span class="text-muted" style="font-style: italic;"> *The file should be uploaded in pdf or jpg format</span></label>
+              <div class="form-group" id="f2-g">
+                <label for="f2">Motivation Letter<span class="text-muted" style="font-style: italic;"> *Only for on-site registration</span></label>
                 <input type="file" class="form-control-file align-middle" id="f2" name="f2"/>
                 <p id="p-f2"></p>
               </div>
-              <div class="form-group">
-                <label for="f3">Short Essay<span class="text-muted" style="font-style: italic;"> *The file should be uploaded in pdf format</span></label>
+              <div class="form-group" id="f3-g">
+                <label for="f3">Short Essay<span class="text-muted" style="font-style: italic;"> *Only for on-site registration</span></label>
                 <input type="file" class="form-control-file align-middle" id="f3" name="f3"/>
                 <p id="p-f3"></p>
               </div>
+              <div class="form-group">
+                <label for="f4">Consent letter</label>
+                <input type="file" class="form-control-file align-middle" id="f4" name="f4"/>
+                <p id="p-f4"></p>
+              </div>
             </div>
             <div class="card-footer text-muted">
-              File size limit: 5MB
+              *All files should be uploaded in pdf or jpg format<br/>
+              *Each file size limit: 5MB
             </div>
           </div>
           <br>
@@ -333,6 +344,17 @@
           update(this);
         });
         $('select').trigger('change');
+
+        $('#place').change(function () {
+          let e = $(this);
+          if (e.val() == 'online') {
+            $('#f2-g, #f3-g').hide();
+          }
+          else {
+            $('#f2-g, #f3-g').show();
+          }
+        });
+        $('#place').trigger('change');
       });
     </script>
   </body>

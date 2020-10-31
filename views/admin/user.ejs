@@ -2,7 +2,7 @@
 <html>
   <head>
     <%- include('../includes/head.ejs'); %>
-    <title>Admin - SIMPIC 2020</title>
+    <title>Admin - SIMPICSED</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
     <style>
     </style>
@@ -20,7 +20,7 @@
           <div class="card-body">
             <h5 class="card-title">Status</h5>
             <%
-              ['School and team information', 'Letter of approval', 'Motivation letter', 'Short essay'].forEach((e, i) => {
+              ['School and team information', 'Letter of approval', 'Motivation letter', 'Short essay', 'Consent letter'].forEach((e, i) => {
             %>
                 <div class="form-row">
                   <div class="col-auto col-form-label">
@@ -33,6 +33,7 @@
                       <option value="Submitted">Submitted</option>
                       <option value="Unapproved">Unapproved</option>
                       <option value="Approved">Approved</option>
+                      <option value="For on-site application">For on-site application</option>
                     </select>
                   </div>
                   <div class="col">
@@ -50,7 +51,7 @@
           <div class="card-body">
             <h5 class="card-title">Lock</h5>
             <%
-              ['School and team information', 'Letter of approval', 'Motivation letter', 'Short essay'].forEach((e, i) => {
+              ['School and team information', 'Letter of approval', 'Motivation letter', 'Short essay', 'Consent letter'].forEach((e, i) => {
             %>
                 <div class="form-row">
                   <div class="col-auto col-form-label">
@@ -94,7 +95,7 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Extra information</h5>
-            <div class="form-row">
+            <!-- <div class="form-row">
               <div class="col-auto col-form-label">
                 <label for="x1">Sightseeing route</label>
               </div>
@@ -105,7 +106,7 @@
                   <option value="false">Not done</option>
                 </select>
               </div>
-            </div>
+            </div> -->
             <%
               ['Flight information', 'Your accomodation'].forEach((e, i) => {
             %>

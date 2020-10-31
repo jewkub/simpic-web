@@ -64,3 +64,4 @@ typings/
 /secret/
 /routes/token.json
 /exports/token.json
+token.json
