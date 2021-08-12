@@ -50,7 +50,7 @@ router.post('/application', async (req, res, next) => {
   let f2 = (await db.collection('form').where('user', '=', req.user.ref).where('field', '=', 'f2').get()).docs;
   let f3 = (await db.collection('form').where('user', '=', req.user.ref).where('field', '=', 'f3').get()).docs;
   let f4 = (await db.collection('form').where('user', '=', req.user.ref).where('field', '=', 'f4').get()).docs;
-  let status = ['Submitted', 'Not submitted', 'Not submitted', 'Not submitted'];
+  let status = ['Submitted', 'Not submitted', 'Not submitted', 'Not submitted', 'Not submitted'];
   if (f1.length) status[1] = 'Submitted';
   if (f2.length) status[2] = 'Submitted';
   if (f3.length) status[3] = 'Submitted';
@@ -69,11 +69,11 @@ router.post('/update', multer.any(), async (req, res, next) => {
     if (!req.user) throw new Error('No login data');
 
     let lock = req.user.get('lock') || [];
-    if (lock[1] && req.body.field == 'f1') return ;
-    if (lock[2] && req.body.field == 'f2') return ;
-    if (lock[3] && req.body.field == 'f3') return ;
-    if (lock[4] && req.body.field == 'f4') return ;
-    if (lock[0] && req.body.field.charAt(0) != 'f') return ;
+    if (lock[1] && req.body.field == 'f1') return res.send('locked');
+    if (lock[2] && req.body.field == 'f2') return res.send('locked');
+    if (lock[3] && req.body.field == 'f3') return res.send('locked');
+    if (lock[4] && req.body.field == 'f4') return res.send('locked');
+    if (lock[0] && req.body.field.charAt(0) != 'f') return res.send('locked');
 
     // console.log(req.body);
     req.files.forEach(e => {

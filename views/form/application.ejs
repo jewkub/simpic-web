@@ -91,15 +91,24 @@
                 <label for="country">Country</label>
               </div>
               <div class="col">
-                <input type="text" class="form-control" id="country" value="<%= user.get('locale') == 'Thai' ? 'Thailand' : 'International' %>" disabled />
+                <% if (user.get('locale') == 'Thai') { %>
+                  
+                  <input type="text" class="form-control" id="country" name="country" value="Thailand" readonly="readonly"/>
+                <% }
+                  else {
+                %>
+                  <input type="text" class="form-control" id="country" name="country" placeholder="International" required/>
+                <%
+                  }
+                %>
               </div>
             </div>
             <div class="form-row">
               <div class="col-auto col-form-label">
-                <label for="in3">How do you know SIMPIC?</label>
+                <label for="in4">How do you know SIMPIC?</label>
               </div>
               <div class="col-sm-auto col-3">
-                <select class="custom-select" name="in3" id="in3" others="in3-1">
+                <select class="custom-select" name="in4" id="in4" others="in4-1">
                   <option disabled selected value="0">Please select</option>
                   <option value="facebook">Facebook</option>
                   <option value="email">Email</option>
@@ -110,14 +119,14 @@
                 </select>
                 <br>
               </div>
-              <div class="col"><input type="text" class="form-control" id="in3-1" name="in3-1" placeholder="Others" disabled></div>
+              <div class="col"><input type="text" class="form-control" id="in4-1" name="in4-1" placeholder="Others" disabled></div>
             </div>
             <div class="form-row">
               <div class="col-auto col-form-label">
                 <label for="place">Registration</label>
               </div>
               <div class="col">
-                <select class="custom-select" name="place" id="place">
+                <select class="custom-select" name="place" id="place" required>
                   <option disabled selected value="0">Please select</option>
                   <option value="onsite">On-site competition</option>
                   <option value="online">Online competition</option>
@@ -154,7 +163,7 @@
                       <div class="col<%= ii == 6 ? ' form-row' : '' %>">
                         <% if (ii == 6) { %>
                           <div class="col-auto">
-                            <select class="custom-select" name="c<%= i %>-7" id="c<%= i %>-7" others="c<%= i %>-7-1" requiredd>
+                            <select class="custom-select" name="c<%= i %>-7" id="c<%= i %>-7" others="c<%= i %>-7-1" >
                               <option disabled selected value="0">Please select</option>
                               <option value="halal">Halal</option>
                               <option value="vegetarian">Vegetarian</option>
@@ -167,7 +176,7 @@
                           }
                           else if (ii == 4) {
                         %>
-                          <select class="custom-select" name="c<%= i %>-5" id="c<%= i %>-5" requiredd>
+                          <select class="custom-select" name="c<%= i %>-5" id="c<%= i %>-5" >
                             <option disabled selected value="0">Please select</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -175,7 +184,7 @@
                         <%
                           } else {
                         %>
-                            <input type="text" class="form-control" id="c<%= i %>-<%= ii+1 %>" name="c<%= i %>-<%= ii+1 %>" placeholder="<%= e %>" requiredd>
+                            <input type="text" class="form-control" id="c<%= i %>-<%= ii+1 %>" name="c<%= i %>-<%= ii+1 %>" placeholder="<%= e %>" >
                         <%
                           }
                         %>
@@ -192,7 +201,7 @@
           <div class="card">
             <div class="card-body">
               <div class="form-group">
-                <label for="f1">Letter of Approval, <a target="_blank" href="https://drive.google.com/file/d/1GnsxorMmmfJNVriA7mkPISpFP9zTrVLz/view">Download form</a></label>
+                <label for="f1">Letter of Approval</label>
                 <input type="file" class="form-control-file align-middle" id="f1" name="f1"/>
                 <p id="p-f1"></p>
               </div>
@@ -213,6 +222,7 @@
               </div>
             </div>
             <div class="card-footer text-muted">
+              *Document forms can be downloaded <a target="_blank" href="https://drive.google.com/drive/folders/1l1pZbBO6FhHcWeWrgRUMlda_10uXZyzf">here</a><br/>
               *All files should be uploaded in pdf or jpg format<br/>
               *Each file size limit: 5MB
             </div>
@@ -260,14 +270,14 @@
         <%
           let lock = user.get('lock');
           lock = lock || [];
-          let l = [, 'f1', 'f2', 'f3'];
+          let l = [, 'f1', 'f2', 'f3', 'f4'];
           if (lock[0]) {
         %>
-            $('input:not(#f1, #f2, #f3)').attr('disabled', '');
+            $('input:not(#f1, #f2, #f3, #f4)').attr('disabled', '');
             $('select').attr('disabled', '');
         <%
           }
-          for (let i = 1; i < 4; i++) {
+          for (let i = 1; i <= 4; i++) {
             if (lock[i]) {
         %>
               $('#f' + <%= i %>).attr('disabled', '');
@@ -279,8 +289,8 @@
         $('#send').click(function(e) {
           e.preventDefault();
           Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Confirm submit',
+            text: 'You cannot edit after submit',
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -332,10 +342,14 @@
           });
         }
 
+        setTimeout(() => {
+          update($('#country'));
+        }, 5000);
+
         $('select').change(function () {
           let e = $(this);
           let others = $('#' + e.attr('others'));
-          if (e.val() == 'others') others.removeAttr('disabled');
+          if (e.val() == 'others' && <%= !lock[0] ? 'true' : 'false' %>) others.removeAttr('disabled');
           else {
             others.val('');
             update(others);

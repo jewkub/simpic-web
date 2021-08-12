@@ -44,7 +44,7 @@ async function main(auth) {
         let field = e.get('field'), value = e.get('value');
         if (field == 'in1') col[3] = value;
         else if (field == 'in2') col[4] = value;
-        else if (field == 'in3') col[5] = value;
+        else if (field == 'country') col[5] = value;
         else if (field == 'in4' && value != 'others') col[6] = value;
         else if (field == 'in4-1' && value) col[6] = 'others: ' + value;
 
@@ -97,6 +97,8 @@ async function main(auth) {
       return;
     }
   });
+
+  console.log('\nhttps://docs.google.com/spreadsheets/d/1tT8hhbfNe-yzM_Q1fFBv4MIrFH2N2VzKpwPAQAQqhCo/edit');
 
   /* range = 'Observer!A3:W3000';
   sheets.spreadsheets.values.update({

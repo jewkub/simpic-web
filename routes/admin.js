@@ -59,11 +59,11 @@ router.post('/user', async (req, res, next) => {
     let comment = [];
     let extra = [];
     let payment;
-    for (let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= 5; i++) {
       lock[i-1] = (req.body['l' + i] == 'true');
       status[i-1] = (req.body['s' + i] || '');
       comment[i-1] = req.body['c' + i];
-      if (i != 4) extra[i-1] = req.body['x' + i] || '';
+      if (i <= 2) extra[i-1] = req.body['x' + i] || '';
     }
     payment = req.body.payment || false;
     

@@ -57,7 +57,7 @@ User.sendConfirmation = async function (user, host) {
   var mailOptions = {
     from: {
       name: 'SIMPICSED',
-      address: 'contact.simpic@gmail.com'
+      address: 'simpic10th@gmail.com'
     },
     to: (await user.get()).get('email'),
     subject: 'Account Verification Token',

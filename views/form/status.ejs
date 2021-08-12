@@ -121,39 +121,23 @@
           }, 500);
         });
 
-        /* 
+        
         <%
-        if (user.get('payment') != 'Paid') {
-          if (user.get('type') == 'early') {
+          if (user.get('payment') != 'Paid') {
+            let type = user.get("type");
+            if (type == 'early' || type == 'regular') {
         %>
-            Swal.fire(`Congratulations`, 
-`Your team has been selected to participating in SIMPICSED.<br>
-Please complete the following tasks within December 24, 2019 to confirm your participations.<br>
-1) Make the payment of the registration fee through <a href="http://www1.si.mahidol.ac.th/division/conference/conference/sm_login.php?sm_id=838&menu=1">this link</a> and Your team registration fee is <b><u>24,500 Baht</u></b><br> 
-2) Complete the Additional information form via <a href="https://docs.google.com/forms/d/1v6Zmg9wk9F7BdylsCcQrvcnpcj3ekTIhQbsQ6SakJDw/edit?usp=sharing">this link</a> including selection of the sightseeing routes<br>
-3) Follow us both on Facebook: SIMPIC & Instagram: @simpic_official for upcoming essential information.`);
+              Swal.fire({
+                title: 'Congratulations!',
+                html: `Your team has been approved to participate in SIMPICSED (online).
+Your team registration fee is <b><%= type == 'early' ? 3200 : 3840 %> Baht</b> for <b><%= type %></b> registration
+Please proceed to <a href="http://www1.si.mahidol.ac.th/division/conference//conference/sm_index.php?sm_id=959&menu=1" target="_blank">our faculty website for payment</a>
+<a href="https://drive.google.com/file/d/1XDAoTy6VUFisg_DSJ1Vrue_Pas-cy3eu/view?usp=sharing" target="_blank">How to make the payment</a>`
+              });
         <%
-          } else if (user.get('type') == 'regular') {
-        %>
-            Swal.fire(`Congratulations`,
-`Your team has been selected to participating in SIMPICSED.<br>
-Please complete the following tasks within December 24, 2019 to confirm your participations.<br>
-1) Make the payment of the registration fee through <a href="http://www1.si.mahidol.ac.th/division/conference/conference/sm_login.php?sm_id=838&menu=1">this link</a> and Your team registration fee is <b><u>26,500 Baht</u></b><br> 
-2) Complete the Additional information form via <a href="https://docs.google.com/forms/d/1v6Zmg9wk9F7BdylsCcQrvcnpcj3ekTIhQbsQ6SakJDw/edit?usp=sharing">this link</a> including selection of the sightseeing routes<br>
-3) Follow us both on Facebook: SIMPIC & Instagram: @simpic_official for upcoming essential information.`);
-        <%
-          } else if (user.get('type') == 'observer') {
-        %>
-            Swal.fire(`Almost Complete to be participating in SIMPICSED as an Observer.`,
-`Please complete the following tasks within December 24, 2019 to confirm your participations.<br>
-1) Make the payment of the registration fee through <a href="http://www1.si.mahidol.ac.th/division/conference/conference/sm_login.php?sm_id=838&menu=1">this link</a> and Your registration fee is <b><u>11,500 Baht</u></b><br>
-2) Complete the Additional information form via <a href="https://docs.google.com/forms/d/1v6Zmg9wk9F7BdylsCcQrvcnpcj3ekTIhQbsQ6SakJDw/edit?usp=sharing">this link</a> including selection of the sightseeing routes<br>
-3) Follow us both on Facebook: SIMPIC & Instagram: @simpic_official for upcoming essential information.`);
-        <%
+            }
           }
-        }
         %>
-        */
       });
     </script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

@@ -22,6 +22,7 @@ router.get('/register/validemail', async function (req, res, next) {
 
 router.post('/register', async function (req, res, next) {
   try {
+    req.body.email = req.body.email.toLowerCase();
     let user = await User.createUser(req.body.email, req.body.password, req.body.locale);
     await User.sendConfirmation(user, req.hostname);
   } catch (e) {

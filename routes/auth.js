@@ -29,6 +29,7 @@ passport.use(new LocalStrategy({
 	usernameField: 'email',
 }, async function (email, password, done) {
 	try {
+		email = email.toLowerCase();
 		let user = await User.getUserByEmail(email);
 		if (!user) return done(null, false, { message: 'Unknown email' });
 		let result = await User.comparePassword(password, user.get('password'));
